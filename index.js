@@ -5,7 +5,7 @@ var config = {
   router: function(bot, request, callback) {
 
       var action = {
-        "type": "speak"
+        "type": "speak",
         "request": request,
         "message": request.message
       }
