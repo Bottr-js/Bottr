@@ -1,11 +1,8 @@
 var BotKit = require('./lib/botkit');
 
-var delegate = {
-  clientForBot: function (bot) {
-    return new BotKit.CLIClient()
-  },
-  routerForBot: function (bot) {
-    return {
+var config = {
+  client: new BotKit.CLIClient(),
+  router: {
       route: function(bot, request, callback) {
 
         var event = {
@@ -16,14 +13,12 @@ var delegate = {
         var newContext = bot.triggerActionWithName("speak", event)
         callback(newContext)
       }
-    }
   },
   triggerActionWithName: function(name, event) {
-      var client = this.clientForBot(bot)
-      client.speak(event.message)
+      this.client.speak(event.message)
       return event.request.context
   }
 };
 
-var bot = new BotKit.Bot(delegate);
+var bot = new BotKit.Bot(config);
 bot.start();
