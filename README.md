@@ -9,7 +9,7 @@
 </p>
 -------
 
-A Swift framework for creating Bots, head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to read more about how to install and start using BotKit.
+A framework for creating Bots, head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to read more about how to install and start using BotKit.
 
 Get in contact with the developer on Twitter: [@jcampbell_05](https://twitter.com/jcampbell_05)
 
