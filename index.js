@@ -1,7 +1,7 @@
 var BotKit = require('./lib/botkit');
 
 var config = {
-  client: new BotKit.CLIClient(),
+  client: new BotKit.FacebookMessengerClient(),
   router: function(bot, request, callback) {
 
       var action = {
