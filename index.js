@@ -4,17 +4,18 @@ var config = {
   client: new BotKit.CLIClient(),
   router: function(bot, request, callback) {
 
-      var event = {
+      var action = {
+        "type": "speak"
         "request": request,
         "message": request.message
       }
 
-      var newContext = bot.triggerActionWithName("speak", event)
+      var newContext = bot.dispatch(action)
       callback(newContext)
   },
-  triggerActionWithName: function(name, event) {
-      this.client.speak(event.message)
-      return event.request.context
+  dispatch: function(action) {
+      this.client.speak(action.message)
+      return action.request.context
   }
 };
 
