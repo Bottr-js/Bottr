@@ -14,6 +14,7 @@ var config = {
         "message": request.message
       }
 
+      //FIXME: Pass through request as well ?
       var newContext = bot.dispatch(action)
       callback(newContext)
   },
