@@ -18,18 +18,28 @@ var config = {
   },
   dispatch: function(action, request) {
 
+      var defaults = {
+        messageCount: 0,
+        wordCount: 0
+      }
+
+      var context = Object.assign(defaults, request.context)
+
       switch (action.type) {
         case "speak":
         this.client.speak(action.message, request.user)
-        return
+        break
 
         case "stats":
-        this.client.speak("Total Message Count: " + request.context.messageCount, request.user)
-        this.client.speak("Total Word Count: " + request.context.wordCount, request.user)
-        return
+        this.client.speak("Total Message Count: " + context.messageCount, request.user)
+        this.client.speak("Total Word Count: " + context.wordCount, request.user)
+        break
       }
 
-      return request.context
+      return Object.assign(request.context, {
+        messageCount: 0,
+        wordCount: 0
+      })
   }
 };
 
