@@ -1,6 +1,7 @@
 var BotKit = require('./lib/botkit');
 
 var config = {
+  contextStore: new BotKit.MemoryContextStore(),
   client: new BotKit.FacebookMessengerClient({
     appSecret: '770739fb5821713a8418148a16c352ef',
     pageAccessToken: 'EAAQ4wdcZBuloBAHHhZCTMdodrpZBDpo5s8Y1JdEorCo6x5O3NUG7KG0vh7Hvz7GyZAWODwEs7cJKQeyVC5oTTBpc1PNtOF403tfCHnHLnWgKvQtfDWu1ZAu9gimsIAhQqpAbcz8IhH3K9jYMZBfoA6uerNfCHN75KxQSbKkFtKqwZDZD',
