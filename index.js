@@ -24,7 +24,7 @@ var config = {
         wordCount: 0
       }
 
-      var context = Object.assign(defaults, request.context)
+      var context = Object.assign({}, defaults, request.context)
       var messageCount = context.messageCount + 1;
       var wordCount = context.wordCount + request.message.split(" ").length;
 
@@ -39,7 +39,7 @@ var config = {
         break
       }
 
-      return Object.assign(request.context, {
+      return Object.assign({}, request.context, {
         messageCount: messageCount,
         wordCount: wordCount
       })
