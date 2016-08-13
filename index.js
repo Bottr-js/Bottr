@@ -10,27 +10,25 @@ var config = {
 
       var action = {
         "type": (request.message.indexOf("/history") === 0) ? "history" : "speak",
-        "request": request,
         "message": request.message
       }
 
-      //FIXME: Pass through request as well ?
-      var newContext = bot.dispatch(action)
+      var newContext = bot.dispatch(action, request)
       callback(newContext)
   },
-  dispatch: function(action) {
+  dispatch: function(action, request) {
 
       switch (action.type) {
         case "speak":
-        this.client.speak(action.message, action.request.user)
+        this.client.speak(action.message, request.user)
         return
 
         case "history":
-        this.client.speak("I will show your history of echos", action.request.user)
+        this.client.speak("I will show your history of echos", request.user)
         return
       }
 
-      return action.request.context
+      return request.context
   }
 };
 
