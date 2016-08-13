@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "messenger-bot": "^2.3.0",
     "request": "^2.74.0"
   }
 }

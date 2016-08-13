@@ -14,7 +14,7 @@ var config = {
       callback(newContext)
   },
   dispatch: function(action) {
-      this.client.speak(action.message)
+      this.client.speak(action.message, action.request.user)
       return action.request.context
   }
 };
