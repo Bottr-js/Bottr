@@ -9,7 +9,7 @@ var config = {
   router: function(bot, request, callback) {
 
       var action = {
-        "type": (request.message.indexOf("/history") === 0) ? "history" : "speak",
+        "type": (request.message.indexOf("/stats") === 0) ? "stats" : "speak",
         "message": request.message
       }
 
@@ -23,8 +23,9 @@ var config = {
         this.client.speak(action.message, request.user)
         return
 
-        case "history":
-        this.client.speak("I will show your history of echos", request.user)
+        case "stats":
+        this.client.speak("Total Message Count: " + request.context.messageCount, request.user)
+        this.client.speak("Total Word Count: " + request.context.wordCount, request.user)
         return
       }
 
