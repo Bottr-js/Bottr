@@ -15,5 +15,8 @@
     "redis": "^2.6.2",
     "request": "^2.74.0",
     "twit": "^2.2.4"
+  },
+  "devDependencies": {
+    "jest-cli": "^14.1.0"
   }
 }
