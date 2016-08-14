@@ -49,11 +49,11 @@ bot.use(function(action, request){
 bot.action('stats', function(payload, request){
 
   bot.speak({
-    message: "Total Message Count: " + messageCount
+    message: "Total Message Count: " + request.context.messageCount
   }, request)
 
   bot.speak({
-    message: "Total Word Count: " + wordCount
+    message: "Total Word Count: " + request.context.wordCount
   }, request)
 
   return request.context
