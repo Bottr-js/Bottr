@@ -10,41 +10,51 @@ var config = {
   router: function(bot, request, callback) {
 
       var action = {
-        "type": (request.message.indexOf("/stats") === 0) ? "stats" : "speak",
-        "message": request.message
+        name: (request.message.indexOf("/stats") === 0) ? "stats" : "speak",
+        payload: {
+          message: request.message
+        }
       }
 
       var newContext = bot.dispatch(action, request)
       callback(newContext)
-  },
-  dispatch: function(action, request) {
-
-      var defaults = {
-        messageCount: 0,
-        wordCount: 0
-      }
-
-      var context = Object.assign({}, defaults, request.context)
-      var messageCount = context.messageCount + 1;
-      var wordCount = context.wordCount + request.message.split(" ").length;
-
-      switch (action.type) {
-        case "speak":
-        this.client.speak(action.message, request.user)
-        break
-
-        case "stats":
-        this.client.speak("Total Message Count: " + messageCount, request.user)
-        this.client.speak("Total Word Count: " + wordCount, request.user)
-        break
-      }
-
-      return Object.assign({}, request.context, {
-        messageCount: messageCount,
-        wordCount: wordCount
-      })
   }
 };
 
 var bot = new BotKit.Bot(config);
+
+bot.use(function(action, request){
+
+  var defaults = {
+    messageCount: 0,
+    wordCount: 0
+  }
+
+  var context = Object.assign({}, defaults, request.context)
+
+  if (action.name !== 'stats') {
+
+    var messageCount = context.messageCount + 1;
+    var wordCount = context.wordCount + request.message.split(" ").length;
+  }
+
+  return Object.assign({}, context, {
+    messageCount: messageCount,
+    wordCount: wordCount
+  })
+})
+
+bot.action('stats', function(payload, request){
+
+  bot.speak({
+    message: "Total Message Count: " + messageCount
+  }, request)
+
+  bot.speak({
+    message: "Total Word Count: " + wordCount
+  }, request)
+
+  return request.context
+})
+
 bot.start();
