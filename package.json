@@ -18,5 +18,8 @@
   },
   "devDependencies": {
     "jest-cli": "^14.1.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
