@@ -21,6 +21,8 @@ var config = {
   }
 };
 
+// Design based on: https://expressjs.com/en/guide/routing.html
+// Add ability to do module based loading like with Express.
 var bot = new BotKit.Bot(config);
 
 bot.use(function(action, request){
