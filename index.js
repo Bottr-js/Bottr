@@ -34,11 +34,8 @@ bot.use(function(action, request){
 
   var context = Object.assign({}, defaults, request.context)
 
-  if (action.name !== 'stats') {
-
-    var messageCount = context.messageCount + 1;
-    var wordCount = context.wordCount + request.message.split(" ").length;
-  }
+  var messageCount = context.messageCount + 1;
+  var wordCount = context.wordCount + request.message.split(" ").length;
 
   return Object.assign({}, context, {
     messageCount: messageCount,
