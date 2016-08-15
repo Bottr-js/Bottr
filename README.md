@@ -8,6 +8,10 @@ Head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to re
 
 ## Features
 
+:rocket: Prebuilt integrations with Facebook Messenger, Wit.ai and more.
+:boom: Focus on building the business logic for your bot, not infrastructure.
+:bulb: Build your bot in minutes not hours.
+
 ## Installation
 
 ```
