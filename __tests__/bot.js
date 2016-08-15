@@ -18,4 +18,28 @@ describe('bot', () => {
       client: {}
     })).toThrow();
   });
+
+  it('starts context store when started', () => {
+
+    var contextStore = {
+      start: jest.fn()
+    }
+
+    var bot = new Bot({
+      contextStore: contextStore,
+      client: {},
+      router: () => {}
+    })
+
+    bot.start()
+
+    expect(contextStore.start).toBeCalled()
+  });
+
+  // it('starts client when started', () => {
+  //   expect(() => new Bot({
+  //     client: {},
+  //     router: () => {}
+  //   })).toThrow();
+  // });
 });
