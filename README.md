@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="BotKit" src="https://jcampbell05.github.io/BotKit.js/Images/Logo.png" height="200" />
+<img alt="BotKit" src="https://botkit-js.github.io/BotKit.js/Images/Logo.png" height="200" />
 </p>
 
 <p align="center">
