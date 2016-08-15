@@ -2,6 +2,8 @@
 <img alt="BotKit" src="https://botkit-js.github.io/BotKit.js/Images/Logo.png" height="200" />
 </p>
 
+[![Travis](https://img.shields.io/travis/BotKit-js/BotKit.js.svg?maxAge=2592000)](https://github.com/BotKit-js/BotKit.js)
+
 A framework for creating Bots.
 
 Head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to read more about how to install and start using BotKit.
