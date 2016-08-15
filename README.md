@@ -5,16 +5,24 @@
 <p align="center">
   <a href="#features">Features</a> &bull;
   <a href="https://github.com/jcampbell05/BotKit.js/wiki">Documentation</a> &bull;
-  <a href="#need-help">Need Help?</a> 
+  <a href="#need-help">Need Help?</a>
 </p>
 -------
 
 A framework for creating Bots, head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to read more about how to install and start using BotKit.
 
-Get in contact with the developer on Twitter: [@jcampbell_05](https://twitter.com/jcampbell_05)
-
 ## Features
+
+## Installation
+
+```
+npm install --save botkit.js
+```
 
 ## Need Help?
 
+Get in contact with the developer on Twitter: [@jcampbell_05](https://twitter.com/jcampbell_05)
+
 ## License
+
+This project is licensed under the terms of the MIT license. See the LICENSE file.
