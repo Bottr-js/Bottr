@@ -1,7 +1,10 @@
 jest.unmock('../../lib/router/wit-ai-router');
 
-jest.setMock('node-wit', function() {
-
+jest.setMock('node-wit', function(opts) {
+  this.runActions = function() {
+    opts.actions.send({}, {})
+    return Promise.resolve({})
+  }
 })
 
 const WitAIRouter = require('../../lib/router/wit-ai-router');
@@ -29,12 +32,12 @@ describe('Wit.ai router', () => {
     }
 
     var router = new WitAIRouter({ apiToken: 'Token' })
-    router(bot, request, jest.fn)
+    router(bot, request, jest.fn())
 
     expect(bot.actions.send).toBeCalled();
   });
 
-  it('should call callback when finished', () => {
+  it('should call callback when finished', (done) => {
 
     var bot = {
       actions: {
@@ -53,8 +56,9 @@ describe('Wit.ai router', () => {
     var callback = jest.fn()
 
     var router = new WitAIRouter({ apiToken: 'Token' })
-    router(bot, request, callback)
 
-    expect(callback).toBeCalled();
+    router(bot, request, function(newContext) {
+      done()
+    })
   });
 });
