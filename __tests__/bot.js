@@ -54,7 +54,7 @@ describe('bot', () => {
     expect(client.start).toBeCalled()
   });
 
-  it('starts client when started after context store has started', () => {
+  it('starts client after context store has started', () => {
 
     var bot = new Bot({
       contextStore: contextStore,
