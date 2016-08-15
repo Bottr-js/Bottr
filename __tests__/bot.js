@@ -2,33 +2,39 @@ jest.unmock('../lib/bot');
 
 const Bot = require('../lib/bot');
 
+const client = {
+  start: jest.fn()
+}
+
+const router = jest.fn()
+
+const contextStore = {
+  start: jest.fn()
+}
+
 describe('bot', () => {
   it('throws error when no configuration is provided', () => {
-    expect(() => new Bot() ).toThrow();
+    expect(() => new Bot()).toThrow();
   });
 
   it('throws error when no client is provided', () => {
     expect(() => new Bot({
-      router: () => {}
-    }) ).toThrow();
+      router: router
+    })).toThrow();
   });
 
   it('throws error when no router is provided', () => {
     expect(() => new Bot({
-      client: {}
+      client: client
     })).toThrow();
   });
 
   it('starts context store when started', () => {
 
-    var contextStore = {
-      start: jest.fn()
-    }
-
     var bot = new Bot({
       contextStore: contextStore,
-      client: {},
-      router: () => {}
+      client: client,
+      router: router
     })
 
     bot.start()
@@ -38,13 +44,9 @@ describe('bot', () => {
 
   it('starts client when started', () => {
 
-    var client = {
-      start: jest.fn()
-    }
-
     var bot = new Bot({
       client: client,
-      router: () => {}
+      router: router
     })
 
     bot.start()
@@ -54,20 +56,10 @@ describe('bot', () => {
 
   it('starts client when started after context store has started', () => {
 
-    var client = {
-      start: jest.fn()
-    }
-
-    var contextStore = {
-      start: function(callback) {
-        callback();
-      }
-    }
-
     var bot = new Bot({
       contextStore: contextStore,
       client: client,
-      router: () => {}
+      router: router
     })
 
     bot.start()
