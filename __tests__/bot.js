@@ -51,4 +51,27 @@ describe('bot', () => {
 
     expect(client.start).toBeCalled()
   });
+
+  it('starts client when started after context store has started', () => {
+
+    var client = {
+      start: jest.fn()
+    }
+
+    var contextStore = {
+      start: function(callback) {
+        callback();
+      }
+    }
+
+    var bot = new Bot({
+      contextStore: contextStore,
+      client: client,
+      router: () => {}
+    })
+
+    bot.start()
+
+    expect(client.start).toBeCalled()
+  });
 });
