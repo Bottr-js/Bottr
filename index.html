@@ -74,15 +74,35 @@
         transition: 0.25s;
       }
 
-      .section {
+      .sections {
         margin-top: 150px;
-        height: 250px;
+      }
+
+      .section {
+        margin: 75px 0;
         color: #A1A6B4;
         font-weight: 100;
       }
 
       .section h3 {
         font-weight:500;
+      }
+
+      pre {
+        color: #fff;
+        padding: 16px;
+        overflow: none;
+        font-size: 85%;
+        background-color: #A1A6B4;
+        border-radius: 15px;
+        margin-top: 75px;
+        text-align: left;
+      }
+
+      pre code {
+        display: block;
+        margin: 0 auto;
+        width: 320px;
       }
     </style>
   </head>
@@ -102,23 +122,48 @@
         <a href="https://github.com/BotKit-js/BotKit.js/wiki/Creating-a-new-project">Install</a>
       </div>
       <!-- Down Arrow -->
-      <div class="section">
-        <h3>Super Easy</h3>
-        <p>Making a bot made simple.</p>
-        <!-- Image -->
+      <div class="sections">
+        <div class="section">
+          <h3>Super Easy</h3>
+          <p>Building a bot made simple</p>
+          <pre>
+            <code>
+var BotKit = require('./lib/botkit');
+
+var config = {
+  client: new BotKit.CLIClient(),
+  router: function(bot, request, callback) {
+
+      var action = {
+        name: "text",
+        payload: {
+          text: request.message
+        }
+      }
+
+      var newContext = bot.dispatch(action, request)
+      callback(newContext)
+  }
+};
+
+var bot = new BotKit.Bot(config);
+bot.start();
+            </code>
+          </pre>
+        </div>
+        <div class="section">
+          <h3>Intergrate Anywhere</h3>
+          <p>Reach over 1 billion users over 10+ channels</p>
+          <!-- Image -->
+        </div>
+        <div class="section">
+          <h3>Flexible</h3>
+          <p>Integrate into your existing business logic</p>
+          <!-- Image -->
+        </div>
+        <!-- Another Install Button -->
+        <!-- Add sponsored by Image for Wenow, Sup and Chatbot Agency -->
       </div>
-      <div class="section">
-        <h3>Intergrate Anywhere</h3>
-        <p>Reach over 1 billion users over 10+ channels.</p>
-        <!-- Image -->
-      </div>
-      <div class="section">
-        <h3>Flexible</h3>
-        <p>Integrate into your existing business logic.</p>
-        <!-- Image -->
-      </div>
-      <!-- Another Install Button -->
-      <!-- Add sponsored by Image for Wenow, Sup and Chatbot Agency -->
     </div>
   </body>
 </html>
