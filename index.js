@@ -44,18 +44,7 @@ function HubotBot(hubot) {
       bot.findConversation = function(message, cb) {
 
           botkit.debug('CUSTOM FIND CONVO', message.user, message.channel);
-          // for (var t = 0; t < botkit.tasks.length; t++) {
-          //     for (var c = 0; c < botkit.tasks[t].convos.length; c++) {
-          //         if (
-          //             botkit.tasks[t].convos[c].isActive() &&
-          //             botkit.tasks[t].convos[c].source_message.user == message.user
-          //         ) {
-          //             botkit.debug('FOUND EXISTING CONVO!');
-          //             cb(botkit.tasks[t].convos[c]);
-          //             return;
-          //         }
-          //     }
-          // }
+          // - Load from context store
 
           if (cb) {
             cb();
