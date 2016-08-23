@@ -7,9 +7,7 @@ var Hubot = require('hubot');
 function HubotBot(hubot) {
 
   // Create a core botkit bot
-  var hubot_botkit = Botkit.core({
-     debug: true
-  })
+  var hubot_botkit = Botkit.core({})
 
   // customize the bot definition, which will be used when new connections
   // spawn!
