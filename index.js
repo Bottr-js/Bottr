@@ -3,20 +3,117 @@ CoffeeScript.register();
 
 var Botkit = require('botkit');
 var Hubot = require('hubot');
-//
-// // Configure our Bot
-// // - It will store contextual infomation in memory
-// // - It will communicate to the user via Facebook Messenger
-// // - It defines a simple router
+
+function HubotBot(hubot) {
+
+  // Create a core botkit bot
+  var hubot_botkit = Botkit.core({
+     debug: true
+  })
+
+  // customize the bot definition, which will be used when new connections
+  // spawn!
+  hubot_botkit.defineBot(function(botkit, config) {
+
+      var bot = {
+          botkit: botkit,
+          config: config || {},
+          utterances: botkit.utterances,
+      };
+
+      bot.startConversation = function(message, cb) {
+          botkit.startConversation(this, message, cb);
+      };
+
+      bot.send = function(message, cb) {
+
+        message.res.send(message.text)
+
+        if (cb) {
+          cb()
+        }
+      };
+
+      bot.reply = function(src, resp, cb) {
+
+        src.res.reply(src.text)
+
+        if (cb) {
+          cb()
+        }
+      };
+
+      bot.findConversation = function(message, cb) {
+
+          botkit.debug('CUSTOM FIND CONVO', message.user, message.channel);
+          // for (var t = 0; t < botkit.tasks.length; t++) {
+          //     for (var c = 0; c < botkit.tasks[t].convos.length; c++) {
+          //         if (
+          //             botkit.tasks[t].convos[c].isActive() &&
+          //             botkit.tasks[t].convos[c].source_message.user == message.user
+          //         ) {
+          //             botkit.debug('FOUND EXISTING CONVO!');
+          //             cb(botkit.tasks[t].convos[c]);
+          //             return;
+          //         }
+          //     }
+          // }
+
+          if (cb) {
+            cb();
+          }
+      };
+
+      console.log("Attaching listeners For \"" + hubot.name + "\"...")
+
+      hubot.hear(/./, function(res){
+        var message = {
+            res: res,
+            text: res.message,
+            user: res.user
+        };
+
+        hubot_botkit.receiveMessage(bot, message);
+      })
+
+      hubot.respond(/./, function(res) {
+        var message = {
+            res: res,
+            text: res.message,
+            user: res.user
+        };
+
+        hubot_botkit.receiveMessage(bot, message);
+      })
+
+      console.log("\"" + hubot.name + "\" started...")
+
+      hubot.run()
+  })
+
+  return hubot_botkit
+}
+
+function Neurotin(bot) {
+
+
+  bot.hears(['hello','hi'], 'message_received', function(bot, message) {
+      bot.reply(message, "Hello.");
+  });
+}
+
+console.log('Starting Neurotin....')
+
+//adapterPath, adapterName, enableHttpd, botName, botAlias
+var hubot = Hubot.loadBot(null, 'shell', true, 'echobot', null)
+var bot = new HubotBot(hubot);
+
+bot.spawn()
+
+var neurotin = new Neurotin(bot)
+
 // var config = {
 //   contextStore: new BotKit.MemoryContextStore(),
-//   client: new BotKit.FacebookMessengerClient({
-//
-//     // Get our keys from the Enviromental Variables
-//     appSecret: process.env.FB_APP_SECRET,
-//     pageAccessToken: process.env.FB_PAGE_ACCESS_TOKEN,
-//     validationSecret: process.env.FB_VALIDATION_SECRET
-//   }),
 //   router: function(bot, request, callback) {
 //
 //       // Trigger stats action if the user sends "/stats"
@@ -89,7 +186,3 @@ var Hubot = require('hubot');
 //   // so we just return it
 //   return request.context
 // })
-//
-// // Start the bot which will start it
-// // listening for input from a client
-// bot.start();
