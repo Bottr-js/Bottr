@@ -56,7 +56,7 @@ function HubotBot(hubot) {
         var message = {
             res: res,
             text: res.message,
-            user: res.user
+            user: (res.user) ? res.user : "0"
         };
 
         hubot_botkit.receiveMessage(bot, message);
@@ -66,7 +66,7 @@ function HubotBot(hubot) {
         var message = {
             res: res,
             text: res.message,
-            user: res.user
+            user: (res.user) ? res.user : "0"
         };
 
         hubot_botkit.receiveMessage(bot, message);
@@ -93,7 +93,7 @@ function Neurotin(controller) {
         }
 
         // Merge current context with the defaults.
-        var context = Object.assign({}, defaults, context)
+        var context = Object.assign({}, defaults, (context) ? context.context : {})
 
         // Increment the message count and
         // calculate the new number of words the user has sent
@@ -118,11 +118,11 @@ function Neurotin(controller) {
       controller.storage.users.get(message.user, function(err, context) {
         // Send the total number of messages to the
         // user
-        bot.reply(message, "Total Message Count: " + context.messageCount)
+        bot.reply(message, "Total Message Count: " + context.context.messageCount)
 
         // Send the total number of words to the
         // user
-        bot.speak(message, "Total Word Count: " +context.wordCount)
+        bot.reply(message, "Total Word Count: " + context.context.wordCount)
 
         //
         // We don't do anything to the context
