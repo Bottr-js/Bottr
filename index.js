@@ -12,12 +12,13 @@ bot.on('message_received', function(event, context) {
 
     // Merge current context with the defaults.
     var context = Object.assign({}, defaults, context)
+    var text = event.message.text
 
     // Increment the message count and
     // calculate the new number of words the user has sent
     //
     var messageCount = context.messageCount + 1;
-    var words = event.text.split(" ");
+    var words = text.split(" ");
     var wordCount = context.wordCount + words.length;
 
     // Merge the new statistics into the context
