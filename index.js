@@ -1,7 +1,8 @@
 var Neurotin = require('./lib/neurotin')
 var bot = new Neurotin.Bot();
 
-bot.on('message_received', function(bot, message) {
+bot.on('message_received', function(event, context) {
+
     // Default values for if this is the first time
     // communicating with the bot
     var defaults = {
@@ -16,7 +17,8 @@ bot.on('message_received', function(bot, message) {
     // calculate the new number of words the user has sent
     //
     var messageCount = context.messageCount + 1;
-    var wordCount = context.wordCount + message.text.split(" ").length;
+    var words = event.text.split(" ");
+    var wordCount = context.wordCount + words.length;
 
     // Merge the new statistics into the context
     // and return it back to the bot
@@ -26,7 +28,8 @@ bot.on('message_received', function(bot, message) {
     })
 })
 
-bot.hears(['\/stats'], ['message_received'], function(bot, message) {
+bot.hears(['\/stats'], ['message_received'], function(utterance, context) {
+
     // Send the total number of messages to the
     // user
     bot.reply(message, "Total Message Count: " + context.messageCount)
@@ -41,7 +44,7 @@ bot.hears(['\/stats'], ['message_received'], function(bot, message) {
     return context
 });
 
-bot.hears([/.+/], ['message_received'], function(bot, message) {
+bot.hears([/.+/], ['message_received'], function(utterance, context) {
     bot.reply(message, message.text);
 });
 
