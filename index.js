@@ -1,147 +1,57 @@
-var CoffeeScript = require('coffee-script');
-CoffeeScript.register();
-var Botkit = require('botkit');
-var Hubot = require('hubot');
+var Neurotin = require('./lib/neurotin')
+var bot = new Neurotin.Bot();
 
-function HubotBot(hubot) {
+bot.on('message_received', function(bot, message) {
 
-  // Create a core botkit bot
-  var hubot_botkit = Botkit.core({})
+  bot.storage.users.get(message.user, function(err, context) {
+      // Default values for if this is the first time
+      // communicating with the bot
+      var defaults = {
+        messageCount: 0,
+        wordCount: 0
+      }
 
-  // customize the bot definition, which will be used when new connections
-  // spawn!
-  hubot_botkit.defineBot(function(botkit, config) {
+      // Merge current context with the defaults.
+      var context = Object.assign({}, defaults, (context) ? context.context : {})
 
-      var bot = {
-          botkit: botkit,
-          config: config || {},
-          utterances: botkit.utterances,
-      };
+      // Increment the message count and
+      // calculate the new number of words the user has sent
+      //
+      // FIXME: Why do we need to text.text on an event but not a listener
+      var messageCount = context.messageCount + 1;
+      var wordCount = context.wordCount + message.text.text.split(" ").length;
 
-      bot.startConversation = function(message, cb) {
-          botkit.startConversation(this, message, cb);
-      };
+      // Merge the new statistics into the context
+      // and return it back to the bot
+      bot.storage.users.save({
+        id: message.user,
+        context: Object.assign({}, context, {
+          messageCount: messageCount,
+          wordCount: wordCount
+        })
+      }, function(){});
+  });
+})
 
-      bot.send = function(message, cb) {
+bot.hears(['\/stats'], ['message_received'], function(bot, message) {
+    bot.storage.users.get(message.user, function(err, context) {
+      // Send the total number of messages to the
+      // user
+      bot.reply(message, "Total Message Count: " + context.context.messageCount)
 
-        message.res.send(message.text)
+      // Send the total number of words to the
+      // user
+      bot.reply(message, "Total Word Count: " + context.context.wordCount)
 
-        if (cb) {
-          cb()
-        }
-      };
-
-      bot.reply = function(src, resp, cb) {
-
-        src.res.reply(resp)
-
-        if (cb) {
-          cb()
-        }
-      };
-
-      bot.findConversation = function(message, cb) {
-
-          botkit.debug('CUSTOM FIND CONVO', message.user, message.channel);
-          // - Load from context store
-
-          if (cb) {
-            cb();
-          }
-      };
-
-      console.log("Attaching listeners For \"" + hubot.name + "\"...")
-
-      hubot.hear(/./, function(res){
-        var message = {
-            res: res,
-            text: res.message,
-            user: (res.user) ? res.user : "0"
-        };
-
-        hubot_botkit.receiveMessage(bot, message);
-      })
-
-      hubot.respond(/./, function(res) {
-        var message = {
-            res: res,
-            text: res.message,
-            user: (res.user) ? res.user : "0"
-        };
-
-        hubot_botkit.receiveMessage(bot, message);
-      })
-
-      console.log("\"" + hubot.name + "\" started...")
-
-      hubot.run()
-  })
-
-  return hubot_botkit
-}
-
-// Simplify this bot.
-function Neurotin(controller) {
-
-  controller.on('message_received', function(bot, message) {
-
-    controller.storage.users.get(message.user, function(err, context) {
-        // Default values for if this is the first time
-        // communicating with the bot
-        var defaults = {
-          messageCount: 0,
-          wordCount: 0
-        }
-
-        // Merge current context with the defaults.
-        var context = Object.assign({}, defaults, (context) ? context.context : {})
-
-        // Increment the message count and
-        // calculate the new number of words the user has sent
-        //
-        // FIXME: Why do we need to text.text on an event but not a listener
-        var messageCount = context.messageCount + 1;
-        var wordCount = context.wordCount + message.text.text.split(" ").length;
-
-        // Merge the new statistics into the context
-        // and return it back to the bot
-        controller.storage.users.save({
-          id: message.user,
-          context: Object.assign({}, context, {
-            messageCount: messageCount,
-            wordCount: wordCount
-          })
-        }, function(){});
+      //
+      // We don't do anything to the context
+      // so we just return it
+      //return request.context
     });
-  })
+});
 
-  controller.hears(['\/stats'], ['message_received'], function(bot, message) {
-      controller.storage.users.get(message.user, function(err, context) {
-        // Send the total number of messages to the
-        // user
-        bot.reply(message, "Total Message Count: " + context.context.messageCount)
+bot.hears([/.+/], ['message_received'], function(bot, message) {
+    bot.reply(message, message.text);
+});
 
-        // Send the total number of words to the
-        // user
-        bot.reply(message, "Total Word Count: " + context.context.wordCount)
-
-        //
-        // We don't do anything to the context
-        // so we just return it
-        //return request.context
-      });
-  });
-
-  controller.hears([/.+/], ['message_received'], function(bot, message) {
-      bot.reply(message, message.text);
-  });
-}
-
-console.log('Starting Neurotin....')
-
-//adapterPath, adapterName, enableHttpd, botName, botAlias
-var hubot = Hubot.loadBot(null, 'shell', true, 'echobot', null)
-var bot = new HubotBot(hubot);
-var neurotin = new Neurotin(bot)
-
-bot.spawn()
+bot.start()
