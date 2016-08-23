@@ -1,5 +1,5 @@
 {
-  "name": "botkit",
+  "name": "neurotin",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -9,13 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "messenger-bot": "^2.3.0",
-    "node-wit": "^4.0.0",
-    "redis": "^2.6.2",
-    "request": "^2.74.0",
-    "twit": "^2.2.4"
+    "botkit": "^0.2.2",
+    "coffee-script": "^1.10.0",
+    "hubot": "^2.19.0"
   },
   "devDependencies": {
     "jest-cli": "^14.1.0"
