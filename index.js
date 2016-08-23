@@ -80,6 +80,7 @@ function HubotBot(hubot) {
   return hubot_botkit
 }
 
+// Simplify this bot.
 function Neurotin(controller) {
 
   controller.on('message_received', function(bot, message) {
