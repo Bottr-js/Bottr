@@ -4,7 +4,7 @@
 
 A framework for creating Bots.
 
-Head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to read more about how to install and start using BotKit.
+Head to our [Documentation](pozi-js.github.io/Pozi//wiki) to read more about how to install and start using BotKit.
 
 | Botkit        |
 | ------------- |
@@ -15,7 +15,7 @@ Head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to re
 ## Installation
 
 ```
-npm install --save botkit.js
+npm install --save pozi
 ```
 
 ## Need Help?
