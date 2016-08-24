@@ -133,7 +133,9 @@
           <p>Building a bot made simple</p>
           <pre>
             <code>
-var BotKit = require('./lib/botkit');
+import Pozi from 'pozi'
+
+var bot = new Pozi.Bot()
 
 var config = {
   client: new BotKit.CLIClient(),
