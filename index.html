@@ -137,24 +137,11 @@ import Pozi from 'pozi'
 
 var bot = new Pozi.Bot()
 
-var config = {
-  client: new BotKit.CLIClient(),
-  router: function(bot, request, callback) {
+bot.hears([/.+/], ['message_received'], function(bot, utterance, context) {
+  bot.reply(utterance, 'Hello World');
+});
 
-      var action = {
-        name: "text",
-        payload: {
-          text: "Hello World"
-        }
-      }
-
-      var newContext = bot.dispatch(action, request)
-      callback(newContext)
-  }
-};
-
-var bot = new BotKit.Bot(config);
-bot.start();
+bot.spawn();
             </code>
           </pre>
         </div>
