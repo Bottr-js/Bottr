@@ -2,8 +2,7 @@ var Neurotin = require('./lib/neurotin')
 var bot = new Neurotin.Bot();
 
 // Add Middleware to Neurotin
-bot.middleware.receive.use(function(bot, utterance, next) {
-
+bot.middleware.receive.use(function(utterance, context, next) {
     // Default values for if this is the first time
     // communicating with the bot
     var defaults = {
@@ -13,7 +12,7 @@ bot.middleware.receive.use(function(bot, utterance, next) {
 
     // Merge current context with the defaults.
     context.user = Object.assign(defaults, context.user)
-    var text = event.text
+    var text = utterance.text
 
     // Increment the message count and
     // calculate the new number of words the user has sent
