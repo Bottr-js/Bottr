@@ -46,8 +46,4 @@ bot.hears([/.+/], ['message_received'], function(utterance, context) {
   utterance.reply(utterance.text);
 });
 
-bot.hears(['hey'], ['message_received'], function(utterance, context) {
-  utterance.reply(utterance.text);
-});
-
 bot.spawn()
