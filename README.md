@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="BotKit" src="https://botkit-js.github.io/BotKit.js/Images/Logo.png" height="200" />
+<img alt="BotKit" src="http://pozi-js.github.io/Pozi/Images/Logo.png" height="200" />
 </p>
 
 [![Travis](https://img.shields.io/travis/BotKit-js/BotKit.js.svg?maxAge=2592000)](https://github.com/BotKit-js/BotKit.js)
