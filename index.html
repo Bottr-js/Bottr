@@ -137,8 +137,8 @@ import Pozi from 'pozi'
 
 var bot = new Pozi.Bot()
 
-bot.on('message_received', function(bot, utterance) {
-  bot.reply(utterance, 'Hello World')
+bot.on('message_received', function(bot) {
+  bot.reply('Hello World')
 })
 
 bot.spawn()
