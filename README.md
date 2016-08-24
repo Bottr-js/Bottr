@@ -22,6 +22,12 @@ npm install --save pozi
 
 Get in contact with the developer on Twitter: [@jcampbell_05](https://twitter.com/jcampbell_05)
 
+## Roadmap
+
+- Components for easily generating replys across multiple integrations.
+- Gradually reduce amount of dependencies from and duplicaation across BotKit and Hubot.
+- "Add To Slack" Button support.
+
 ## License
 
 This project is licensed under the terms of the MIT license. See the LICENSE file.
