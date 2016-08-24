@@ -6,7 +6,7 @@ A framework for creating Bots.
 
 Head to our [Documentation](https://github.com/jcampbell05/BotKit.js/wiki) to read more about how to install and start using BotKit.
 
-| Botkit        |
+| Pozi        |
 | ------------- |
 | :rocket: Prebuilt integrations with Facebook Messenger, Wit.ai and more. |
 | :boom: Focus on building the business logic for your bot, not infrastructure. |
