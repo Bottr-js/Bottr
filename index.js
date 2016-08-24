@@ -2,7 +2,7 @@ var Neurotin = require('./lib/neurotin')
 var bot = new Neurotin.Bot();
 
 // Add Middleware to Neurotin
-bot.middleware.receive.use(function(utterance, context, next) {
+bot.middleware.receive.use(function(bot, utterance, context, next) {
     // Default values for if this is the first time
     // communicating with the bot
     var defaults = {
@@ -31,19 +31,18 @@ bot.middleware.receive.use(function(utterance, context, next) {
     next();
 });
 
-bot.hears(['\/stats'], ['message_received'], function(utterance, context) {
-
+bot.hears(['\/stats'], ['message_received'], function(bot, utterance, context) {
     // Send the total number of messages to the
     // user
-    utterance.reply("Total Message Count: " + context.user.messageCount)
+    bot.reply(utterance, "Total Message Count: " + context.user.messageCount)
 
     // Send the total number of words to the
     // user
-    utterance.reply("Total Word Count: " + context.user.wordCount)
+    bot.reply(utterance, "Total Word Count: " + context.user.wordCount)
 });
 
-bot.hears([/.+/], ['message_received'], function(utterance, context) {
-  utterance.reply(utterance.text);
+bot.hears([/.+/], ['message_received'], function(bot, utterance, context) {
+  bot.reply(utterance, utterance.text);
 });
 
 bot.spawn()
