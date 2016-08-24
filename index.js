@@ -1,7 +1,7 @@
-var Neurotin = require('./lib/neurotin')
-var bot = new Neurotin.Bot();
+var Pozi = require('./lib')
+var bot = new Pozi.Bot();
 
-// Add Middleware to Neurotin
+// Add Middleware to Pozi
 bot.middleware.receive.use(function(bot, utterance, context, next) {
     // Default values for if this is the first time
     // communicating with the bot
