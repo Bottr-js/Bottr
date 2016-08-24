@@ -1,7 +1,8 @@
 var Neurotin = require('./lib/neurotin')
 var bot = new Neurotin.Bot();
 
-bot.on('message_received', function(event, context) {
+// Add Middleware to Neurotin
+bot.middleware.receive.use(function(bot, utterance, next) {
 
     // Default values for if this is the first time
     // communicating with the bot
@@ -11,42 +12,43 @@ bot.on('message_received', function(event, context) {
     }
 
     // Merge current context with the defaults.
-    var context = Object.assign({}, defaults, context)
-    var text = event.message.text
+    context.user = Object.assign(defaults, context.user)
+    var text = event.text
 
     // Increment the message count and
     // calculate the new number of words the user has sent
     //
-    var messageCount = context.messageCount + 1;
+    var messageCount = context.user.messageCount + 1;
     var words = text.split(" ");
-    var wordCount = context.wordCount + words.length;
+    var wordCount = context.user.wordCount + words.length;
 
     // Merge the new statistics into the context
     // and return it back to the bot
-    return Object.assign({}, context, {
+    context.user = Object.assign(context.user, {
       messageCount: messageCount,
       wordCount: wordCount
     })
-})
+
+    next();
+});
 
 bot.hears(['\/stats'], ['message_received'], function(utterance, context) {
 
     // Send the total number of messages to the
     // user
-    bot.reply(message, "Total Message Count: " + context.messageCount)
+    utterance.reply("Total Message Count: " + context.user.messageCount)
 
     // Send the total number of words to the
     // user
-    bot.reply(message, "Total Word Count: " + context.wordCount)
-
-    //
-    // We don't do anything to the context
-    // so we just return it
-    return context
+    utterance.reply("Total Word Count: " + context.user.wordCount)
 });
 
 bot.hears([/.+/], ['message_received'], function(utterance, context) {
-    bot.reply(message, message.text);
+  utterance.reply(utterance.text);
+});
+
+bot.hears(['hey'], ['message_received'], function(utterance, context) {
+  utterance.reply(utterance.text);
 });
 
 bot.spawn()
