@@ -44,7 +44,7 @@ it down to the elements we need (reducing dependencies).
 - Built for conversational based bots
 - Easy to distribute publicly (i.e "Add To Slack")
 - Integrations support advanced features.
-- Easier to run multiple on same server
+- Easy to run multiple on same server
 - Event based
 - Easily filter messages interested in
 
@@ -55,3 +55,18 @@ it down to the elements we need (reducing dependencies).
 - Verbose API with a lot of boilerplate (i.e fetching context and setting up webhooks)
 
 # Goals for Pozi
+
+- Focused on User facing, no-setup required bots.
+- Light weight
+- Event based
+- Built for conversational based bots
+- Easy to distribute publicly (i.e "Add To Slack")
+- Integrations support advanced features.
+- Easily filter messages interested in
+- Large amount of user facing integrations
+- Simple API with little boilerplate
+- Easy to load in adapter for new integrations
+- Same logic shared across different integrations
+- Easy to run multiple on same server
+- Easy to integrate into express.js
+- Easy to test via web interface.
