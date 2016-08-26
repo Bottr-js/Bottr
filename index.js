@@ -1,11 +1,11 @@
 var Pozi = require('./lib')
 var WebhookClient = require('./lib/webhook-client');
+var MemoryStorage = require('./lib/memory-storage');
 
 var bot = new Pozi.Bot2()
 
 bot.use(new WebhookClient())
-
-// - Are datastores just middleware ?
+bot.use(new MemoryStorage())
 
 bot.on('message_received', function(message, session, next) {
 
@@ -21,7 +21,7 @@ bot.on('message_received', function(message, session, next) {
   var totalWords = context.totalWords + words.length
 
   session.updateContext(session.user, {
-   totalMessages: totalMessages
+   totalMessages: totalMessages,
    totalWord: totalWords
   })
 
