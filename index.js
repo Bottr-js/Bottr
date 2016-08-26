@@ -14,13 +14,13 @@ bot.on('message_received', function(message, session, next) {
     totalWords: 0
   }
 
-  var context = session.getContext(session.user, defaults)
+  var context = session.getUserContext(defaults)
 
   var words = message.text.split(" ")
   var totalMessages = context.totalMessages + 1
   var totalWords = context.totalWords + words.length
 
-  session.updateContext(session.user, {
+  session.updateUserContext({
    totalMessages: totalMessages,
    totalWord: totalWords
   })
@@ -30,11 +30,10 @@ bot.on('message_received', function(message, session, next) {
 
 bot.hears(/\/stats/, function(message, session) {
 
-  //var context = session.getContext(session.user)
-  //
-  //
+  var context = session.getUserContext()
 
-  session.send("I would send stats right now")
+  session.send("Total Messages Sent: " + context.totalMessages)
+  session.send("Total Words Sent: " + context.totalWords)
 })
 
 bot.hears(/.+/, function(message, session) {
