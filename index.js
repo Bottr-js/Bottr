@@ -12,8 +12,8 @@ bot.use(new WebhookClient())
 
 // bot.on(<event>, <cb>)
 
-bot.hears(/.+/, function(){
-  console.log('I heard something')
+bot.hears(/.+/, function(message){
+  console.log('I heard "' + message.text + '"')
 })
 
 bot.listen(3000)
