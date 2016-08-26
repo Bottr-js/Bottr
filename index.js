@@ -22,7 +22,7 @@ bot.on('message_received', function(message, session, next) {
 
   session.updateUserContext({
    totalMessages: totalMessages,
-   totalWord: totalWords
+   totalWords: totalWords
   })
 
   next()
