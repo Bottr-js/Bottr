@@ -5,10 +5,17 @@ var bot = new Pozi.Bot2()
 
 bot.use(new WebhookClient())
 
-// bot.on(<event>, <cb>)
+// bot.on('messaged_recieved', function(message, session, next) {
+//  - Update Stats
+// next()
+// })
+
+// bot.hears(/\\stats/, function(message, session) {
+// - Send stats
+// })
 
 bot.hears(/.+/, function(message, session) {
-  session.send('I heard "' + message.text + '"')
+  session.send(message.text)
 })
 
 bot.listen(process.env.PORT || 3000)
