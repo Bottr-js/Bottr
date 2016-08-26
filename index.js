@@ -6,10 +6,11 @@ var bot = new Pozi.Bot2()
 // - Are datastores just middleware ?
 bot.use(new WebhookClient())
 
-// bot.on('messaged_recieved', function(message, session, next) {
-//  - Update Stats
-// next()
-// })
+bot.on('message_received', function(message, session, next) {
+ //- Update Stats
+ console.log('Stats would have been updated here')
+ next()
+})
 
 bot.hears(/\/stats/, function(message, session) {
   session.send("I would send stats right now")
