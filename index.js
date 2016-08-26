@@ -1,11 +1,8 @@
 var Pozi = require('./lib')
-var WebhookClient = require('./lib/webhook-client');
-var MemoryStorage = require('./lib/memory-storage');
-
 var bot = new Pozi.Bot2()
 
-bot.use(new WebhookClient())
-bot.use(new MemoryStorage())
+bot.use(new Pozi.WebhookClient())
+bot.use(new Pozi.MemoryStorage())
 
 bot.on('message_received', function(message, session, next) {
 
