@@ -1,5 +1,5 @@
 var Pozi = require('./lib')
-var bot = new Pozi.Bot2()
+var bot = new Pozi.Bot()
 
 bot.use(new Pozi.WebhookClient())
 bot.use(new Pozi.MemoryStorage())
