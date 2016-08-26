@@ -3,16 +3,37 @@ var WebhookClient = require('./lib/webhook-client');
 
 var bot = new Pozi.Bot2()
 
-// - Are datastores just middleware ?
 bot.use(new WebhookClient())
 
+// - Are datastores just middleware ?
+
 bot.on('message_received', function(message, session, next) {
- //- Update Stats
- console.log('Stats would have been updated here')
- next()
+
+  var defaults = {
+    totalMessages: 0,
+    totalWords: 0
+  }
+
+  var context = session.getContext(session.user, defaults)
+
+  var words = message.text.split(" ")
+  var totalMessages = context.totalMessages + 1
+  var totalWords = context.totalWords + words.length
+
+  session.updateContext(session.user, {
+   totalMessages: totalMessages
+   totalWord: totalWords
+  })
+
+  next()
 })
 
 bot.hears(/\/stats/, function(message, session) {
+
+  //var context = session.getContext(session.user)
+  //
+  //
+
   session.send("I would send stats right now")
 })
 
