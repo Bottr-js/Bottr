@@ -70,3 +70,5 @@ it down to the elements we need (reducing dependencies).
 - Easy to run multiple on same server
 - Easy to integrate into express.js
 - Easy to test via web interface.
+- Like writing a web application.
+- Trigger events directly.

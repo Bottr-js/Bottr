@@ -10,7 +10,9 @@ var bot = new Pozi.Bot2()
 
 // bot.on(<event>, <cb>)
 
-// bot.hears(<pattern>, <cb>)
+bot.hears(/.+/, function(){
+  console.log('I heard something')
+})
 
 bot.listen(3000)
 
