@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Client</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  function getScript(src, callback) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onreadystatechange = s.onload = function() {
+      if (!callback.done && (!s.readyState || /loaded|complete/.test(s.readyState))) {
+        callback.done = true;
+        callback();
+      }
+    };
+    document.querySelector('head').appendChild(s);
+  }
+
+  function Client() {
+
+    this.connect = function() {
+      console.log("Connecting to " + websocketUrl)
+
+      // TODO: Cookie for consistent identifier
+      var url = window.location.href.replace(/.*?:\/\//g, "")
+      var websocketUrl = 'ws://' + url
+
+      this.socket = io.connect(websocketUrl)
+
+      this.socket.on("connect", function () {
+        console.log("Connected!");
+      });
+
+      this.socket.on('message', function (data) {
+        console.log(data);
+      });
+    }
+
+    this.send = function(text) {
+      this.socket.emit('message', { text: text });
+    }
+  }
+
+  var client = new Client()
+
+  getScript('https://cdn.socket.io/socket.io-1.4.5.js', function() {
+    client.connect()
+  })
+
+  function send(text) {
+    client.send(text)
+  }
+</script>
+</html>
