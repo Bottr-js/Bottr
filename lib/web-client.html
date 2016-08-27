@@ -1,62 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Client</title>
-</head>
-<body>
-
-</body>
-<script>
-
-  function getScript(src, callback) {
-    var s = document.createElement('script');
-    s.src = src;
-    s.async = true;
-    s.onreadystatechange = s.onload = function() {
-      if (!callback.done && (!s.readyState || /loaded|complete/.test(s.readyState))) {
-        callback.done = true;
-        callback();
-      }
-    };
-    document.querySelector('head').appendChild(s);
-  }
-
-  function Client() {
-
-    this.connect = function() {
-      console.log("Connecting to " + websocketUrl)
-
-      // TODO: Cookie for consistent identifier
-      var url = window.location.href.replace(/.*?:\/\//g, "")
-      var websocketUrl = 'ws://' + url
-
-      this.socket = io.connect(websocketUrl)
-
-      this.socket.on("connect", function () {
-        console.log("Connected!");
+<!doctype html>
+<html>
+  <head>
+    <title>Pozi chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io('http://localhost:3000/scrabble-dictionary');
+      $('form').submit(function(){
+        $('#messages').append($('<li>').text('You: ' + $('#m').val()));
+        socket.emit('message', {text: $('#m').val()});
+        $('#m').val('');
+        return false;
       });
-
-      this.socket.on('message', function (data) {
-        console.log(data);
+      socket.on('message', function(msg){
+        $('#messages').append($('<li>').text('Bot: ' + msg.text));
       });
-    }
-
-    this.send = function(text) {
-      this.socket.emit('message', { text: text });
-    }
-  }
-
-  var client = new Client()
-
-  getScript('https://cdn.socket.io/socket.io-1.4.5.js', function() {
-    client.connect()
-  })
-
-  function send(text) {
-    client.send(text)
-  }
-</script>
+    </script>
+  </body>
 </html>
