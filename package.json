@@ -6,9 +6,9 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "oauth": "^0.9.14",
     "request": "^2.74.0",
-    "socket.io": "^1.4.8"
+    "socket.io": "^1.4.8",
+    "twit": "^2.2.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
