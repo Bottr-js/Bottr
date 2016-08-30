@@ -8,6 +8,7 @@
     "express": "^4.14.0",
     "request": "^2.74.0",
     "socket.io": "^1.4.8",
+    "twilio": "^2.9.2",
     "twit": "^2.2.4"
   },
   "scripts": {
