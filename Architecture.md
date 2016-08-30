@@ -94,3 +94,5 @@ If there isn't an unhandler it will log an error. Unhandlers are typically used 
 that may degrade the experience of using a bot if not implemented correctly.
 
 ## Matchers
+
+## Context
