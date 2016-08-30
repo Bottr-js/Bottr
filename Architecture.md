@@ -120,3 +120,10 @@ bot.hears([/match me/, /equal/], ...)
 ```
 
 ## Context
+
+The context is an object the stores information the bot can use to make decisions,
+this can contain statistics or track what is happening in the conversation
+(i.e the user is ordering a pizza).
+
+Contexts are usually provided by storages which are pulled in as a component, storage
+components extend the session object with methods to fetch contexts for the user, conversation and team (for team based channels).
