@@ -138,5 +138,5 @@ bot.use(function(bot) { ... })
 ```
 
 Typically this is used to add support for extra services ("Clients"), context storage options ("storage")
-or custom functionality like natural language processing or canned response
+or custom functionality like natural language processing or canned responses
 (Such as the bot responding to expressions of gratitude).
