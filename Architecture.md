@@ -23,3 +23,7 @@ On top of this we have focused on integrating with B2C communication channels, s
 In the future we would like to add other clients such as Line or team based services such as Slack but these aren't a priority right now but we are open to people writing their own clients for use with Pozi.
 
 ## Events
+
+Pozi is an event driven framework which allows it to respond quickly to messages. Each event handler does one thing and does it well.
+
+This means that essentially each bot is a collection of events and event handlers.
