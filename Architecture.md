@@ -20,6 +20,6 @@ On top of this we have focused on integrating with B2C communication channels, s
 - Facebook Messenger
 - Web UI
 
-In the future we would like to add other clients such as Line or team based services such as Slack but these aren't a priority right now.
+In the future we would like to add other clients such as Line or team based services such as Slack but these aren't a priority right now but we are open to people writing their own clients for use with Pozi.
 
 ## Events
