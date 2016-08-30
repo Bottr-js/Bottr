@@ -15,7 +15,7 @@ We support 2 direct ways of interfacing with the bot:
 
 On top of this we have focused on integrating with B2C communication channels, starting with:
 
-- SMS
+- SMS (via Twilio)
 - Twitter
 - Facebook Messenger
 - Web UI
