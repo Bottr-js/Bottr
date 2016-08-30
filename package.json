@@ -21,10 +21,10 @@
   "keywords": [
     "bot",
     "framework",
-    "slack",
     "facebook",
     "messenger",
-    "telegram"
+    "sms",
+    "twitter"
   ],
   "author": "jcampbell05",
   "license": "ISC",
