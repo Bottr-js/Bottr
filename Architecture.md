@@ -127,3 +127,16 @@ this can contain statistics or track what is happening in the conversation
 
 Contexts are usually provided by storages which are pulled in as a component, storage
 components extend the session object with methods to fetch contexts for the user, conversation and team (for team based channels).
+
+## components
+
+Components are a simple way of extending a bot with additional functionality, the `use`
+method takes a simple function which accepts a bot to extend.
+
+```
+bot.use(function(bot) { ... })
+```
+
+Typically this is used to add support for extra services ("Clients"), context storage options ("storage")
+or custom functionality like natural language processing or canned response
+(Such as the bot responding to expressions of gratitude).
