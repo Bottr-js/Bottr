@@ -80,7 +80,7 @@ Hooks aren't guaranteed to call the `next` callback depending on if they want to
 
 ### Defering
 
-There are situtations where a hook may not want to handle an event this is known as "deferring", the most
+There are situations where a hook may not want to handle an event this is known as "deferring", the most
 common case of this is for the bot's `hears` method.
 
 Internally the bot creates a hook on the `message_received` event which will handle the event
@@ -94,5 +94,26 @@ If there isn't an unhandler it will log an error. Unhandlers are typically used 
 that may degrade the experience of using a bot if not implemented correctly.
 
 ## Matchers
+
+The bot's `hears` method uses a matcher method to figure out if it should handle that message or not. The first parameter accepts a method that returns true if it should be handled or false if not.
+
+```
+bot.hears(function(message){
+  return true
+}, ...)
+```
+
+The definition above would handle all messages given to it since the matcher function returns true. Pozi
+also implements some built in matchers for strings, regexs, arrays of string and arrays of regexs.
+
+Internally when any of these are passed into the first parameter Pozi subsitutes them for a function
+which matches them against the contents of the message, so we can now do any of these:
+
+```
+bot.hears('match me', ...)
+bot.hears(['match me', 'equal'], ...)
+bot.hears(/match me/, ...)
+bot.hears([/match me/, /equal/], ...)
+```
 
 ## Context
