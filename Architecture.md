@@ -27,3 +27,70 @@ In the future we would like to add other clients such as Line or team based serv
 Pozi is an event driven framework which allows it to respond quickly to messages. Each event handler does one thing and does it well.
 
 This means that essentially each bot is a collection of events and event handlers.
+
+When an event is triggered, the bot goes through its list of event handlers and triggers them from the earliest definition to latest. This allows the user to control which order these statements are triggered to give the `/stats` handler a higher priority since it was declared first:
+
+```
+bot.hears(/\stats/, ...)
+bot.hears(/.+/, ...)
+```
+
+In other frameworks such as Wordpress, you often have hooks and filters for events but in Pozi we have combined both. This allows handlers to inject additional information to an event, handle it or bail and defer to something else.
+
+### Filters
+
+Filtering allows a handler to inject additional information about an event into the
+event itself or the context. This is useful for things such as natural language processing.
+
+There is an example in our EchoBot tutorial where we use a filter to calculate the statistics
+for the all the messages has sent to the bot.
+
+Filters always call the `next` callback to signify to the bot that the event should carry down
+the event chain to the next event handler.
+
+```
+
+bot.on('message_received', function(message, session, next) {
+
+ // Get existing context or use defaults if values don't exist
+ var context = session.getUserContext({
+   messageCount: 0,
+   wordCount: 0,
+ })
+
+ // Calculate new statistics
+ context.messageCount ++
+
+ var words = message.text.split(" ")
+ context.wordCount += words.length
+
+ //Store new values into context
+ session.updateUserContext(context)
+
+ //Tell bot to let other handlers process the message
+ next()
+});
+```
+
+### Hooks
+
+Hooking is where a handler breaks the event chain to handle an event, clients use this when responding to a `webhook` event so it can be handled and to stop it propogating to unrelated clients.
+
+Hooks aren't guaranteed to call the `next` callback depending on if they want to handle it or not.
+
+### Defering
+
+There are situtations where a hook may not want to handle an event this is known as "deferring", the most
+common case of this is for the bot's `hears` method.
+
+Internally the bot creates a hook on the `message_received` event which will handle the event
+if the message matches the pattern passed into the method or defer to another handler if not.
+
+Eventually if the Bot reaches the end of event chain without anything handling it then the bot allows
+unhandled events to be handled by a special handler called an `unhandler`.
+There are built in unhandlers for the `webhook` and `message_received` event which send an error response or a message to the user ("Sorry my creator didn't teach me anything else") respectively.
+
+If there isn't an unhandler it will log an error. Unhandlers are typically used for critical events
+that may degrade the experience of using a bot if not implemented correctly.
+
+## Matchers
