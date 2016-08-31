@@ -1,6 +1,6 @@
 {
   "name": "pozi",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "The world's simplest bot framework",
   "main": "index.js",
   "dependencies": {
