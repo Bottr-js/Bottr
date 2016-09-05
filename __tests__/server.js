@@ -66,14 +66,3 @@ test('injects websocket client into bot', () => {
 
   expect(bot.use).toBeCalledWith(new WebsocketClient())
 });
-
-test('connects bot to websocket', () => {
-  var server = new Server()
-  var bot = new Bot()
-  var io = require('socket.io')(server)
-
-  server.use(bot)
-  server.listen(3000)
-
-  expect(bot.connectToSocket).toBeCalledWith(io.of('/'))
-})
