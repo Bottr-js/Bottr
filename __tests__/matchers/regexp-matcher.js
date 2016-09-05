@@ -1,3 +1,9 @@
-test('adds 1 + 2 to equal 3', () => {
-  expect(3).toBe(3);
+jest.unmock('../../lib/matchers/regexp-matcher')
+
+var RegexpMatcher = require('../../lib/matchers/regexp-matcher')
+
+test('should match message which matches regular expression', () => {
+  expect(new RegexpMatcher(/match/)({
+    text: 'match'
+  })).toBe(true);
 });
