@@ -5,13 +5,6 @@ var Bot = require('../lib/bot')
 
 require('../lib/listen')
 
-test('listen returns server', () => {
-  var bot = new Bot()
-  var server = bot.listen()
-
-  expect(server).not.toBeNull()
-});
-
 test('listen configures server with bot', () => {
   var bot = new Bot()
   var server = bot.listen()
