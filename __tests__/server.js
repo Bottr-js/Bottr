@@ -3,6 +3,7 @@ jest.mock('http')
 
 var Bot = require('../lib/bot')
 var Server = require('../lib/server')
+var serveWebclient = require('../lib/serve-webclient')
 
 test('should default to root namespace', () => {
 
@@ -32,20 +33,25 @@ test('listen uses port passed in as argument', () => {
   expect(http.listen).toBeCalledWith(3000)
 });
 
+test('serves webclient for index', () => {
+
+  var server = new Server()
+  var bot = new Bot()
+
+  server.use(bot)
+  var http = server.listen(3000)
+
+  console.log(':DF' + http.app)
+
+  expect(http.app.get).toBeCalledWith('/', serveWebclient)
+});
 
 // Server.prototype.listen = function(port) {
 //
 //   var app = require('express')()
-//   var server = require('http').Server(app)
 //   var io = require('socket.io')(server)
 //
-//   server.listen(port)
-//
 //   for (var path in this.namespaces) {
-//
-//     app.get(path, function (req, res) {
-//       res.sendFile(__dirname + '/webclient.html');
-//     });
 //
 //     var bot = this.namespaces[path]
 //     bot.use(new WebsocketClient())
