@@ -5,7 +5,7 @@ var Bot = require('../lib/bot')
 require('../lib/listen')
 
 test('listen configures server with bot', () => {
-  
+
   var bot = new Bot()
   var server = bot.listen()
 
