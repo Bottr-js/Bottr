@@ -1,3 +1,14 @@
-test('adds 1 + 2 to equal 3', () => {
-  expect(3).toBe(3);
+jest.unmock('../../lib/matchers/array-matcher')
+
+var ArrayMatcher = require('../../lib/matchers/array-matcher')
+
+test('should match message if one matcher in the array matches', () => {
+
+  var matcher = function() {
+    return true
+  }
+
+  expect(new ArrayMatcher([matcher])({
+    text: 'match'
+  })).toBe(true);
 });
