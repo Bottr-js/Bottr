@@ -23,15 +23,6 @@ test('should store bot under namespace', () => {
   expect(server.namespaces['/bot']).toBe(bot)
 });
 
-
-// Server.prototype.use = function(namespace_or_bot, bot) {
-//   if (bot) {
-//     this.namespaces[namespace_or_bot] = bot
-//   } else {
-//     this.namespaces['/'] = namespace_or_bot
-//   }
-// }
-//
 // Server.prototype.listen = function(port) {
 //
 //   var app = require('express')()
