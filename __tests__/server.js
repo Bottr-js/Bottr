@@ -33,7 +33,7 @@ test('listen uses port passed in as argument', () => {
   expect(http.listen).toBeCalledWith(3000)
 });
 
-test('serves webclient for index', () => {
+test('serves webclient for namespace index', () => {
 
   var server = new Server()
   var bot = new Bot()
@@ -41,9 +41,18 @@ test('serves webclient for index', () => {
   server.use(bot)
   var http = server.listen(3000)
 
-  console.log(':DF' + http.app)
-
   expect(http.app.get).toBeCalledWith('/', serveWebclient)
+});
+
+test('usees bot router for namespace', () => {
+
+  var server = new Server()
+  var bot = new Bot()
+
+  server.use(bot)
+  var http = server.listen(3000)
+
+  expect(http.app.use).toBeCalledWith('/', bot.router)
 });
 
 // Server.prototype.listen = function(port) {
@@ -55,7 +64,6 @@ test('serves webclient for index', () => {
 //
 //     var bot = this.namespaces[path]
 //     bot.use(new WebsocketClient())
-//     app.use(path, bot.router)
 //     bot.connectToSocket(io.of(path))
 //   }
 // }
