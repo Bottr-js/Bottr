@@ -62,14 +62,20 @@ test('injects websocket client into bot', () => {
   var bot = new Bot()
 
   server.use(bot)
-  var http = server.listen(3000)
+  server.listen(3000)
 
   expect(bot.use).toBeCalledWith(new WebsocketClient())
 });
 
 test('connects bot to websocket', () => {
-  // var io = require('socket.io')(server)
-  // bot.connectToSocket(io.of(path))
+  var server = new Server()
+  var bot = new Bot()
+  var io = require('socket.io')(server)
+
+  server.use(bot)
+  server.listen(3000)
+
+  expect(bot.connectToSocket).toBeCalledWith(io.of('/'))
 })
 
 
