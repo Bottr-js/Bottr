@@ -77,32 +77,3 @@ test('connects bot to websocket', () => {
 
   expect(bot.connectToSocket).toBeCalledWith(io.of('/'))
 })
-
-
-
-// Bot.prototype.connectToSocket = function(io) {
-//
-//   var bot = this
-//
-//   io.on('connection',  function (socket) {
-//
-//     console.log('new websocket connection')
-//
-//     socket.on('message', function(data) {
-//
-//       var session = {
-//         user: data.user,
-//         conversation: data.user,
-//         account: data.user,
-//         send: function(text) {
-//
-//           socket.emit('message', {
-//             text: text
-//           })
-//         }
-//       }
-//
-//       bot.trigger('message_received', data, session)
-//     })
-//   });
-// }
