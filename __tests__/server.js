@@ -1,4 +1,5 @@
 jest.unmock('../lib/server')
+jest.mock('http')
 
 var Bot = require('../lib/bot')
 var Server = require('../lib/server')
