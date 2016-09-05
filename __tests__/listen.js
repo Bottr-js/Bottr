@@ -8,7 +8,7 @@ require('../lib/listen')
 test('listen returns server', () => {
   var bot = new Bot()
   var server = bot.listen()
-  
+
   expect(server).not.toBeNull()
 });
 
@@ -26,7 +26,7 @@ test('listen defaults to port 3000', () => {
   expect(server.listen).toBeCalledWith(3000)
 });
 
-test('listen uses port from enviroment', () => {
+test('listen uses port from environment', () => {
 
   process.env.PORT = 2000
 
