@@ -2,7 +2,6 @@ jest.unmock('../lib/bot')
 jest.unmock('../lib/listen')
 
 var Bot = require('../lib/bot')
-
 require('../lib/listen')
 
 test('listen configures server with bot', () => {
