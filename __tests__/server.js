@@ -23,6 +23,15 @@ test('should store bot under namespace', () => {
   expect(server.namespaces['/bot']).toBe(bot)
 });
 
+test('listen uses port passed in as argument', () => {
+
+  var server = new Server()
+  var http = server.listen(3000)
+
+  expect(http.listen).toBeCalledWith(3000)
+});
+
+
 // Server.prototype.listen = function(port) {
 //
 //   var app = require('express')()
