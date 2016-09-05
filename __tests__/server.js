@@ -2,7 +2,8 @@ jest.unmock('../lib/server')
 jest.mock('http')
 
 var Bot = require('../lib/bot')
-var Server = require('../lib/server')
+var Server = require('../lib/server')v
+var WebsocketClient = require('../lib/websocket-client')
 var serveWebclient = require('../lib/serve-webclient')
 
 test('should default to root namespace', () => {
@@ -44,7 +45,7 @@ test('serves webclient for namespace index', () => {
   expect(http.app.get).toBeCalledWith('/', serveWebclient)
 });
 
-test('usees bot router for namespace', () => {
+test('uses bot router for namespace', () => {
 
   var server = new Server()
   var bot = new Bot()
@@ -55,18 +56,22 @@ test('usees bot router for namespace', () => {
   expect(http.app.use).toBeCalledWith('/', bot.router)
 });
 
-// Server.prototype.listen = function(port) {
-//
-//   var app = require('express')()
+test('injects websocket client into bot', () => {
+
+  var server = new Server()
+  var bot = new Bot()
+
+  server.use(bot)
+  var http = server.listen(3000)
+
+  expect(bot.use).toBeCalledWith('/', WebsocketClient)
+});
+
 //   var io = require('socket.io')(server)
 //
-//   for (var path in this.namespaces) {
-//
-//     var bot = this.namespaces[path]
-//     bot.use(new WebsocketClient())
 //     bot.connectToSocket(io.of(path))
-//   }
-// }
+
+
 //
 // Bot.prototype.connectToSocket = function(io) {
 //
