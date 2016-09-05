@@ -2,7 +2,7 @@ jest.unmock('../lib/server')
 jest.mock('http')
 
 var Bot = require('../lib/bot')
-var Server = require('../lib/server')v
+var Server = require('../lib/server')
 var WebsocketClient = require('../lib/websocket-client')
 var serveWebclient = require('../lib/serve-webclient')
 
@@ -64,15 +64,16 @@ test('injects websocket client into bot', () => {
   server.use(bot)
   var http = server.listen(3000)
 
-  expect(bot.use).toBeCalledWith('/', WebsocketClient)
+  expect(bot.use).toBeCalledWith(new WebsocketClient())
 });
 
-//   var io = require('socket.io')(server)
-//
-//     bot.connectToSocket(io.of(path))
+test('connects bot to websocket', () => {
+  // var io = require('socket.io')(server)
+  // bot.connectToSocket(io.of(path))
+})
 
 
-//
+
 // Bot.prototype.connectToSocket = function(io) {
 //
 //   var bot = this
