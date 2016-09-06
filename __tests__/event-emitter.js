@@ -95,14 +95,15 @@ test('should use fallback for event with no handlers', () => {
   expect(handler).toBeCalled()
 });
 
-// test('should log error for event with no handlers or fallback', () => {
-//   var emitter = new EventEmitter()
-//   var handler = jest.fn()
-//
-//   emitter.addListener('event', handler)
-//   var event = emitter.emit('event', 1)
-//
-//   expect(event.args).toEqual([
-//     1
-//   ])
-// });
+test('should log error for event with no handlers or fallback', () => {
+
+  jest.mock('console')
+
+  var emitter = new EventEmitter()
+  var handler = jest.fn()
+
+  var spy = spyOn(console, 'error')
+  var event = emitter.emit('event')
+
+  expect(spy).toBeCalled()
+});
