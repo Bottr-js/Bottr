@@ -5,6 +5,7 @@ var WebhookClient = require('../lib/webhook-client')
 
 var bot = new Bot()
 var res = {
+  success: jest.fn(),
   error: jest.fn()
 }
 var req = {}
