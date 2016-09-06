@@ -26,6 +26,13 @@ test('should emit typing event with text when sending typing event', function() 
   expect(session.socket.emit).toBeCalledWith('typing', {})
 })
 
+// test('should emit typing event with text when sending typing event', function() {
+//
+//   client.startTyping(session)
+//
+//   expect(session.socket.emit).toBeCalledWith('typing', {})
+// })
+
 // function WebsocketClient(io) {
 //
 //   var client = this
