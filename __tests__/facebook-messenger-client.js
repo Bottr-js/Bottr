@@ -29,7 +29,7 @@ test('should use configuration object for access and verify token', () => {
   expect(client.config.verify_token).toEqual('verify')
 });
 
-test('should regisster for webhook event', () => {
+test('should register for webhook event', () => {
 
   var handler = jest.fn()
 
@@ -45,14 +45,45 @@ test('should regisster for webhook event', () => {
   expect(bot.on).toBeCalledWith('webhook', handler)
   FacebookMessengerClient.prototype.createWebhookHandler = originalImp
 });
-//
-// bot.on('webhook', function(req, res, next) {
-//
+
+test('should ignore webhook with no x-hub-signature', () => {
+
+  var handler = jest.fn()
+
+  var handler = jest.fn()
+
+  var originalImp = FacebookMessengerClient.prototype.createWebhookHandler
+  FacebookMessengerClient.prototype.createWebhookHandler = function() {
+    return handler
+  }
+
+  var client = new FacebookMessengerClient(bot)
+
+  expect(bot.on).toBeCalledWith('webhook', handler)
+  FacebookMessengerClient.prototype.createWebhookHandler = originalImp
+});
+
 //   // If this isn't a facebook request then carry on with other handlers
 //   if ( !req.headers.hasOwnProperty('x-hub-signature') && req.headers['user-agent'].indexOf('facebookplatform') === -1) {
 //     next()
 //     return
 //   }
+
+test('should not handle webhook without x-hub-signature and facebook platform user agent', () => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'Snapchat bro'
+    }
+  }
+
+  var client = new FacebookMessengerClient(bot)
+  client.createWebhookHandler()(req, {}, next)
+
+  expect(next).toBeCalled()
+});
+
 //
 //   var query = req.query
 //
@@ -63,8 +94,6 @@ test('should regisster for webhook event', () => {
 //   }
 //
 //   res.success()
-// }.bind(this))
-// }
 //
 // // FIXME: Allow token to be configured
 // FacebookMessengerClient.prototype.handleSubscription = function(req, res) {
