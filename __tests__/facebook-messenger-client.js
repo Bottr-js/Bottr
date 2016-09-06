@@ -63,12 +63,6 @@ test('should ignore webhook with no x-hub-signature', () => {
   FacebookMessengerClient.prototype.createWebhookHandler = originalImp
 });
 
-//   // If this isn't a facebook request then carry on with other handlers
-//   if ( !req.headers.hasOwnProperty('x-hub-signature') && req.headers['user-agent'].indexOf('facebookplatform') === -1) {
-//     next()
-//     return
-//   }
-
 test('should not handle webhook without x-hub-signature and facebook platform user agent', () => {
 
   var next = jest.fn()
