@@ -84,20 +84,20 @@ test('returns success on webhook request', () => {
   expect(res.success).toBeCalled()
 });
 
-//   request({
-//     uri: session.callbackURI,
-//     method: "POST",
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       text: text
-//     })
-//   });
-
 test('creates valid message when sending message', () => {
 
   var client = new WebhookClient(bot)
-  var session = {}
+  var session = {
+    callbackURI: req.query.callback
+  }
   var request = client.send(session, 'text')
+
+  expect(request.uri).toEqual(req.query.callback)
+  expect(request.method).toEqual('POST')
+  expect(request.headers).toEqual({
+    'Content-Type': 'application/json'
+  })
+  expect(request.body).toEqual(JSON.stringify({
+      text: 'text'
+  }))
 });
