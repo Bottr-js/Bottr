@@ -36,21 +36,6 @@ test('should register fallback', () => {
   expect(emitter.fallbacks['event']).toEqual(handler)
 });
 
-// EventEmitter.prototype.emit = function(eventName) {
-//   var event = new Event(eventName, eventListeners, args)
-//   event.next(function(eventName) {
-//
-//     var handler = emitter.unhandledHandlers[eventName]
-//
-//     if (handler) {
-//       handler.apply(this, args)
-//     } else {
-//       console.error('Unhandled event ' + eventName);
-//     }
-//   })
-// }
-//
-
 test('should emit event', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
