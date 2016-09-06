@@ -90,10 +90,10 @@ Internally the bot creates a hook on the `message_received` event which will han
 if the message matches the pattern passed into the method or defer to another handler if not.
 
 Eventually if the Bot reaches the end of event chain without anything handling it then the bot allows
-unhandled events to be handled by a special handler called an `unhandler`.
-There are built in unhandlers for the `webhook` and `message_received` event which send an error response or a message to the user ("Sorry my creator didn't teach me anything else") respectively.
+unhandled events to be handled by a special handler called a `fallback`.
+There are built in fallbacks for the `webhook` and `message_received` event which send an error response or a message to the user ("Sorry my creator didn't teach me anything else") respectively.
 
-If there isn't an unhandler it will log an error. Unhandlers are typically used for critical events
+If there isn't a fallback it will log an error. Fallbacks are typically used for critical events
 that may degrade the experience of using a bot if not implemented correctly.
 
 ## Matchers

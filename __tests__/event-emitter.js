@@ -28,10 +28,6 @@ test('should register listener', () => {
   ])
 });
 
-// EventEmitter.prototype.onUnhandled = function(eventName, handler) {
-//   this.unhandledHandlers[eventName] = handler
-// }
-
 test('should register fallback', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
