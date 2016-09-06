@@ -47,8 +47,19 @@ var WebhookClient = require('../lib/webhook-client')
 // }
 
 test('registers for webhook event', () => {
+
+  var handler = jest.fn()
   var bot = new Bot()
+
+  var originalImp = WebhookClient.prototype.createWebhookHandler
+  WebhookClient.prototype.createWebhookHandler = function() {
+    return handler
+  }
+
   var client = new WebhookClient(bot)
+
+  expect(bot.on).toBeCalledWith('webhook', handler)
+  WebhookClient.prototype.createWebhookHandler = originalImp
 });
 
 test('returns error on webhook request without callback URI', () => {
