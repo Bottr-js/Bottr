@@ -21,26 +21,6 @@ beforeEach(() => {
   }
 });
 
-//     var body = req.body
-//     var callbackURI = req.query.callback;
-//
-//     if (!callbackURI) {
-//       res.error('No callback URI parameter provided.');
-//       return
-//     }
-//
-//     if (!body.text) {
-//       res.error('No text provided in body for the message.');
-//       return
-//     }
-//
-//     var session = new Session(body.user, {}, this)
-//     session.callbackURI = callbackURI
-//
-//     bot.trigger('message_received', body, session)
-//     res.success()
-
-
 test('registers for webhook event', () => {
 
   var handler = jest.fn()
@@ -74,17 +54,34 @@ test('returns error on webhook request without text', () => {
 
 test('creates valid session when handling webhook request ', () => {
   var client = new WebhookClient(bot)
-  client.createWebhookHandler(bot)(req, res)
+  var session = client.createWebhookHandler(bot)(req, res)
+
+  expect(session.user).toEqual(req.body.user)
+  expect(session.context).toEqual({})
+  expect(session.client).toEqual(client)
+});
+
+test('should store callback URI with session when handling webhook request ', () => {
+  var client = new WebhookClient(bot)
+  var session = client.createWebhookHandler(bot)(req, res)
+
+  expect(session.callbackURI).toEqual(req.query.callback)
 });
 
 test('triggers message_received event on bot when handling webhook request ', () => {
   var client = new WebhookClient(bot)
-  client.createWebhookHandler(bot)(req, res)
+
+  var session = client.createWebhookHandler(bot)(req, res)
+
+  expect(bot.trigger).toBeCalledWith('message_received', req.body, session)
 });
 
 test('returns success on webhook request', () => {
   var client = new WebhookClient(bot)
+
   client.createWebhookHandler(bot)(req, res)
+
+  expect(res.success).toBeCalled()
 });
 
 // WebhookClient.prototype.send = function(session, text) {
