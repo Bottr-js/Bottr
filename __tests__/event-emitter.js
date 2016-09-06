@@ -84,19 +84,25 @@ test('should emit event with correct arguments', () => {
     1
   ])
 });
-//
-// test('should use fallback for event with no handlers', () => {
-//   var emitter = new EventEmitter()
-//   var handler = jest.fn()
-//
-//   emitter.fallback('event', handler)
-//   expect(emitter.fallbacks['event']).toEqual(handler)
-// });
-//
-// test('should log error for event with no handlers or fallback', () => {
-//   var emitter = new EventEmitter()
-//   var handler = jest.fn()
-//
-//   emitter.fallback('event', handler)
-//   expect(emitter.fallbacks['event']).toEqual(handler)
-// });
+
+test('should use fallback for event with no handlers', () => {
+  var emitter = new EventEmitter()
+  var handler = jest.fn()
+
+  emitter.fallback('event', handler)
+  var event = emitter.emit('event')
+
+  expect(handler).toBeCalled()
+});
+
+test('should log error for event with no handlers or fallback', () => {
+  var emitter = new EventEmitter()
+  var handler = jest.fn()
+
+  emitter.addListener('event', handler)
+  var event = emitter.emit('event', 1)
+
+  expect(event.args).toEqual([
+    1
+  ])
+});
