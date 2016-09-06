@@ -78,6 +78,11 @@ test('should not handle webhook without x-hub-signature and facebook platform us
   expect(next).toBeCalled()
 });
 
+// - Subscription success
+// - Subscription failure
+// - Message success
+
+
 //
 //   var query = req.query
 //
@@ -85,9 +90,9 @@ test('should not handle webhook without x-hub-signature and facebook platform us
 //     client.handleSubscription(req, res)
 //   } else {
 //     client.handleEvent(bot, req, res)
+//     res.success()
 //   }
 //
-//   res.success()
 //
 // // FIXME: Allow token to be configured
 // FacebookMessengerClient.prototype.handleSubscription = function(req, res) {
