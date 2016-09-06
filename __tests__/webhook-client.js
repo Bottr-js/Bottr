@@ -1,5 +1,6 @@
 jest.unmock('../lib/webhook-client')
 
+var Bot = require('../lib/bot')
 var WebhookClient = require('../lib/webhook-client')
 
 // function WebhookClient(bot) {
@@ -46,7 +47,8 @@ var WebhookClient = require('../lib/webhook-client')
 // }
 
 test('registers for webhook event', () => {
-
+  var bot = new Bot()
+  var client = new WebhookClient(bot)
 });
 
 test('returns error on webhook request without callback URI', () => {
