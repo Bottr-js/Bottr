@@ -12,16 +12,16 @@ var session = {
   }
 }
 
-test('should store reference to bot', function() {
+test('should store reference to bot', () => {
   var client = new WebsocketClient(bot, socketClient)
   expect(client.bot).toEqual(bot)
 })
 
-test('should handle web socket connection event', function() {
+test('should handle web socket connection event', () => {
   var handler = jest.fn()
 
   var originalImp = WebsocketClient.prototype.createConnectionHandler
-  WebsocketClient.prototype.createConnectionHandler = function() {
+  WebsocketClient.prototype.createConnectionHandler = () => {
     return handler
   }
   var client = new WebsocketClient(bot, socketClient)
@@ -30,7 +30,7 @@ test('should handle web socket connection event', function() {
   WebsocketClient.prototype.createConnectionHandler = originalImp
 })
 
-test('should handle web socket message event', function() {
+test('should handle web socket message event', () => {
 
   var handler = jest.fn()
   var socket = {
@@ -38,7 +38,7 @@ test('should handle web socket message event', function() {
   }
 
   var client = new WebsocketClient(bot, socketClient)
-  client.createMessageHandler = function() {
+  client.createMessageHandler = () => {
     return handler
   }
 
@@ -60,7 +60,7 @@ test('should handle web socket message event', function() {
 //   }.bind(this)
 // }
 
-test('should create valid session when handling message', function() {
+test('should create valid session when handling message', () => {
   var client = new WebsocketClient(bot, socketClient)
 
   var session = client.createMessageHandler()({
@@ -72,7 +72,7 @@ test('should create valid session when handling message', function() {
   expect(session.client).toBe(client)
 })
 
-test('should store socket with session when handling message', function() {
+test('should store socket with session when handling message', () => {
   var client = new WebsocketClient(bot, socketClient)
   var socket = {}
 
@@ -81,7 +81,7 @@ test('should store socket with session when handling message', function() {
   expect(session.socket).toBe(socket)
 })
 
-test('should trigger message received event on bot when handling message', function() {
+test('should trigger message received event on bot when handling message', () => {
   var client = new WebsocketClient(bot, socketClient)
   var data = {}
 
@@ -90,7 +90,7 @@ test('should trigger message received event on bot when handling message', funct
   expect(bot.trigger).toBeCalledWith('message_received', data, session)
 })
 
-test('should emit message event with text when sending message', function() {
+test('should emit message event with text when sending message', () => {
 
   var client = new WebsocketClient(bot, socketClient)
   client.send(session, 'Hey')
@@ -100,7 +100,7 @@ test('should emit message event with text when sending message', function() {
   })
 })
 
-test('should emit typing event with text when sending typing event', function() {
+test('should emit typing event with text when sending typing event', () => {
 
   var client = new WebsocketClient(bot, socketClient)
   client.startTyping(session)
