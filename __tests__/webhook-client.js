@@ -3,9 +3,16 @@ jest.unmock('../lib/webhook-client')
 var Bot = require('../lib/bot')
 var WebhookClient = require('../lib/webhook-client')
 
-// function WebhookClient(bot) {
-//   bot.on('webhook', function(req, res, next) {
-//
+var bot = new Bot()
+var res = {
+  error: jest.fn()
+}
+var req = {
+  query: {
+    
+  }
+}
+
 //     var body = req.body
 //     var callbackURI = req.query.callback;
 //
@@ -24,9 +31,51 @@ var WebhookClient = require('../lib/webhook-client')
 //
 //     bot.trigger('message_received', body, session)
 //     res.success()
-//   })
-// }
-//
+
+
+test('registers for webhook event', () => {
+
+  var handler = jest.fn()
+
+  var originalImp = WebhookClient.prototype.createWebhookHandler
+  WebhookClient.prototype.createWebhookHandler = function() {
+    return handler
+  }
+
+  var client = new WebhookClient(bot)
+
+  expect(bot.on).toBeCalledWith('webhook', handler)
+  WebhookClient.prototype.createWebhookHandler = originalImp
+});
+
+test('returns error on webhook request without callback URI', () => {
+  var client = new WebhookClient(bot)
+
+  client.createWebhookHandler()(req, res)
+
+  expect(res.error).toBeCalled()
+});
+
+test('returns error on webhook request without text', () => {
+  var client = new WebhookClient(bot)
+  client.createWebhookHandler()(req, res)
+});
+
+test('creates valid session when handling webhook request ', () => {
+  var client = new WebhookClient(bot)
+  client.createWebhookHandler()(req, res)
+});
+
+test('triggers message_received event on bot when handling webhook request ', () => {
+  var client = new WebhookClient(bot)
+  client.createWebhookHandler()(req, res)
+});
+
+test('returns success on webhook request', () => {
+  var client = new WebhookClient(bot)
+  client.createWebhookHandler()(req, res)
+});
+
 // WebhookClient.prototype.send = function(session, text) {
 //   request({
 //     uri: session.callbackURI,
@@ -45,42 +94,6 @@ var WebhookClient = require('../lib/webhook-client')
 //     }
 //   });
 // }
-
-test('registers for webhook event', () => {
-
-  var handler = jest.fn()
-  var bot = new Bot()
-
-  var originalImp = WebhookClient.prototype.createWebhookHandler
-  WebhookClient.prototype.createWebhookHandler = function() {
-    return handler
-  }
-
-  var client = new WebhookClient(bot)
-
-  expect(bot.on).toBeCalledWith('webhook', handler)
-  WebhookClient.prototype.createWebhookHandler = originalImp
-});
-
-test('returns error on webhook request without callback URI', () => {
-
-});
-
-test('returns error on webhook request without text', () => {
-
-});
-
-test('creates valid session when handling webhook request ', () => {
-
-});
-
-test('triggers message_received event on bot when handling webhook request ', () => {
-
-});
-
-test('returns success on webhook request', () => {
-
-});
 
 test('creates valid message when sending message', () => {
 
