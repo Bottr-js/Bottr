@@ -36,16 +36,6 @@ test('should register fallback', () => {
   expect(emitter.fallbacks['event']).toEqual(handler)
 });
 
-test('should emit event', () => {
-  var emitter = new EventEmitter()
-  var handler = jest.fn()
-
-  emitter.addListener('event', handler)
-  var event = emitter.emit('event')
-
-  expect(event.eventName).toEqual('event')
-});
-
 test('should emit event with correct handlers', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
