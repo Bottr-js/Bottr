@@ -1,5 +1,6 @@
 jest.unmock('../lib/websocket-client')
 
+var io = require('socket.io')
 var WebsocketClient = require('../lib/websocket-client')
 
 var session = {
@@ -8,7 +9,7 @@ var session = {
   }
 }
 
-var client = new WebsocketClient()
+var client = new WebsocketClient(io())
 
 test('should emit message event with text when sending message', function() {
 
