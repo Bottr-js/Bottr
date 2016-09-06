@@ -28,7 +28,16 @@ test('should use configuration object for access and verify token', () => {
   expect(client.config.access_token).toEqual('access')
   expect(client.config.verify_token).toEqual('verify')
 });
-// 
+
+test('should regisster for webhook event', () => {
+
+  var handler = jest.fn()
+  var client = new FacebookMessengerClient(bot)
+
+
+  expect(bot.on).toBeCalledWith('webhook', handler)
+});
+//
 // bot.on('webhook', function(req, res, next) {
 //
 //   // If this isn't a facebook request then carry on with other handlers
