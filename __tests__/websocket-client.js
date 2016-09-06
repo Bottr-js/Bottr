@@ -62,17 +62,32 @@ test('should handle web socket message event', function() {
 
 test('should create valid session when handling message', function() {
   var client = new WebsocketClient(bot, socketClient)
-  client.createMessageHandler()({})
+
+  var session = client.createMessageHandler()({
+    user: "1"
+  })
+
+  expect(session.user).toEqual("1")
+  expect(session.context).toEqual({})
+  expect(session.client).toBe(client)
 })
 
 test('should store socket with session when handling message', function() {
   var client = new WebsocketClient(bot, socketClient)
-  client.createMessageHandler()({})
+  var socket = {}
+
+  var session = client.createMessageHandler(socket)({})
+
+  expect(session.socket).toBe(socket)
 })
 
 test('should trigger message received event on bot when handling message', function() {
   var client = new WebsocketClient(bot, socketClient)
-  client.createMessageHandler()({})
+  var data = {}
+
+  var session = client.createMessageHandler()(data)
+
+  expect(bot.trigger).toBeCalledWith('message_received', data, session)
 })
 
 test('should emit message event with text when sending message', function() {
