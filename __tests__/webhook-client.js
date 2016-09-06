@@ -84,7 +84,6 @@ test('returns success on webhook request', () => {
   expect(res.success).toBeCalled()
 });
 
-// WebhookClient.prototype.send = function(session, text) {
 //   request({
 //     uri: session.callbackURI,
 //     method: "POST",
@@ -94,15 +93,11 @@ test('returns success on webhook request', () => {
 //     body: JSON.stringify({
 //       text: text
 //     })
-//   }, function (error, response, body) {
-//     if (!error && response.statusCode == 200) {
-//       console.log("Successfully sent message.");
-//     } else {
-//       console.error("Unable to send message.");
-//     }
 //   });
-// }
 
 test('creates valid message when sending message', () => {
 
+  var client = new WebhookClient(bot)
+  var session = {}
+  var request = client.send(session, 'text')
 });
