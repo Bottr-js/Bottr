@@ -32,10 +32,18 @@ test('should use configuration object for access and verify token', () => {
 test('should regisster for webhook event', () => {
 
   var handler = jest.fn()
+
+  var handler = jest.fn()
+
+  var originalImp = FacebookMessengerClient.prototype.createWebhookHandler
+  FacebookMessengerClient.prototype.createWebhookHandler = function() {
+    return handler
+  }
+
   var client = new FacebookMessengerClient(bot)
 
-
   expect(bot.on).toBeCalledWith('webhook', handler)
+  FacebookMessengerClient.prototype.createWebhookHandler = originalImp
 });
 //
 // bot.on('webhook', function(req, res, next) {
