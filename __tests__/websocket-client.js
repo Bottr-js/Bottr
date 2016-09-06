@@ -47,19 +47,6 @@ test('should handle web socket message event', () => {
   expect(socket.on).toBeCalledWith('message', handler)
 })
 
-
-//
-// WebsocketClient.prototype.createMessageHandler = function(socket) {
-//   return function(data) {
-//
-//     var session = new Session(data.user, {}, this)
-//     session.socket = socket
-//
-//     bot.trigger('message_received', data, session)
-//
-//   }.bind(this)
-// }
-
 test('should create valid session when handling message', () => {
   var client = new WebsocketClient(bot, socketClient)
 
