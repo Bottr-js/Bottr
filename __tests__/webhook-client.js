@@ -7,11 +7,18 @@ var bot = new Bot()
 var res = {
   error: jest.fn()
 }
-var req = {
-  query: {
-    
+var req = {}
+
+beforeEach(() => {
+  req = {
+    query: {
+      callback: 'callback'
+    },
+    body: {
+      text: 'text'
+    }
   }
-}
+});
 
 //     var body = req.body
 //     var callbackURI = req.query.callback;
@@ -50,30 +57,33 @@ test('registers for webhook event', () => {
 
 test('returns error on webhook request without callback URI', () => {
   var client = new WebhookClient(bot)
+  req.query.callback = undefined
 
-  client.createWebhookHandler()(req, res)
-
+  client.createWebhookHandler(bot)(req, res)
   expect(res.error).toBeCalled()
 });
 
 test('returns error on webhook request without text', () => {
   var client = new WebhookClient(bot)
-  client.createWebhookHandler()(req, res)
+  req.body.text = undefined
+
+  client.createWebhookHandler(bot)(req, res)
+  expect(res.error).toBeCalled()
 });
 
 test('creates valid session when handling webhook request ', () => {
   var client = new WebhookClient(bot)
-  client.createWebhookHandler()(req, res)
+  client.createWebhookHandler(bot)(req, res)
 });
 
 test('triggers message_received event on bot when handling webhook request ', () => {
   var client = new WebhookClient(bot)
-  client.createWebhookHandler()(req, res)
+  client.createWebhookHandler(bot)(req, res)
 });
 
 test('returns success on webhook request', () => {
   var client = new WebhookClient(bot)
-  client.createWebhookHandler()(req, res)
+  client.createWebhookHandler(bot)(req, res)
 });
 
 // WebhookClient.prototype.send = function(session, text) {
