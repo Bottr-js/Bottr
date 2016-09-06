@@ -10,34 +10,36 @@ var session = {
   }
 }
 
-// WebsocketClient.prototype.onConnection = function(socket) {
-//     console.log('new websocket connection')
-//
-//     socket.on('message', function(data) {
-//
-//       var session = new Session(data.user, {}, this)
-//       session.socket = socket
-//
-//       bot.trigger('message_received', data, session)
-//
-//     }.bind(this))
-// }
-
 test('should handle web socket connection event', function() {
+  var handler = jest.fn()
+
+  var originalImp = WebsocketClient.prototype.createConnectionHandler
+  WebsocketClient.prototype.createConnectionHandler = function() {
+    return handler
+  }
 
   var client = new WebsocketClient(socketClient)
-  client.onConnection = jest.fn()
 
-  expect(socketClient.on).toBeCalledWith('connection', client.onConnection)
+  expect(socketClient.on).toBeCalledWith('connection', handler)
+  WebsocketClient.prototype.createConnectionHandler = originalImp
 })
-//
-// test('should emit typing event with text when sending typing event', function() {
-//
-//   client.startTyping(session)
-//
-//   expect(session.socket.emit).toBeCalledWith('typing', {})
-// })
 
+test('should handle web socket message event', function() {
+
+  var handler = jest.fn()
+  var socket = {
+    on: jest.fn()
+  }
+
+  var client = new WebsocketClient(socketClient)
+  client.createMessageHandler = function() {
+    return handler
+  }
+
+  client.createConnectionHandler()(socket)
+
+  expect(socket.on).toBeCalledWith('message', handler)
+})
 
 test('should emit message event with text when sending message', function() {
 
