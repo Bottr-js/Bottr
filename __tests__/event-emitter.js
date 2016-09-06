@@ -81,8 +81,7 @@ test('should emit event with correct arguments', () => {
   var event = emitter.emit('event', 1)
 
   expect(event.args).toEqual([
-    1,
-    jest.fn()
+    1
   ])
 });
 //
