@@ -71,17 +71,28 @@ test('should handle for tweets mentioning the bot', () => {
 
   expect(client.stream.on).toBeCalledWith('tweet', handler)
 
-  TwitterClient.prototype.createTweetHandler = handler
+  TwitterClient.prototype.createTweetHandler = originalImp
 });
 
-//     stream.on('tweet', function (tweet) {
-//
 //       var session = new Session(tweet.user.id, {}, this)
 //
-//       bot.trigger('message_received', {
-//         text: tweet.text
-//       }, session)
-//     })
+
+test('should trigger received_message event on bot for message', () => {
+
+  var handler = jest.fn()
+
+  var client = new TwitterClient(bot)
+  var session = client.createTweetHandler()({
+    user: {
+      id: "1"
+    },
+    text: 'text'
+  })
+
+  expect(bot.trigger).toBeCalledWith('message_received', {
+    text: 'text'
+  }, session)
+});
 
 test('posts status when sending message', () => {
 
