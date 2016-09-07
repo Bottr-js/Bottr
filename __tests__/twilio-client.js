@@ -40,11 +40,15 @@ test('should use configuration object for key, secrets and tokens', () => {
 test('should listen for tweets mentioning the bot', () => {
 
   var handler = jest.fn()
+  var originalImp = TwilioClient.prototype.createWebhookHandler
+  TwilioClient.prototype.createWebhookHandler = function() {
+    return handler
+  }
 
-  var client = new TwitterClient(bot)
-  client.send(null, 'text')
+  var client = new TwilioClient(bot)
 
-  expect(bot.on).toBeCalledWith('webhook', handler);
+  expect(bot.on).toBeCalledWith('webhook', handler)
+  TwilioClient.prototype.createWebhookHandler = originalImp
 });
 
 //       // If this isn't a twillio request then carry on with other handlers
