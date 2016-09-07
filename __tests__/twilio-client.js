@@ -72,63 +72,79 @@ test('should handle webhook with user agent TwilioProxy', () => {
   expect(next).not.toBeCalled()
 });
 
-test('should trigger receive_message event on bot for mesage via POST', () => {
+test('should trigger message_received event on bot for mesage via POST', () => {
 
   var next = jest.fn()
   var client = new TwilioClient(bot)
+  var post_req = {
+    headers: {
+      'user-agent': 'TwilioProxy'
+    },
+    body: {
+      Body: 'text'
+    }
+  }
 
-  var session = client.createWebhookHandler()(req, res, next)
+  var session = client.createWebhookHandler()(post_req, res, next)
 
-  expect(bot.trigger).toBeCalledWith('receive_message', {
+  expect(bot.trigger).toBeCalledWith('message_received', {
     text: 'text'
   }, session)
 });
 
-test('should trigger receive_message event on bot for mesage via GET', () => {
+test('should trigger message_received event on bot for mesage via GET', () => {
 
   var next = jest.fn()
   var client = new TwilioClient(bot)
+  var get_req = {
+    headers: {
+      'user-agent': 'TwilioProxy'
+    },
+    query: {
+      Body: 'text'
+    }
+  }
 
-  var session = client.createWebhookHandler()(req, res, next)
+  var session = client.createWebhookHandler()(get_req, res, next)
 
-  expect(bot.trigger).toBeCalledWith('receive_message', {
+  expect(bot.trigger).toBeCalledWith('message_received', {
     text: 'text'
   }, session)
 });
-
-test('should create valid session for mesage via POST', () => {
-
-  var next = jest.fn()
-  var client = new TwilioClient(bot)
-
-  var session = client.createWebhookHandler()(req, res, next)
-
-  expect(bot.trigger).toBeCalledWith('receive_message', {
-    text: 'text'
-  }, session)
-});
-
-test('should create valid session for mesage via GET', () => {
-
-  var next = jest.fn()
-  var client = new TwilioClient(bot)
-
-  var session = client.createWebhookHandler()(req, res, next)
-
-  expect(bot.trigger).toBeCalledWith('receive_message', {
-    text: 'text'
-  }, session)
-});
-
-test('should handle webhook with user agent TwilioProxy', () => {
-
-  var next = jest.fn()
-  var client = new TwilioClient(bot)
-
-  client.createWebhookHandler()(req, res, next)
-
-  expect(next).not.toBeCalled()
-});
+//
+// test('should create valid session for mesage via POST', () => {
+//
+//   var next = jest.fn()
+//   var client = new TwilioClient(bot)
+//
+//   var session = client.createWebhookHandler()(req, res, next)
+//
+//   expect(bot.trigger).toBeCalledWith('received_message', {
+//     text: 'text'
+//   }, session)
+// });
+//
+// test('should create valid session for mesage via GET', () => {
+//
+//   var next = jest.fn()
+//   var client = new TwilioClient(bot)
+//
+//   var session = client.createWebhookHandler()(req, res, next)
+//
+//   expect(bot.trigger).toBeCalledWith('received_message', {
+//     text: 'text'
+//   }, session)
+// });
+//
+// test('should handle webhook with user agent TwilioProxy', () => {
+//
+//   var next = jest.fn()
+//   var client = new TwilioClient(bot)
+//
+//   client.createWebhookHandler()(req, res, next)
+//
+//   expect(next).not.toBeCalled()
+// });
 
 test('should respond with empty json object for message', () => {
 
