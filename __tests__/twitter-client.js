@@ -77,6 +77,23 @@ test('should handle for tweets mentioning the bot', () => {
 //       var session = new Session(tweet.user.id, {}, this)
 //
 
+test('should create valid session for message', () => {
+
+  var handler = jest.fn()
+
+  var client = new TwitterClient(bot)
+  var session = client.createTweetHandler()({
+    user: {
+      id: "1"
+    },
+    text: 'text'
+  })
+
+  expect(session.user).toEqual("1")
+  expect(session.context).toEqual({})
+  expect(session.client).toBe(client)
+});
+
 test('should trigger received_message event on bot for message', () => {
 
   var handler = jest.fn()
