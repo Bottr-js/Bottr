@@ -84,7 +84,7 @@ test('returns success on webhook request', () => {
   expect(res.success).toBeCalled()
 });
 
-test('creates valid message when sending message', () => {
+test('creates valid request when sending message', () => {
 
   var client = new WebhookClient(bot)
   var session = {

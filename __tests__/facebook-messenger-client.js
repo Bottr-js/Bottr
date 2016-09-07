@@ -313,54 +313,42 @@ test('should log error for unknown event', () => {
   expect(spy).toBeCalled()
 });
 
-//
-// FacebookMessengerClient.prototype.send = function(session, text) {
-//
-// console.log('Sending "' + text + '"')
-//
-// var messageData = {
-//   recipient: {
-//     id: session.user
-//   },
-//   message: {
-//     text: text
-//   }
-// };
-//
-// request({
-//   uri: 'https://graph.facebook.com/v2.6/me/messages',
-//   qs: { access_token: this.config.access_token },
-//   method: 'POST',
-//   json: messageData
-//
-// }, function (error, response, body) {
-//   if (!error && response.statusCode == 200) {
-//     console.log("Successfully sent message.");
-//   } else {
-//     console.error("Unable to send message.");
-//   }
-// });
-// }
-//
-// FacebookMessengerClient.prototype.startTyping = function(session) {
-//
-// var messageData = {
-//   recipient: {
-//     id: session.user
-//   },
-//   sender_action: "typing_on"
-// }
-//
-// request({
-//   uri: 'https://graph.facebook.com/v2.6/me/messages',
-//   qs: { access_token: this.config.access_token },
-//   method: 'POST',
-//   json: messageData
-// }, function (error, response, body) {
-//   if (!error && response.statusCode == 200) {
-//     console.log("Successfully sent message.");
-//   } else {
-//     console.error("Unable to send message.");
-//   }
-// });
-// }
+test('creates valid request when sending message', () => {
+
+  var session = {
+    user: "1"
+  }
+
+  var client = new FacebookMessengerClient(bot)
+  var request = client.send(session, 'text')
+
+  expect(request.uri).toEqual('https://graph.facebook.com/v2.6/me/messages')
+  expect(request.method).toEqual('POST')
+  expect(request.json).toEqual({
+    recipient: {
+      id: session.user
+    },
+    message: {
+      text: "text"
+    }
+  })
+});
+
+test('creates valid request when triggering typing indicator', () => {
+
+  var session = {
+    user: "1"
+  }
+
+  var client = new FacebookMessengerClient(bot)
+  var request = client.startTyping(session)
+
+  expect(request.uri).toEqual('https://graph.facebook.com/v2.6/me/messages')
+  expect(request.method).toEqual('POST')
+  expect(request.json).toEqual({
+    recipient: {
+      id: "1"
+    },
+    sender_action: "typing_on"
+  })
+});
