@@ -1,5 +1,7 @@
-// var Session = require('./session')
-// var Twit = require('twit');
+jest.unmock('../lib/twitter-client')
+
+var TwitterClient = require('../lib/twitter-client')
+
 //
 // function TwitterClient(config) {
 //

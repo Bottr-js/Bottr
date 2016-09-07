@@ -1,3 +1,7 @@
+jest.unmock('../lib/twilio-client')
+
+var TwillioClient = require('../lib/twilio-client')
+
 // var Session = require('./session')
 //
 // // Currently this client only supports texts but in the future could support calls
