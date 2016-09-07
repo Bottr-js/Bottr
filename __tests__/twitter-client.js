@@ -58,6 +58,22 @@ test('should listen for tweets mentioning the bot', () => {
   expect(client.twit.stream).toBeCalledWith('statuses/filter', { track: '@' + bot.name });
 });
 
+test('should handle for tweets mentioning the bot', () => {
+
+  var handler = jest.fn()
+
+  var originalImp = TwitterClient.prototype.createTweetHandler
+  TwitterClient.prototype.createTweetHandler = function() {
+    return handler
+  }
+
+  var client = new TwitterClient(bot)
+
+  expect(client.stream.on).toBeCalledWith('tweet', handler)
+
+  TwitterClient.prototype.createTweetHandler = handler
+});
+
 //     stream.on('tweet', function (tweet) {
 //
 //       var session = new Session(tweet.user.id, {}, this)
