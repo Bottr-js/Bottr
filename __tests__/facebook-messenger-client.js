@@ -78,33 +78,65 @@ test('should not handle webhook without x-hub-signature and facebook platform us
   expect(next).toBeCalled()
 });
 
-// - Subscription success
-// - Subscription failure
+test('should respond with challenge for successful subsription', () => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'facebookplatform'
+    },
+    query: {
+      'hub.mode': 'subscribe',
+      'hub.verify_token': 'test',
+      'hub.challenge': 'challenge'
+    }
+  }
+
+  var res = {
+    send: jest.fn()
+  }
+
+  var client = new FacebookMessengerClient(bot, {
+    verify_token: 'test'
+  })
+
+  client.createWebhookHandler()(req, res, next)
+
+  expect(res.send).toBeCalledWith('challenge')
+});
+
+test('should respond with 403 for failed subsription', () => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'facebookplatform'
+    },
+    query: {
+      'hub.mode': 'subscribe'
+    }
+  }
+
+  var res = {
+    sendStatus: jest.fn()
+  }
+
+  var client = new FacebookMessengerClient(bot)
+  client.createWebhookHandler()(req, res, next)
+
+  expect(res.sendStatus).toBeCalledWith(403)
+});
+
 // - Message success
 
 
-//
-//   var query = req.query
-//
 //   if ( query['hub.mode'] === 'subscribe') {
-//     client.handleSubscription(req, res)
 //   } else {
 //     client.handleEvent(bot, req, res)
 //     res.success()
 //   }
 //
-//
-// // FIXME: Allow token to be configured
-// FacebookMessengerClient.prototype.handleSubscription = function(req, res) {
-//
-// var query = req.query
-//
-// if (query['hub.verify_token'] === this.config.verify_token) {
-//   res.send(query['hub.challenge'])
-// } else {
-//   res.sendStatus(403)
-// }
-// }
+
 //
 // FacebookMessengerClient.prototype.handleEvent = function(bot, req, res) {
 //
