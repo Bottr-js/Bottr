@@ -105,7 +105,7 @@ test('should respond with challenge for successful subsription', () => {
   expect(res.send).toBeCalledWith('challenge')
 });
 
-test('should respond with 403 for failed subsription', () => {
+test('should respond with 403 for failed subscription', () => {
 
   var next = jest.fn()
   var req = {
@@ -127,7 +127,19 @@ test('should respond with 403 for failed subsription', () => {
   expect(res.sendStatus).toBeCalledWith(403)
 });
 
-// test('should respond with 403 for failed subsription', () => {
+// test('should crete valid session for message', () => {
+//
+//   var next = jest.fn()
+//   var req = {
+//     headers: {
+//       'user-agent': 'facebookplatform'
+//     },
+//     query: {
+//       'hub.mode': 'subscribe'
+//     }
+//   }
+
+// test('should trigger received_messge event on bot for message', () => {
 //
 //   var next = jest.fn()
 //   var req = {
@@ -148,6 +160,28 @@ test('should respond with 403 for failed subsription', () => {
 //
 //   expect(res.sendStatus).toBeCalledWith(403)
 // });
+
+test('should respond with success for message', () => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'facebookplatform'
+    },
+    query: {
+      'hub.mode': 'subscribe'
+    }
+  }
+
+  var res = {
+    sendStatus: jest.fn()
+  }
+
+  var client = new FacebookMessengerClient(bot)
+  client.createWebhookHandler()(req, res, next)
+
+  expect(res.sendStatus).toBeCalledWith(403)
+});
 
 // - Message success
 // - Event Failure
