@@ -2,11 +2,6 @@ jest.unmock('../lib/session')
 
 var Session = require('../lib/session')
 
-// function Session(user, context, client) {
-//   this.queue = queue()
-//   this.queue.concurrency = 1
-// }
-
 test('creates internal queue', () => {
   var session = new Session()
   expect(session.queue).not.toBeNull()
