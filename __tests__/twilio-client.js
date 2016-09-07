@@ -27,13 +27,6 @@ var bot = new Bot()
 //       res.send({}) // We can't send a success code as twillio will send it
 //     })]
 
-
-//   var defaults = {
-//     account_sid: process.env.TWILIO_ACCOUNT_SID,
-//     auth_token: process.env.TWILIO_AUTH_TOKEN,
-//     phone_number: process.env.TWILIO_PHONE_NUMBER
-//   }
-
 test('should use enviromental variables for sid, token and phone number', () => {
 
   process.env.TWILIO_ACCOUNT_SID = 'sid'
