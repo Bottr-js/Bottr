@@ -50,8 +50,14 @@ test('should use configuration object for key, secrets and tokens', () => {
   expect(client.config.access_token_secret).toEqual('secret')
 });
 
-//     var stream = client.twit.stream('statuses/filter', { track: '@' + bot.name })
-//
+test('should listen for tweets mentioning the bot', () => {
+
+  var client = new TwitterClient(bot)
+  client.send(null, 'text')
+
+  expect(client.twit.stream).toBeCalledWith('statuses/filter', { track: '@' + bot.name });
+});
+
 //     stream.on('tweet', function (tweet) {
 //
 //       var session = new Session(tweet.user.id, {}, this)
