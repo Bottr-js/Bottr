@@ -5,28 +5,6 @@ var TwilioClient = require('../lib/twilio-client')
 
 var bot = new Bot()
 
-
-//
-//     bot.on('webhook', function(req, res, next) {
-//
-//       // If this isn't a twillio request then carry on with other handlers
-//       if ( req.headers['user-agent'].indexOf('TwilioProxy') === -1 ) {
-//         next()
-//         return
-//       }
-//
-//       var data = Object.assign({}, req.query, req.body)
-//
-//       var message = {
-//         text: data.Body
-//       }
-//
-//       var session = new Session(data.From, {}, this)
-//
-//       bot.trigger('message_received', message, session)
-//       res.send({}) // We can't send a success code as twillio will send it
-//     })]
-
 test('should use enviromental variables for sid, token and phone number', () => {
 
   process.env.TWILIO_ACCOUNT_SID = 'sid'
@@ -58,6 +36,33 @@ test('should use configuration object for key, secrets and tokens', () => {
   expect(client.config.auth_token).toEqual('token')
   expect(client.config.phone_number).toEqual('number')
 });
+
+test('should listen for tweets mentioning the bot', () => {
+
+  var handler = jest.fn()
+
+  var client = new TwitterClient(bot)
+  client.send(null, 'text')
+
+  expect(bot.on).toBeCalledWith('webhook', handler);
+});
+
+//       // If this isn't a twillio request then carry on with other handlers
+//       if ( req.headers['user-agent'].indexOf('TwilioProxy') === -1 ) {
+//         next()
+//         return
+//       }
+//
+//       var data = Object.assign({}, req.query, req.body)
+//
+//       var message = {
+//         text: data.Body
+//       }
+//
+//       var session = new Session(data.From, {}, this)
+//
+//       bot.trigger('message_received', message, session)
+//       res.send({}) // We can't send a success code as twillio will send it
 
 test('should send text when sending message', () => {
 
