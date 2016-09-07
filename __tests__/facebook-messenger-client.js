@@ -127,15 +127,33 @@ test('should respond with 403 for failed subsription', () => {
   expect(res.sendStatus).toBeCalledWith(403)
 });
 
-// - Message success
-
-
-//   if ( query['hub.mode'] === 'subscribe') {
-//   } else {
-//     client.handleEvent(bot, req, res)
-//     res.success()
+// test('should respond with 403 for failed subsription', () => {
+//
+//   var next = jest.fn()
+//   var req = {
+//     headers: {
+//       'user-agent': 'facebookplatform'
+//     },
+//     query: {
+//       'hub.mode': 'subscribe'
+//     }
 //   }
 //
+//   var res = {
+//     sendStatus: jest.fn()
+//   }
+//
+//   var client = new FacebookMessengerClient(bot)
+//   client.createWebhookHandler()(req, res, next)
+//
+//   expect(res.sendStatus).toBeCalledWith(403)
+// });
+
+// - Message success
+// - Event Failure
+
+//     client.handleEvent(bot, req, res)
+//     res.success()
 
 //
 // FacebookMessengerClient.prototype.handleEvent = function(bot, req, res) {
