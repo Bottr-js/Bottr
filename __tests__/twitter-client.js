@@ -74,9 +74,6 @@ test('should handle for tweets mentioning the bot', () => {
   TwitterClient.prototype.createTweetHandler = originalImp
 });
 
-//       var session = new Session(tweet.user.id, {}, this)
-//
-
 test('should create valid session for message', () => {
 
   var handler = jest.fn()
