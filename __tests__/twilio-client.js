@@ -2,8 +2,6 @@ jest.unmock('../lib/twilio-client')
 
 var TwillioClient = require('../lib/twilio-client')
 
-// var Session = require('./session')
-//
 // // Currently this client only supports texts but in the future could support calls
 // function TwilioClient(config) {
 //
@@ -58,12 +56,6 @@ var TwillioClient = require('../lib/twilio-client')
 //       }
 //   });
 // }
-//
-// TwilioClient.prototype.startTyping = function(session) {
-// }
-//
-// module.exports = TwilioClient
-
 
 test('adds 1 + 2 to equal 3', () => {
   expect(3).toBe(3);

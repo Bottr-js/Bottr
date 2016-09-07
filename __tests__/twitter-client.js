@@ -2,7 +2,6 @@ jest.unmock('../lib/twitter-client')
 
 var TwitterClient = require('../lib/twitter-client')
 
-//
 // function TwitterClient(config) {
 //
 //   var defaults = {
@@ -44,12 +43,7 @@ var TwitterClient = require('../lib/twitter-client')
 //   // Reply to that tweet
 //   client.twit.post('statuses/update', { status: text }, function(err, data, response) {})
 // }
-//
-// TwitterClient.prototype.startTyping = function(session) {
-//   // Favourite tweet
-// }
-//
-// module.exports = TwitterClient
+
 
 
 test('adds 1 + 2 to equal 3', () => {
