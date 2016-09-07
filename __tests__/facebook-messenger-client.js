@@ -247,6 +247,37 @@ test('should respond with 400 for unknown event', () => {
   expect(res.sendStatus).toBeCalledWith(400)
 });
 
+test('should log error for unknown event', () => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'facebookplatform'
+    },
+    query: {},
+    body: {
+      object: 'page',
+      entry: [
+        {
+          messaging: [
+            {}
+          ]
+        }
+      ]
+    }
+  }
+
+  var res = {
+    sendStatus: jest.fn()
+  }
+
+  var spy = spyOn(console, 'error')
+  var client = new FacebookMessengerClient(bot)
+  client.createWebhookHandler()(req, res, next)
+
+  expect(spy).toBeCalled()
+});
+
 // - Message valid session
 // - Unknown Event
 
