@@ -59,8 +59,6 @@ test('should use configuration object for key, secrets and tokens', () => {
 //       bot.trigger('message_received', {
 //         text: tweet.text
 //       }, session)
-//
-//       res.success()
 //     })
 
 test('posts status when sending message', () => {
