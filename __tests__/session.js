@@ -5,11 +5,18 @@ var Session = require('../lib/session')
 // function Session(user, context, client) {
 //   this.queue = queue()
 //   this.queue.concurrency = 1
-//
-//   this.user = user
-//   this.context = context
-//   this.client = client
 // }
+
+test('creates internal queue', () => {
+  var session = new Session()
+  expect(session.queue).not.toBeNull()
+});
+
+test('sets internal queue concurrency to 1', () => {
+  var session = new Session()
+  expect(session.queue.concurrency).toEqual(1)
+});
+
 //
 // Session.prototype.send = function(text) {
 //
@@ -40,7 +47,3 @@ var Session = require('../lib/session')
 // Session.prototype.updateContext = function(newValues) {
 //   this.context = Object.assign(this, newValues)
 // }
-
-test('adds 1 + 2 to equal 3', () => {
-  expect(3).toBe(3);
-});
