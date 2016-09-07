@@ -1,6 +1,9 @@
 jest.unmock('../lib/twitter-client')
 
+var Bot = require('../lib/bot')
 var TwitterClient = require('../lib/twitter-client')
+
+var bot = new Bot()
 
 // function TwitterClient(config) {
 //
@@ -44,8 +47,10 @@ var TwitterClient = require('../lib/twitter-client')
 //   client.twit.post('statuses/update', { status: text }, function(err, data, response) {})
 // }
 
+test('posts status when sending message', () => {
 
+  var client = new TwitterClient(bot)
+  client.send(null, 'text')
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(3).toBe(3);
+  expect(client.twit.post).toBeCalledWith('statuses/update', { status: 'text' });
 });
