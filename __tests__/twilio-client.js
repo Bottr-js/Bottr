@@ -7,6 +7,11 @@ var bot = new Bot()
 var res = {
   send: jest.fn()
 }
+var req = {
+  headers: {
+    'user-agent': 'TwilioProxy'
+  }
+}
 
 test('should use enviromental variables for sid, token and phone number', () => {
 
@@ -57,11 +62,6 @@ test('should listen for tweets mentioning the bot', () => {
 test('should handle webhook with user agent TwilioProxy', () => {
 
   var next = jest.fn()
-  var req = {
-    headers: {
-      'user-agent': 'TwilioProxy'
-    }
-  }
   var client = new TwilioClient(bot)
 
   client.createWebhookHandler()(req, res, next)
@@ -69,11 +69,6 @@ test('should handle webhook with user agent TwilioProxy', () => {
   expect(next).not.toBeCalled()
 });
 
-//       // If this isn't a twillio request then carry on with other handlers
-//       if ( req.headers['user-agent'].indexOf('TwilioProxy') === -1 ) {
-//         next()
-//         return
-//       }
 //
 //       var data = Object.assign({}, req.query, req.body)
 //
@@ -84,7 +79,37 @@ test('should handle webhook with user agent TwilioProxy', () => {
 //       var session = new Session(data.From, {}, this)
 //
 //       bot.trigger('message_received', message, session)
-//       res.send({}) // We can't send a success code as twillio will send it
+
+test('should handle webhook with user agent TwilioProxy', () => {
+
+  var next = jest.fn()
+  var client = new TwilioClient(bot)
+
+  client.createWebhookHandler()(req, res, next)
+
+  expect(next).not.toBeCalled()
+});
+
+// return session
+
+test('should handle webhook with user agent TwilioProxy', () => {
+
+  var next = jest.fn()
+  var client = new TwilioClient(bot)
+
+  client.createWebhookHandler()(req, res, next)
+
+  expect(next).not.toBeCalled()
+});
+
+test('should respond with empty json object for message', () => {
+
+  var next = jest.fn()
+  var client = new TwilioClient(bot)
+
+  client.createWebhookHandler()(req, res, next)
+  expect(res.send).toBeCalledWith({})
+});
 
 test('should send text when sending message', () => {
 
