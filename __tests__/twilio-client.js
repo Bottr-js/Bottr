@@ -142,7 +142,6 @@ test('should create valid session for mesage via GET', () => {
   expect(session.client).toBe(client)
 });
 
-
 test('should respond with empty json object for message', () => {
 
   var next = jest.fn()
