@@ -168,19 +168,30 @@ test('should respond with success for message', () => {
     headers: {
       'user-agent': 'facebookplatform'
     },
-    query: {
-      'hub.mode': 'subscribe'
+    query: {},
+    body: {
+      object: 'page',
+      entry: [
+        {
+          messaging: [{
+            sender: {
+              id: "1"
+            },
+            message: 'hey'
+          }]
+        }
+      ]
     }
   }
 
   var res = {
-    sendStatus: jest.fn()
+    success: jest.fn()
   }
 
   var client = new FacebookMessengerClient(bot)
   client.createWebhookHandler()(req, res, next)
 
-  expect(res.sendStatus).toBeCalledWith(403)
+  expect(res.success).toBeCalled()
 });
 
 // - Message success
