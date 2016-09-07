@@ -14,6 +14,7 @@ test('should use enviromental variables for access and verify token', () => {
 
   expect(client.config.access_token).toEqual('access')
   expect(client.config.verify_token).toEqual('verify')
+  
   process.env.MESSENGER_ACCESS_TOKEN = undefined
   process.env.MESSENGER_VERIFY_TOKEN = undefined
 });
