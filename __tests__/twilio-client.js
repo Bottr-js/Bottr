@@ -11,8 +11,6 @@ var bot = new Bot()
 //     phone_number: process.env.TWILIO_PHONE_NUMBER
 //   }
 //
-//   this.config = Object.assign({}, defaults, config)
-//   this.twilio = require('twilio')(client.config.account_sid, client.config.auth_token);
 //
 //     bot.on('webhook', function(req, res, next) {
 //
@@ -34,15 +32,56 @@ var bot = new Bot()
 //       res.send({}) // We can't send a success code as twillio will send it
 //     })
 
-test('should send text when sending message', () => {
-  var client = new TwillioClient(bot)
-  client.send(null, 'text')
+// test('should use enviromental variables for key, secrets and tokens', () => {
+//
+//   process.env.TWITTER_CONSUMER_KEY = 'key'
+//   process.env.TWITTER_CONSUMER_SECRET = 'secret'
+//   process.env.TWITTER_ACCESS_TOKEN = 'token'
+//   process.env.TWITTER_ACCESS_TOKEN_SECRET = 'secret'
+//
+//   var client = new TwitterClient(bot)
+//
+//   expect(client.config.consumer_key).toEqual('key')
+//   expect(client.config.consumer_secret).toEqual('secret')
+//   expect(client.config.access_token).toEqual('token')
+//   expect(client.config.access_token_secret).toEqual('secret')
+//
+//   process.env.TWITTER_CONSUMER_KEY = undefined
+//   process.env.TWITTER_CONSUMER_SECRET = undefined
+//   process.env.TWITTER_ACCESS_TOKEN = undefined
+//   process.env.TWITTER_ACCESS_TOKEN_SECRET = undefined
+// });
+//
+// test('should use configuration object for key, secrets and tokens', () => {
+//
+//   var config = {
+//     consumer_key: 'key',
+//     consumer_secret: 'secret',
+//     access_token: 'token',
+//     access_token_secret: 'secret'
+//   }
+//
+//   var client = new TwitterClient(bot, config)
+//
+//   expect(client.config.consumer_key).toEqual('key')
+//   expect(client.config.consumer_secret).toEqual('secret')
+//   expect(client.config.access_token).toEqual('token')
+//   expect(client.config.access_token_secret).toEqual('secret')
+// });
 
-  this.twilio.sendMessage();
+test('should send text when sending message', () => {
+
+  var client = new TwillioClient(bot, {
+    phone_number: '1'
+  })
+
+  client.send({
+    user: '1'
+  }, 'text')
 
   expect(client.twilio.sendMessage).toBeCalledWith({
-      to: meta.user,
-      from: this.config.phone_number,
+      to: '1',
+      from: '1',
       body: 'text'
   })
 });
