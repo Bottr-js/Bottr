@@ -1,10 +1,10 @@
 jest.unmock('../lib/twilio-client')
 
+var Bot = require('../lib/bot')
 var TwillioClient = require('../lib/twilio-client')
 
-// // Currently this client only supports texts but in the future could support calls
-// function TwilioClient(config) {
-//
+var bot = new Bot()
+
 //   var defaults = {
 //     account_sid: process.env.TWILIO_ACCOUNT_SID,
 //     auth_token: process.env.TWILIO_AUTH_TOKEN,
@@ -13,10 +13,6 @@ var TwillioClient = require('../lib/twilio-client')
 //
 //   this.config = Object.assign({}, defaults, config)
 //   this.twilio = require('twilio')(client.config.account_sid, client.config.auth_token);
-//
-//   var client = this
-//
-//   return function(bot) {
 //
 //     bot.on('webhook', function(req, res, next) {
 //
@@ -37,26 +33,16 @@ var TwillioClient = require('../lib/twilio-client')
 //       bot.trigger('message_received', message, session)
 //       res.send({}) // We can't send a success code as twillio will send it
 //     })
-//   }
-// }
-//
-// TwilioClient.prototype.send = function(session, text) {
-//
-//   this.twilio.sendMessage({
-//
-//       to: meta.user,
-//       from: this.config.phone_number,
-//       body: text
-//
-//   }, function(err, responseData) {
-//
-//       if (!err) {
-//           console.log(responseData.from);
-//           console.log(responseData.body);
-//       }
-//   });
-// }
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(3).toBe(3);
+test('should send text when sending message', () => {
+  var client = new TwillioClient(bot)
+  client.send(null, 'text')
+
+  this.twilio.sendMessage();
+
+  expect(client.twilio.sendMessage).toBeCalledWith({
+      to: meta.user,
+      from: this.config.phone_number,
+      body: 'text'
+  })
 });
