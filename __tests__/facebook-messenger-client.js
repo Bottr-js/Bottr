@@ -14,7 +14,7 @@ test('should use enviromental variables for access and verify token', () => {
 
   expect(client.config.access_token).toEqual('access')
   expect(client.config.verify_token).toEqual('verify')
-  
+
   process.env.MESSENGER_ACCESS_TOKEN = undefined
   process.env.MESSENGER_VERIFY_TOKEN = undefined
 });
@@ -31,23 +31,6 @@ test('should use configuration object for access and verify token', () => {
 });
 
 test('should register for webhook event', () => {
-
-  var handler = jest.fn()
-
-  var handler = jest.fn()
-
-  var originalImp = FacebookMessengerClient.prototype.createWebhookHandler
-  FacebookMessengerClient.prototype.createWebhookHandler = function() {
-    return handler
-  }
-
-  var client = new FacebookMessengerClient(bot)
-
-  expect(bot.on).toBeCalledWith('webhook', handler)
-  FacebookMessengerClient.prototype.createWebhookHandler = originalImp
-});
-
-test('should ignore webhook with no x-hub-signature', () => {
 
   var handler = jest.fn()
 

@@ -4,6 +4,9 @@ var Bot = require('../lib/bot')
 var TwilioClient = require('../lib/twilio-client')
 
 var bot = new Bot()
+var res = {
+  send: jest.fn()
+}
 
 test('should use enviromental variables for sid, token and phone number', () => {
 
@@ -49,6 +52,21 @@ test('should listen for tweets mentioning the bot', () => {
 
   expect(bot.on).toBeCalledWith('webhook', handler)
   TwilioClient.prototype.createWebhookHandler = originalImp
+});
+
+test('should handle webhook with user agent TwilioProxy', () => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'TwilioProxy'
+    }
+  }
+  var client = new TwilioClient(bot)
+
+  client.createWebhookHandler()(req, res, next)
+
+  expect(next).not.toBeCalled()
 });
 
 //       // If this isn't a twillio request then carry on with other handlers
