@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="BotKit" src="http://pozi-js.github.io/Pozi/Images/Logo.png" height="200" />
+<img alt="BotKit" src="https://bottr-js.github.io/Bottr/Images/Logo.png" height="200" />
 </p>
 
 [![Travis](https://img.shields.io/travis/Pozi-js/Pozi.svg?maxAge=2592000)](https://travis-ci.org/Pozi-js/Pozi)
