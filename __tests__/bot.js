@@ -1,5 +1,6 @@
 jest.unmock('../lib/bot')
 jest.unmock('../lib/event-emitter')
+jest.unmock('../lib/event')
 
 var Bot = require('../lib/bot')
 
