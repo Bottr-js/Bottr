@@ -6,7 +6,7 @@
 
 A framework for creating Bots.
 
-Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more about how to install and start using BotKit.
+Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more about how to install and start using Bottr.
 
 | Botkit        |
 | ------------- |
