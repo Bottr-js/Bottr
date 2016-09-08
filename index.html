@@ -137,8 +137,8 @@ import Pozi from 'pozi'
 
 var bot = new Pozi.Bot()
 
-bot.on('message_received', function(bot) {
-  bot.reply('Hello World')
+bot.on('message_received', function(message, session) {
+  session.reply('Hello World')
 })
 
 bot.spawn()
@@ -158,7 +158,10 @@ bot.spawn()
         <div class="install">
           <a href="https://github.com/Pozi-js/Pozi/wiki/Creating-a-new-project">Install</a>
         </div>
-        <!-- Add sponsored by Image for Wenow, Sup and Chatbot Agency -->
+        <div class="section">
+          <h3>Lovingly sponsored by</h3>
+          <p><a href="https://chatbotagency.co/">The Chatbot Agency</a>, <a href="www.supmenow.com"/>Sup</a> & <a href="wenow.co/">Wenow</a></p>
+        </div>
       </div>
     </div>
   </body>
