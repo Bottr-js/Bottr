@@ -1,10 +1,13 @@
 jest.unmock('request')
 jest.unmock('fs')
 jest.unmock('mock-fs')
+jest.unmock('nock')
 jest.unmock('../lib/bot')
 jest.unmock('../lib/event-emitter')
 jest.unmock('../lib/event')
 
+var mock = require('mock-fs');
+var nock = require('nock');
 var Bot = require('../lib/bot')
 
 var session = {
@@ -59,7 +62,7 @@ test('should trigger hears function if it matches', () => {
   expect(handler).toBeCalled()
 });
 
-test('should trigger move to next hears function if it does not mtch', () => {
+test('should trigger move to next hears function if it does not match', () => {
   var handler = jest.fn()
   var bot = new Bot()
 
@@ -101,6 +104,12 @@ test('should consume component', () => {
 test('should download attachment from URI', (done) => {
   var bot = new Bot()
 
+  mock()
+
+  nock('http://www.google.co.uk')
+  .get('/')
+  .reply(200, 'Hello World');
+
   bot.download({
     url: 'http://www.google.co.uk'
   }, function(url) {
@@ -120,7 +129,6 @@ test('should download attachment from URI', (done) => {
 test('should download base64 encoded attachment', (done) => {
   var bot = new Bot()
 
-  var mock = require('mock-fs');
   mock()
 
   bot.download({
