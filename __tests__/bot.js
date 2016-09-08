@@ -12,7 +12,6 @@ test('should use passed in name', () => {
   expect(bot.name).toEqual('bender')
 });
 
-
 //   this.router = Express.Router()
 //   this.eventEmitter = new EventEmitter()
 //
@@ -37,19 +36,57 @@ test('should use passed in name', () => {
 //   this.router.get('/webhook', this.handleWebhookRequest.bind(this))
 //   this.router.post('/webhook', this.handleWebhookRequest.bind(this))
 // }
+
+// test('when message is received bot should start typing', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+// test('respond with error when no webhook listeners configured', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+
 //
 // Bot.prototype.handleWebhookRequest = function(req, res) {
 //   this.trigger('webhook', req, res);
 // }
+
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+
 //
 // Bot.prototype.trigger = function(eventName) {
 //   console.log(eventName +' event triggered')
 //   this.eventEmitter.emit.apply(this.eventEmitter, arguments)
 // }
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+
 //
 // Bot.prototype.on = function(eventName, handler) {
 //   this.eventEmitter.addListener(eventName, handler)
 // }
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
 //
 // Bot.prototype.hears = function(pattern, handler) {
 //
@@ -71,10 +108,20 @@ test('should use passed in name', () => {
 //     }
 //   })
 // }
-//
-// Bot.prototype.use = function(component) {
-//   component(this)
-// }
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+test('should consume component', () => {
+  var component = jest.fn()
+  var bot = new Bot()
+  bot.use(component)
+  expect(component).toBeCalledWith(bot)
+});
+
+
 //
 // Bot.prototype.download = function(attachment, callback) {
 //
@@ -84,12 +131,26 @@ test('should use passed in name', () => {
 //     this.downloadFileFromData(attachment.data, callback)
 //   }
 // }
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+
 //
 // Bot.prototype.downloadFileFromUrl = function(url, callback) {
 //   // request(url).pipe(fs.createWriteStream(filename)).on('close', callback);
 //   // Get data and pass to download file method
 //   // this.downloadFileFromData(data, callback)
 // }
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
+
 //
 // Bot.prototype.downloadFileFromData = function(data, callback) {
 //
@@ -105,3 +166,8 @@ test('should use passed in name', () => {
 //
 //   callback(staticFilesDirectory + "/" + filename)
 // }
+
+// test('respond with error when message isn't ', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
