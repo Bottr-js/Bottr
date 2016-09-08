@@ -17,7 +17,7 @@ Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more
 ## Installation
 
 ```
-npm install --save Bottr
+npm install Bottr --save
 ```
 
 ## Need Help?
