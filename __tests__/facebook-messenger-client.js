@@ -144,73 +144,80 @@ test('should respond with success for message', () => {
   expect(res.success).toBeCalled()
 });
 
-// FIXME: Look into simplifying session API
-//
-// test('should trigger received_message event on bot for message', () => {
-//
-//   var next = jest.fn()
-//   var req = {
-//     headers: {
-//       'user-agent': 'facebookplatform'
-//     },
-//     query: {},
-//     body: {
-//       object: 'page',
-//       entry: [
-//         {
-//           messaging: [{
-//             sender: {
-//               id: "1"
-//             },
-//             message: 'hey'
-//           }]
-//         }
-//       ]
-//     }
-//   }
-//
-//   var res = {
-//     success: jest.fn()
-//   }
-//
-//   var client = new FacebookMessengerClient(bot)
-//   var socket = client.createWebhookHandler()(req, res, next)
-//
-//   expect(bot.trigger).toBeCalledWith('message', req.body, socket)
-// });
-//
-// test('should create valid session for message', () => {
-//
-//   var next = jest.fn()
-//   var req = {
-//     headers: {
-//       'user-agent': 'facebookplatform'
-//     },
-//     query: {},
-//     body: {
-//       object: 'page',
-//       entry: [
-//         {
-//           messaging: [{
-//             sender: {
-//               id: "1"
-//             },
-//             message: 'hey'
-//           }]
-//         }
-//       ]
-//     }
-//   }
-//
-//   var res = {
-//     success: jest.fn()
-//   }
-//
-//   var client = new FacebookMessengerClient(bot)
-//   var socket = client.createWebhookHandler()(req, res, next)
-//
-//   expect(bot.trigger).toBeCalledWith('message', req.body, socket)
-// });
+test('should trigger received_message event on bot for message', (done) => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'facebookplatform'
+    },
+    query: {},
+    body: {
+      object: 'page',
+      entry: [
+        {
+          messaging: [{
+            sender: {
+              id: "1"
+            },
+            message: 'hey'
+          }]
+        }
+      ]
+    }
+  }
+
+  var res = {
+    success: jest.fn()
+  }
+
+  var client = new FacebookMessengerClient()(bot)
+
+  bot.trigger = jest.fn(function(event, message, session) {
+    expect(event).toEqual('message_received', message, session)
+    done()
+  })
+
+  client.createWebhookHandler()(req, res, next)
+});
+
+test('should create valid session for message', (done) => {
+
+  var next = jest.fn()
+  var req = {
+    headers: {
+      'user-agent': 'facebookplatform'
+    },
+    query: {},
+    body: {
+      object: 'page',
+      entry: [
+        {
+          messaging: [{
+            sender: {
+              id: "1"
+            },
+            message: 'hey'
+          }]
+        }
+      ]
+    }
+  }
+
+  var res = {
+    success: jest.fn()
+  }
+
+  var client = new FacebookMessengerClient()(bot)
+
+  bot.trigger = jest.fn(function(event, message, session) {
+    expect(session.user).toEqual("1")
+    expect(session.client).toBe(client)
+    done()
+  })
+
+  client.createWebhookHandler()(req, res, next)
+});
 
 test('should respond with 400 for non-page event', () => {
 
