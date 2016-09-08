@@ -10,7 +10,7 @@ Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more
 
 | Botkit        |
 | ------------- |
-| :rocket: Prebuilt integrations with Facebook Messenger, Wit.ai and more. |
+| :rocket: Prebuilt integrations with Facebook Messenger, SMS and more. |
 | :boom: Focus on building the business logic for your bot, not infrastructure. |
 | :bulb: Build your bot in minutes not hours. |
 
