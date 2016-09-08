@@ -25,6 +25,11 @@ test('on message recieved bot should start typing', () => {
   expect(typing).toBeCalled()
 });
 
+// test('respond with error when no webhook listeners configured', () => {
+//   var bot = new Bot('bender')
+//   expect(bot.name).toEqual('bender')
+// });
+
 test('respond with default response when message not handled', () => {
   var send = jest.fn()
   var bot = new Bot('bender')
@@ -36,58 +41,6 @@ test('respond with default response when message not handled', () => {
 
   expect(send).toBeCalled()
 });
-
-//
-//   this.eventEmitter.onUnhandled('webhook', function(req, res) {
-//     res.error('No webhook handlers configured')
-//   })
-//
-//   this.eventEmitter.onUnhandled('message_received', function(message, session) {
-//     session.send("Sorry my creator didn't teach me anything else")
-//   })
-//
-//   this.router.use('/' + staticFilesDirectory, Express.static('public'));
-//   this.router.use(BodyParser.json())
-//   this.router.use(BodyParser.urlencoded())
-//   this.router.use(new ResponseMiddleware())
-//
-//   this.router.get('/webhook', this.handleWebhookRequest.bind(this))
-//   this.router.post('/webhook', this.handleWebhookRequest.bind(this))
-// }
-
-// test('respond with error when no webhook listeners configured', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
-
-//
-// Bot.prototype.handleWebhookRequest = function(req, res) {
-//   this.trigger('webhook', req, res);
-// }
-
-
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
-
-
-//
-// Bot.prototype.trigger = function(eventName) {
-//   console.log(eventName +' event triggered')
-//   this.eventEmitter.emit.apply(this.eventEmitter, arguments)
-// }
-
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
-
-
-//
-// Bot.prototype.on = function(eventName, handler) {
-//   this.eventEmitter.addListener(eventName, handler)
-// }
 
 // test('respond with error when message isn't ', () => {
 //   var bot = new Bot('bender')
@@ -116,11 +69,6 @@ test('respond with default response when message not handled', () => {
 //   })
 // }
 
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
-
 test('should consume component', () => {
   var component = jest.fn()
   var bot = new Bot()
@@ -143,7 +91,6 @@ test('should consume component', () => {
 //   expect(bot.name).toEqual('bender')
 // });
 
-
 //
 // Bot.prototype.downloadFileFromUrl = function(url, callback) {
 //   // request(url).pipe(fs.createWriteStream(filename)).on('close', callback);
@@ -155,7 +102,6 @@ test('should consume component', () => {
 //   var bot = new Bot('bender')
 //   expect(bot.name).toEqual('bender')
 // });
-
 
 //
 // Bot.prototype.downloadFileFromData = function(data, callback) {
