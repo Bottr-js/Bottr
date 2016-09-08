@@ -1,5 +1,5 @@
 {
-  "name": "pozi",
+  "name": "bottr",
   "version": "0.2.18",
   "description": "The world's simplest bot framework",
   "main": "index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pozi-js/Pozi.git"
+    "url": "git+https://github.com/Bottr-js/Bottr.git"
   },
   "keywords": [
     "bot",
@@ -31,9 +31,9 @@
   "author": "jcampbell05",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Pozi-js/Pozi/issues"
+    "url": "https://github.com/Bottr-js/Bottr/issues"
   },
-  "homepage": "https://github.com/Pozi-js/Pozi#readme",
+  "homepage": "https://github.com/Bottr-js/Bottr#readme",
   "devDependencies": {
     "jest": "14.1.0",
     "mock-fs": "^3.11.0",
