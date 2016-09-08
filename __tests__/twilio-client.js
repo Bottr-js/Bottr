@@ -126,7 +126,6 @@ test('should create valid session for mesage via POST', () => {
   var session = client.createWebhookHandler()(post_req, res, next)
 
   expect(session.user).toEqual("1")
-  expect(session.context).toEqual({})
   expect(session.client).toBe(client)
 });
 
@@ -138,7 +137,6 @@ test('should create valid session for mesage via GET', () => {
   var session = client.createWebhookHandler()(get_req, res, next)
 
   expect(session.user).toEqual("1")
-  expect(session.context).toEqual({})
   expect(session.client).toBe(client)
 });
 

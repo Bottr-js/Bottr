@@ -87,7 +87,6 @@ test('should create valid session for message', () => {
   })
 
   expect(session.user).toEqual("1")
-  expect(session.context).toEqual({})
   expect(session.client).toBe(client)
 });
 

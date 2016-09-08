@@ -19,7 +19,7 @@ test('sets internal queue concurrency to 1', () => {
 });
 
 test('should simulate typing of message', () => {
-  var session = new Session(null, {}, client)
+  var session = new Session(null, client)
   session.send('text')
   expect(client.startTyping).toBeCalled()
 });
@@ -31,14 +31,14 @@ test('should send message via client after simulating typing', (done) => {
     done()
   })
 
-  var session = new Session(null, {}, client)
+  var session = new Session(null, client)
   session.send('text')
 
   client.startTyping = originalImp
 });
 
 test('should tell client to simulate typing when session is told to start simulating typing', () => {
-  var session = new Session(null, {}, client)
+  var session = new Session(null, client)
   session.startTyping()
   expect(client.startTyping).toBeCalled()
 });

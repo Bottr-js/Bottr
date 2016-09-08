@@ -57,7 +57,6 @@ test('creates valid session when handling webhook request ', () => {
   var session = client.createWebhookHandler(bot)(req, res)
 
   expect(session.user).toEqual(req.body.user)
-  expect(session.context).toEqual({})
   expect(session.client).toEqual(client)
 });
 
