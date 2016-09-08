@@ -94,13 +94,6 @@ test('should consume component', () => {
   expect(component).toBeCalledWith(bot)
 });
 
-//
-// Bot.prototype.downloadFileFromUrl = function(url, callback) {
-//   // request(url).pipe(fs.createWriteStream(filename)).on('close', callback);
-//   // Get data and pass to download file method
-//   // this.downloadFileFromData(data, callback)
-// }
-
 test('should download attachment from URI', (done) => {
   var bot = new Bot()
 
