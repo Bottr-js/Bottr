@@ -1,18 +1,18 @@
-// 
-// var BodyParser = require('body-parser')
-// var EventEmitter = require('./event-emitter')
-// var Express = require('express')
-// var Matchers = require('./matchers')
-// var ResponseMiddleware = require('./response-middleware')
-// var fs = require('fs')
-// var request = require('request')
-// var uuid = require('node-uuid')
-//
-// var staticFilesDirectory = 'public'
+jest.unmock('../lib/bot')
 
-// function Bot(name) {
-//   this.name = name || 'bot'
-//
+var Bot = require('../lib/bot')
+
+test('should default to name "bot"', () => {
+  var bot = new Bot()
+  expect(bot.name).toEqual('bot')
+});
+
+test('should use passed in name', () => {
+  var bot = new Bot('bender')
+  expect(bot.name).toEqual('bender')
+});
+
+
 //   this.router = Express.Router()
 //   this.eventEmitter = new EventEmitter()
 //
@@ -105,7 +105,3 @@
 //
 //   callback(staticFilesDirectory + "/" + filename)
 // }
-
-test('adds 1 + 2 to equal 3', () => {
-  expect(3).toBe(3);
-});
