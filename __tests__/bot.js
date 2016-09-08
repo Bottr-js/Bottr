@@ -1,4 +1,5 @@
 jest.unmock('../lib/bot')
+jest.unmock('../lib/event-emitter')
 
 var Bot = require('../lib/bot')
 
@@ -12,13 +13,30 @@ test('should use passed in name', () => {
   expect(bot.name).toEqual('bender')
 });
 
-//   this.router = Express.Router()
-//   this.eventEmitter = new EventEmitter()
-//
-//   this.eventEmitter.addListener('message_received', function(message, session, next) {
-//     session.startTyping()
-//     next()
-//   })
+test('on message recieved bot should start typing', () => {
+  var typing = jest.fn()
+  var bot = new Bot('bender')
+
+  bot.trigger('message_received', {}, {
+    startTyping: typing,
+    send: jest.fn()
+  })
+
+  expect(typing).toBeCalled()
+});
+
+test('respond with default response when message not handled', () => {
+  var send = jest.fn()
+  var bot = new Bot('bender')
+
+  bot.trigger('message_received', {}, {
+    startTyping: jest.fn(),
+    send: send
+  })
+
+  expect(send).toBeCalled()
+});
+
 //
 //   this.eventEmitter.onUnhandled('webhook', function(req, res) {
 //     res.error('No webhook handlers configured')
@@ -37,21 +55,10 @@ test('should use passed in name', () => {
 //   this.router.post('/webhook', this.handleWebhookRequest.bind(this))
 // }
 
-// test('when message is received bot should start typing', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
-
 // test('respond with error when no webhook listeners configured', () => {
 //   var bot = new Bot('bender')
 //   expect(bot.name).toEqual('bender')
 // });
-
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
-
 
 //
 // Bot.prototype.handleWebhookRequest = function(req, res) {
@@ -120,7 +127,6 @@ test('should consume component', () => {
   bot.use(component)
   expect(component).toBeCalledWith(bot)
 });
-
 
 //
 // Bot.prototype.download = function(attachment, callback) {
