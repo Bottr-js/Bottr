@@ -121,7 +121,7 @@ test('should download attachment from URI', () => {
 //   callback(staticFilesDirectory + "/" + filename)
 // }
 
-test('should download base64 encoded attachment', () => {
+test('should download base64 encoded attachment', (done) => {
   var bot = new Bot()
 
   var mock = require('mock-fs');
@@ -129,7 +129,16 @@ test('should download base64 encoded attachment', () => {
 
   bot.download({
     data: 'data:application/text;base64,SGVsbG8gV29ybGQ='
-  }, jest.fn())
+  }, function(url) {
 
-  mock.restore();
+    var fs = require('fs')
+
+    fs.readFile(url, 'utf8', function (err, data) {
+
+      expect(data).toEqual('Hello World')
+
+      mock.restore();
+      done();
+    });
+  })
 });
