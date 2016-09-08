@@ -26,11 +26,6 @@ test('on message recieved bot should start typing', () => {
   expect(typing).toBeCalled()
 });
 
-// test('respond with error when no webhook listeners configured', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
-
 test('respond with default response when message not handled', () => {
   var send = jest.fn()
   var bot = new Bot('bender')
@@ -43,10 +38,16 @@ test('respond with default response when message not handled', () => {
   expect(send).toBeCalled()
 });
 
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
+test('respond with error when no webhook listeners configured', () => {
+  var error = jest.fn()
+  var bot = new Bot('bender')
+
+  bot.trigger('webhook', {}, {
+    error: error
+  })
+
+  expect(error).toBeCalled()
+});
 
 //
 // Bot.prototype.hears = function(pattern, handler) {
