@@ -88,25 +88,22 @@ test('should consume component', () => {
   expect(component).toBeCalledWith(bot)
 });
 
-
-//
-// Bot.prototype.download = function(attachment, callback) {
-//
-//   if (attachment.url) {
-//     this.downloadFileFromUrl(attachment.url, callback)
-//   } else {
-//     this.downloadFileFromData(attachment.data, callback)
-//   }
-// }
-
-
-
 //
 // Bot.prototype.downloadFileFromUrl = function(url, callback) {
 //   // request(url).pipe(fs.createWriteStream(filename)).on('close', callback);
 //   // Get data and pass to download file method
 //   // this.downloadFileFromData(data, callback)
 // }
+
+test('should download attachment from URI', () => {
+  var bot = new Bot()
+
+  bot.download({
+    uri: 'http://www.google.co.uk'
+  })
+
+  expect(bot.name).toEqual('bender')
+});
 
 //
 // Bot.prototype.downloadFileFromData = function(data, callback) {
@@ -125,11 +122,11 @@ test('should consume component', () => {
 // }
 
 test('should download base64 encoded attachment', () => {
-  var bot = new Bot('bender')
-  expect(bot.name).toEqual('bender')
-});
+  var bot = new Bot()
 
-test('should download attachment from URI', () => {
-  var bot = new Bot('bender')
+  bot.download({
+    data: 'base64data'
+  })
+
   expect(bot.name).toEqual('bender')
 });
