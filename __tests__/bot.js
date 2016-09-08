@@ -4,6 +4,11 @@ jest.unmock('../lib/event')
 
 var Bot = require('../lib/bot')
 
+var session = {
+  startTyping: jest.fn(),
+  send: jest.fn()
+}
+
 test('should default to name "bot"', () => {
   var bot = new Bot()
   expect(bot.name).toEqual('bot')
@@ -15,32 +20,24 @@ test('should use passed in name', () => {
 });
 
 test('on message recieved bot should start typing', () => {
-  var typing = jest.fn()
-  var bot = new Bot('bender')
+  var bot = new Bot()
 
-  bot.trigger('message_received', {}, {
-    startTyping: typing,
-    send: jest.fn()
-  })
+  bot.trigger('message_received', {}, session)
 
-  expect(typing).toBeCalled()
+  expect(session.startTyping).toBeCalled()
 });
 
 test('respond with default response when message not handled', () => {
-  var send = jest.fn()
-  var bot = new Bot('bender')
+  var bot = new Bot()
 
-  bot.trigger('message_received', {}, {
-    startTyping: jest.fn(),
-    send: send
-  })
+  bot.trigger('message_received', {}, session)
 
-  expect(send).toBeCalled()
+  expect(session.send).toBeCalled()
 });
 
 test('respond with error when no webhook listeners configured', () => {
   var error = jest.fn()
-  var bot = new Bot('bender')
+  var bot = new Bot()
 
   bot.trigger('webhook', {}, {
     error: error
@@ -49,27 +46,40 @@ test('respond with error when no webhook listeners configured', () => {
   expect(error).toBeCalled()
 });
 
-//
-// Bot.prototype.hears = function(pattern, handler) {
-//
-//   var matcher = pattern
-//
-//   if (pattern instanceof Array) {
-//     matcher = new Matchers.ArrayMatcher(pattern)
-//   } else if (pattern instanceof String) {
-//     matcher = new Matchers.StringMatcher(pattern)
-//   } else if(pattern instanceof RegExp) {
-//     matcher = new Matchers.RegExpMatcher(pattern)
-//   }
-//
-//   this.on('message_received', function(message, session, next) {
-//     if (matcher(message)) {
-//       handler(message, session)
-//     } else {
-//       next()
-//     }
-//   })
-// }
+test('should trigger hears function if it matches', () => {
+  var handler = jest.fn()
+  var bot = new Bot()
+
+  bot.hears(function() { return true }, handler)
+  bot.trigger('message_received', {}, session)
+
+  expect(handler).toBeCalled()
+});
+
+test('should trigger move to next hears function if it does not mtch', () => {
+  var handler = jest.fn()
+  var bot = new Bot()
+
+  bot.hears(function() { return false }, null)
+  bot.hears(function() { return true }, handler)
+  bot.trigger('message_received', {}, session)
+
+  expect(handler).toBeCalled()
+});
+
+test('should trigger hears functions in order of declartion', () => {
+  var handler = jest.fn()
+  var handler2 = jest.fn()
+  var bot = new Bot()
+
+  bot.hears(function() { return true }, handler)
+  bot.hears(function() { return false }, handler2)
+
+  bot.trigger('message_received', {}, session)
+
+  expect(handler).toBeCalled()
+  expect(handler2).not.toBeCalled()
+});
 
 test('should consume component', () => {
   var component = jest.fn()
