@@ -88,6 +88,7 @@ test('should consume component', () => {
   expect(component).toBeCalledWith(bot)
 });
 
+
 //
 // Bot.prototype.download = function(attachment, callback) {
 //
@@ -98,10 +99,7 @@ test('should consume component', () => {
 //   }
 // }
 
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
+
 
 //
 // Bot.prototype.downloadFileFromUrl = function(url, callback) {
@@ -109,11 +107,6 @@ test('should consume component', () => {
 //   // Get data and pass to download file method
 //   // this.downloadFileFromData(data, callback)
 // }
-
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
 
 //
 // Bot.prototype.downloadFileFromData = function(data, callback) {
@@ -131,7 +124,12 @@ test('should consume component', () => {
 //   callback(staticFilesDirectory + "/" + filename)
 // }
 
-// test('respond with error when message isn't ', () => {
-//   var bot = new Bot('bender')
-//   expect(bot.name).toEqual('bender')
-// });
+test('should download base64 encoded attachment', () => {
+  var bot = new Bot('bender')
+  expect(bot.name).toEqual('bender')
+});
+
+test('should download attachment from URI', () => {
+  var bot = new Bot('bender')
+  expect(bot.name).toEqual('bender')
+});
