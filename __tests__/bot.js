@@ -1,6 +1,8 @@
 jest.unmock('../lib/bot')
 jest.unmock('../lib/event-emitter')
 jest.unmock('../lib/event')
+jest.unmock('fs')
+jest.unmock('mock-fs')
 
 var Bot = require('../lib/bot')
 
@@ -99,10 +101,8 @@ test('should download attachment from URI', () => {
   var bot = new Bot()
 
   bot.download({
-    uri: 'http://www.google.co.uk'
+    url: 'http://www.google.co.uk'
   })
-
-  expect(bot.name).toEqual('bender')
 });
 
 //
@@ -124,9 +124,12 @@ test('should download attachment from URI', () => {
 test('should download base64 encoded attachment', () => {
   var bot = new Bot()
 
-  bot.download({
-    data: 'base64data'
-  })
+  var mock = require('mock-fs');
+  mock()
 
-  expect(bot.name).toEqual('bender')
+  bot.download({
+    data: 'data:application/text;base64,SGVsbG8gV29ybGQ='
+  }, jest.fn())
+
+  mock.restore();
 });
