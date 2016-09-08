@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="BotKit" src="https://bottr-js.github.io/Bottr/Images/Logo.png" height="200" />
+<img alt="Bottr" src="https://bottr-js.github.io/Bottr/Images/Logo.png" height="200" />
 </p>
 
 [![Travis](https://img.shields.io/travis/Bottr-js/Bottr.svg?maxAge=2592000)](https://travis-ci.org/Bottr-js/Bottr)
