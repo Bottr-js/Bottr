@@ -44,7 +44,7 @@ test('should use enviromental variables for sid, token and phone number', () => 
   process.env.TWILIO_AUTH_TOKEN = 'token'
   process.env.TWILIO_PHONE_NUMBER = 'number'
 
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   expect(client.config.account_sid).toEqual('sid')
   expect(client.config.auth_token).toEqual('token')
@@ -63,7 +63,7 @@ test('should use configuration object for key, secrets and tokens', () => {
     phone_number: 'number'
   }
 
-  var client = new TwilioClient(bot, config)
+  var client = new TwilioClient(config)(bot)
 
   expect(client.config.account_sid).toEqual('sid')
   expect(client.config.auth_token).toEqual('token')
@@ -78,7 +78,7 @@ test('should listen for tweets mentioning the bot', () => {
     return handler
   }
 
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   expect(bot.on).toBeCalledWith('webhook', handler)
   TwilioClient.prototype.createWebhookHandler = originalImp
@@ -87,7 +87,7 @@ test('should listen for tweets mentioning the bot', () => {
 test('should handle webhook with user agent TwilioProxy', () => {
 
   var next = jest.fn()
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   client.createWebhookHandler()(req, res, next)
 
@@ -97,7 +97,7 @@ test('should handle webhook with user agent TwilioProxy', () => {
 test('should trigger message_received event on bot for mesage via POST', () => {
 
   var next = jest.fn()
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   var session = client.createWebhookHandler()(post_req, res, next)
 
@@ -109,7 +109,7 @@ test('should trigger message_received event on bot for mesage via POST', () => {
 test('should trigger message_received event on bot for mesage via GET', () => {
 
   var next = jest.fn()
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   var session = client.createWebhookHandler()(get_req, res, next)
 
@@ -121,7 +121,7 @@ test('should trigger message_received event on bot for mesage via GET', () => {
 test('should create valid session for mesage via POST', () => {
 
   var next = jest.fn()
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   var session = client.createWebhookHandler()(post_req, res, next)
 
@@ -132,7 +132,7 @@ test('should create valid session for mesage via POST', () => {
 test('should create valid session for mesage via GET', () => {
 
   var next = jest.fn()
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   var session = client.createWebhookHandler()(get_req, res, next)
 
@@ -143,7 +143,7 @@ test('should create valid session for mesage via GET', () => {
 test('should respond with empty json object for message', () => {
 
   var next = jest.fn()
-  var client = new TwilioClient(bot)
+  var client = new TwilioClient()(bot)
 
   client.createWebhookHandler()(req, res, next)
   expect(res.send).toBeCalledWith({})
@@ -151,9 +151,9 @@ test('should respond with empty json object for message', () => {
 
 test('should send text when sending message', () => {
 
-  var client = new TwilioClient(bot, {
+  var client = new TwilioClient({
     phone_number: '1'
-  })
+  })(bot)
 
   client.send({
     user: '1'

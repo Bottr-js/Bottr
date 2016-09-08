@@ -7,7 +7,7 @@ var bot = new Bot()
 
 test('should default to consumer key from enviromental variable', () => {
 
-  var client = new TwitterClient(bot)
+  var client = new TwitterClient()(bot)
   client.send(null, 'text')
 
   expect(client.twit.post).toBeCalledWith('statuses/update', { status: 'text' });
@@ -20,7 +20,7 @@ test('should use enviromental variables for key, secrets and tokens', () => {
   process.env.TWITTER_ACCESS_TOKEN = 'token'
   process.env.TWITTER_ACCESS_TOKEN_SECRET = 'secret'
 
-  var client = new TwitterClient(bot)
+  var client = new TwitterClient()(bot)
 
   expect(client.config.consumer_key).toEqual('key')
   expect(client.config.consumer_secret).toEqual('secret')
@@ -42,7 +42,7 @@ test('should use configuration object for key, secrets and tokens', () => {
     access_token_secret: 'secret'
   }
 
-  var client = new TwitterClient(bot, config)
+  var client = new TwitterClient(config)(bot)
 
   expect(client.config.consumer_key).toEqual('key')
   expect(client.config.consumer_secret).toEqual('secret')
@@ -52,7 +52,7 @@ test('should use configuration object for key, secrets and tokens', () => {
 
 test('should listen for tweets mentioning the bot', () => {
 
-  var client = new TwitterClient(bot)
+  var client = new TwitterClient()(bot)
   client.send(null, 'text')
 
   expect(client.twit.stream).toBeCalledWith('statuses/filter', { track: '@' + bot.name });
@@ -67,7 +67,7 @@ test('should handle for tweets mentioning the bot', () => {
     return handler
   }
 
-  var client = new TwitterClient(bot)
+  var client = new TwitterClient()(bot)
 
   expect(client.stream.on).toBeCalledWith('tweet', handler)
 
@@ -78,7 +78,7 @@ test('should create valid session for message', () => {
 
   var handler = jest.fn()
 
-  var client = new TwitterClient(bot)
+  var client = new TwitterClient()(bot)
   var session = client.createTweetHandler()({
     user: {
       id: "1"
@@ -94,7 +94,7 @@ test('should trigger received_message event on bot for message', () => {
 
   var handler = jest.fn()
 
-  var client = new TwitterClient(bot)
+  var client = new TwitterClient()(bot)
   var session = client.createTweetHandler()({
     user: {
       id: "1"
@@ -109,7 +109,7 @@ test('should trigger received_message event on bot for message', () => {
 
 test('posts status when sending message', () => {
 
-  var client = new TwitterClient(bot)
+  var client = new TwitterClient()(bot)
   client.send(null, 'text')
 
   expect(client.twit.post).toBeCalledWith('statuses/update', { status: 'text' });

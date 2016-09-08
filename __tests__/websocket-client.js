@@ -13,7 +13,7 @@ var session = {
 }
 
 test('should store reference to bot', () => {
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
   expect(client.bot).toEqual(bot)
 })
 
@@ -24,7 +24,7 @@ test('should handle web socket connection event', () => {
   WebsocketClient.prototype.createConnectionHandler = () => {
     return handler
   }
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
 
   expect(socketClient.on).toBeCalledWith('connection', handler)
   WebsocketClient.prototype.createConnectionHandler = originalImp
@@ -37,7 +37,7 @@ test('should handle web socket message event', () => {
     on: jest.fn()
   }
 
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
   client.createMessageHandler = () => {
     return handler
   }
@@ -48,7 +48,7 @@ test('should handle web socket message event', () => {
 })
 
 test('should create valid session when handling message', () => {
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
 
   var session = client.createMessageHandler()({
     user: "1"
@@ -59,7 +59,7 @@ test('should create valid session when handling message', () => {
 })
 
 test('should store socket with session when handling message', () => {
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
   var socket = {}
 
   var session = client.createMessageHandler(socket)({})
@@ -68,7 +68,7 @@ test('should store socket with session when handling message', () => {
 })
 
 test('should trigger message received event on bot when handling message', () => {
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
   var data = {}
 
   var session = client.createMessageHandler()(data)
@@ -78,7 +78,7 @@ test('should trigger message received event on bot when handling message', () =>
 
 test('should emit message event with text when sending message', () => {
 
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
   client.send(session, 'Hey')
 
   expect(session.socket.emit).toBeCalledWith('message', {
@@ -88,7 +88,7 @@ test('should emit message event with text when sending message', () => {
 
 test('should emit typing event with text when sending typing event', () => {
 
-  var client = new WebsocketClient(bot, socketClient)
+  var client = new WebsocketClient(socketClient)(bot)
   client.startTyping(session)
 
   expect(session.socket.emit).toBeCalledWith('typing', {})
