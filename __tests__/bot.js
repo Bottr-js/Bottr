@@ -97,29 +97,24 @@ test('should consume component', () => {
 //   // this.downloadFileFromData(data, callback)
 // }
 
-test('should download attachment from URI', () => {
+test('should download attachment from URI', (done) => {
   var bot = new Bot()
 
   bot.download({
     url: 'http://www.google.co.uk'
+  }, function(url) {
+
+    var fs = require('fs')
+
+    fs.readFile(url, 'utf8', function (err, data) {
+
+      expect(data).toEqual('Hello World')
+
+      mock.restore();
+      done();
+    });
   })
 });
-
-//
-// Bot.prototype.downloadFileFromData = function(data, callback) {
-//
-//   var filename = uuid.v4()
-//   var matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
-//   var buffer = new Buffer(matches[2], 'base64');
-//
-//   if (!fs.existsSync(staticFilesDirectory)){
-//     fs.mkdirSync(staticFilesDirectory);
-//   }
-//
-//   fs.writeFile(staticFilesDirectory + "/" + filename, buffer, 'base64')
-//
-//   callback(staticFilesDirectory + "/" + filename)
-// }
 
 test('should download base64 encoded attachment', (done) => {
   var bot = new Bot()
