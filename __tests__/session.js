@@ -1,6 +1,12 @@
 jest.unmock('../lib/session')
+jest.unmock('queue')
 
 var Session = require('../lib/session')
+
+var client = {
+  send: jest.fn(),
+  startTyping: jest.fn()
+}
 
 test('creates internal queue', () => {
   var session = new Session()
@@ -14,9 +20,6 @@ test('sets internal queue concurrency to 1', () => {
 
 //
 // Session.prototype.send = function(text) {
-//
-//   var session = this
-//
 //   this.queue.push(function(cb) {
 //     session.startTyping()
 //
@@ -35,10 +38,21 @@ test('sets internal queue concurrency to 1', () => {
 //   this.queue.start()
 // }
 //
-// Session.prototype.startTyping = function() {
-//   this.client.startTyping(this)
-// }
-//
-// Session.prototype.updateContext = function(newValues) {
-//   this.context = Object.assign(this, newValues)
-// }
+
+
+test('should simulate typing of message', () => {
+  var session = new Session()
+  expect(clietn.startTyping).toBeCalled()
+});
+
+test('should send message via client', () => {
+  var session = new Session(null, {}, client)
+  session.send('text')
+  expect(client.send).toBeCalled()
+});
+
+test('should tell client to simulate typing when session is told to start simulating typing', () => {
+  var session = new Session(null, {}, client)
+  session.startTyping()
+  expect(client.startTyping).toBeCalled()
+});
