@@ -33,5 +33,9 @@
   "bugs": {
     "url": "https://github.com/Pozi-js/Pozi/issues"
   },
-  "homepage": "https://github.com/Pozi-js/Pozi#readme"
+  "homepage": "https://github.com/Pozi-js/Pozi#readme",
+  "devDependencies": {
+    "mock-fs": "^3.11.0",
+    "nock": "^8.0.0"
+  }
 }
