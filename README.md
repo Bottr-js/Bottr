@@ -2,6 +2,8 @@
 <img alt="BotKit" src="http://pozi-js.github.io/Pozi/Images/Logo.png" height="200" />
 </p>
 
+[![Travis](https://img.shields.io/travis/Pozi-js/Pozi.svg?maxAge=2592000)](https://travis-ci.org/Pozi-js/Pozi)
+
 A framework for creating Bots.
 
 Head to our [Documentation](https://github.com/Pozi-js/Pozi/wiki) to read more about how to install and start using BotKit.
