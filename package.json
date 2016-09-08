@@ -37,5 +37,8 @@
   "devDependencies": {
     "mock-fs": "^3.11.0",
     "nock": "^8.0.0"
+  },
+  "jest":{
+    "unmockedModulePathPatterns": ["/node_modules/request"]
   }
 }

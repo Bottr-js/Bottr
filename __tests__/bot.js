@@ -1,8 +1,9 @@
+jest.unmock('request')
+jest.unmock('fs')
+jest.unmock('mock-fs')
 jest.unmock('../lib/bot')
 jest.unmock('../lib/event-emitter')
 jest.unmock('../lib/event')
-jest.unmock('fs')
-jest.unmock('mock-fs')
 
 var Bot = require('../lib/bot')
 
