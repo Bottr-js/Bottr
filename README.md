@@ -14,11 +14,9 @@ Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more
 | :boom: Focus on building the business logic for your bot, not infrastructure. |
 | :bulb: Build your bot in minutes not hours. |
 
-## Installation
+## Creating A New Project
 
-```
-npm install Bottr --save
-```
+Follow the instructions [here](https://github.com/Bottr-js/Bottr/wiki/Creating-a-new-project)
 
 ## Need Help?
 
