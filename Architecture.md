@@ -1,6 +1,6 @@
 ## Architecture
 
-There are three main principles driving the design of Pozi:
+There are three main principles driving the design of Bottr:
 
 - Stateless - Due to the nature of Bot building each message triggers a new request, therefore we need to build the bot in a stateless manner.
 - Flexible - The framework must have ability to easily plug into multiple services with minimal modification and work from the developer. In addition the bot should be composable and gain additional functionality via the use of components.
@@ -23,11 +23,11 @@ On top of this we have focused on integrating with B2C communication channels, s
 - Facebook Messenger
 - Web UI
 
-In the future we would like to add other clients such as Line or team based services such as Slack but these aren't a priority right now but we are open to people writing their own clients for use with Pozi.
+In the future we would like to add other clients such as Line or team based services such as Slack but these aren't a priority right now but we are open to people writing their own clients for use with Bottr.
 
 ## Events
 
-Pozi is an event driven framework which allows it to respond quickly to messages. Each event handler does one thing and does it well.
+Bottr is an event driven framework which allows it to respond quickly to messages. Each event handler does one thing and does it well.
 
 This means that essentially each bot is a collection of events and event handlers.
 
@@ -38,7 +38,7 @@ bot.hears(/\stats/, ...)
 bot.hears(/.+/, ...)
 ```
 
-In other frameworks such as Wordpress, you often have hooks and filters for events but in Pozi we have combined both. This allows handlers to inject additional information to an event, handle it or bail and defer to something else.
+In other frameworks such as Wordpress, you often have hooks and filters for events but in Bottr we have combined both. This allows handlers to inject additional information to an event, handle it or bail and defer to something else.
 
 ### Filters
 
@@ -106,10 +106,10 @@ bot.hears(function(message){
 }, ...)
 ```
 
-The definition above would handle all messages given to it since the matcher function returns true. Pozi
+The definition above would handle all messages given to it since the matcher function returns true. Bottr
 also implements some built in matchers for strings, regexs, arrays of string and arrays of regexs.
 
-Internally when any of these are passed into the first parameter Pozi subsitutes them for a function
+Internally when any of these are passed into the first parameter Bottr subsitutes them for a function
 which matches them against the contents of the message, so we can now do any of these:
 
 ```
