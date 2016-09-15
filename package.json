@@ -1,6 +1,6 @@
 {
   "name": "bottr",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "The world's simplest bot framework",
   "main": "index.js",
   "dependencies": {
