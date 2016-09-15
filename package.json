@@ -1,10 +1,11 @@
 {
   "name": "bottr",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "The world's simplest bot framework",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "node-uuid": "^1.4.7",
     "queue": "^4.0.0",
