@@ -139,10 +139,10 @@ import Bottr from 'bottr'
 var bot = new Bottr.Bot()
 
 bot.on('message_received', function(message, session) {
-  session.reply('Hello World')
+  session.send('Hello World')
 })
 
-bot.spawn()
+bot.listen()
             </code>
           </pre>
         </div>
