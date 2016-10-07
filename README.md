@@ -4,6 +4,11 @@
 
 [![Travis](https://img.shields.io/travis/Bottr-js/Bottr.svg?maxAge=2592000)](https://travis-ci.org/Bottr-js/Bottr)
 
+- Webcasts
+- Design
+- Website
+- Specification for communication
+
 A framework for creating Bots.
 
 Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more about how to install and start using Bottr.

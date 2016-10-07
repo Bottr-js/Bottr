@@ -29,7 +29,9 @@
     "sms",
     "twitter"
   ],
-  "author": "jcampbell05",
+  "author": {
+    "name": "jcampbell05"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Bottr-js/Bottr/issues"
@@ -44,5 +46,11 @@
     "unmockedModulePathPatterns": [
       "/node_modules/request"
     ]
-  }
+  },
+  "readme": "<p align=\"center\">\n<img alt=\"Bottr\" src=\"https://bottr-js.github.io/Bottr/Images/Logo.png\" height=\"200\" />\n</p>\n\n[![Travis](https://img.shields.io/travis/Bottr-js/Bottr.svg?maxAge=2592000)](https://travis-ci.org/Bottr-js/Bottr)\n\nA framework for creating Bots.\n\nHead to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more about how to install and start using Bottr.\n\n| Botkit        |\n| ------------- |\n| :rocket: Prebuilt integrations with Facebook Messenger, SMS and more. |\n| :boom: Focus on building the business logic for your bot, not infrastructure. |\n| :bulb: Build your bot in minutes not hours. |\n\n## Creating A New Project\n\nFollow the instructions [here](https://github.com/Bottr-js/Bottr/wiki/Creating-a-new-project)\n\n## Need Help?\n\nGet in contact with the developer on Twitter: [@jcampbell_05](https://twitter.com/jcampbell_05)\n\n## License\n\nThis project is licensed under the terms of the MIT license. See the LICENSE file.\n",
+  "readmeFilename": "README.md",
+  "gitHead": "cf919778840e4ca32f6f53a951bcd6f8a9c01fb3",
+  "_id": "bottr@0.1.6",
+  "_shasum": "0b3fc3ccbe1311f04665c2569d336ba11b74d0cd",
+  "_from": "bottr@>=0.1.0 <0.2.0"
 }

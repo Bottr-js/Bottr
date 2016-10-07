@@ -1,5 +1,7 @@
 ## Architecture
 
+# TODO: Update for topics
+
 There are three main principles driving the design of Bottr:
 
 - Stateless - Due to the nature of Bot building each message triggers a new request, therefore we need to build the bot in a stateless manner.
