@@ -8,7 +8,7 @@ There are three main principles driving the design of Bottr:
 - Flexible - The framework must have ability to easily plug into multiple services with minimal modification and work from the developer. In addition the bot should be composable and gain additional functionality via the use of components.
 - Minimal - Implementing a bot using this framework should be like writing any other web application. We build on the concept of convention of configuration to meet this goal.
 
-This contrasts to Hubot which is genrally hardcoded to one team configuration and
+This contrasts to Hubot which is generally hardcoded to one team configuration and
 Botkit which is minimal but mainly configuration based.
 
 ## Clients
@@ -79,7 +79,7 @@ bot.on('message_received', function(message, session, next) {
 
 ### Hooks
 
-Hooking is where a handler breaks the event chain to handle an event, clients use this when responding to a `webhook` event so it can be handled and to stop it propogating to unrelated clients.
+Hooking is where a handler breaks the event chain to handle an event, clients use this when responding to a `webhook` event so it can be handled and to stop it propagating to unrelated clients.
 
 Hooks aren't guaranteed to call the `next` callback depending on if they want to handle it or not.
 
@@ -111,7 +111,7 @@ bot.hears(function(message){
 The definition above would handle all messages given to it since the matcher function returns true. Bottr
 also implements some built in matchers for strings, regexs, arrays of string and arrays of regexs.
 
-Internally when any of these are passed into the first parameter Bottr subsitutes them for a function
+Internally when any of these are passed into the first parameter Bottr substitutes them for a function
 which matches them against the contents of the message, so we can now do any of these:
 
 ```
