@@ -11,7 +11,7 @@ test('listen configures server with bot', () => {
   var server = bot.listen()
 
   expect(server.use).toBeCalledWith(bot)
-});
+})
 
 test('listen defaults to port 3000', () => {
 
@@ -19,7 +19,7 @@ test('listen defaults to port 3000', () => {
   var server = bot.listen()
 
   expect(server.listen).toBeCalledWith(3000)
-});
+})
 
 test('listen uses port from environment', () => {
 
@@ -29,7 +29,7 @@ test('listen uses port from environment', () => {
   var server = bot.listen()
 
   expect(server.listen).toBeCalledWith('2000')
-});
+})
 
 test('listen uses port passed in as argument', () => {
 
@@ -37,4 +37,4 @@ test('listen uses port passed in as argument', () => {
   var server = bot.listen(1000)
 
   expect(server.listen).toBeCalledWith(1000)
-});
+})

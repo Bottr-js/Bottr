@@ -4,8 +4,11 @@
   "description": "The world's simplest bot framework",
   "main": "index.js",
   "dependencies": {
+    "babel-eslint": "^7.0.0",
+    "babel-jest": "^16.0.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
+    "eslint": "^3.7.1",
     "express": "^4.14.0",
     "node-uuid": "^1.4.7",
     "queue": "^4.0.0",
@@ -15,6 +18,7 @@
     "twit": "^2.2.4"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "jest"
   },
   "repository": {
@@ -41,6 +45,30 @@
     "jest": "14.1.0",
     "mock-fs": "^3.11.0",
     "nock": "^8.0.0"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "no-console": 0,
+      "no-unused-vars": 0
+    }
   },
   "jest": {
     "unmockedModulePathPatterns": [
