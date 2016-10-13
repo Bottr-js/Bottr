@@ -11,7 +11,7 @@ test('should call handler', () => {
   expect(handler).toBeCalled()
 })
 
-test('should call next handler when previous handler doesnt handle event', () => {
+test('should call next handler when previous handler doesn\'t handle event', () => {
   var handler = function(next) {
     next()
   }
