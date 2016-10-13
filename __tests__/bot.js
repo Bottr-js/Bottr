@@ -5,27 +5,31 @@ jest.unmock('nock')
 jest.unmock('../lib/bot')
 jest.unmock('../lib/event-emitter')
 jest.unmock('../lib/event')
+jest.unmock('../lib/topic')
 
 var mock = require('mock-fs')
 var nock = require('nock')
 var Bot = require('../lib/bot')
 
 var session = {
+  getUserContext: jest.fn(() => new Object({})),
   startTyping: jest.fn(),
   send: jest.fn()
 }
 
 test('should default to name "bot"', () => {
   var bot = new Bot()
+
   expect(bot.name).toEqual('bot')
 })
 
 test('should use passed in name', () => {
   var bot = new Bot('bender')
+
   expect(bot.name).toEqual('bender')
 })
 
-test('on message recieved bot should start typing', () => {
+test('should start typing on message_received', () => {
   var bot = new Bot()
 
   bot.trigger('message_received', {}, session)
@@ -33,7 +37,7 @@ test('on message recieved bot should start typing', () => {
   expect(session.startTyping).toBeCalled()
 })
 
-test('respond with default response when message not handled', () => {
+test('should respond with default response when message not handled', () => {
   var bot = new Bot()
 
   bot.trigger('message_received', {}, session)
@@ -41,7 +45,7 @@ test('respond with default response when message not handled', () => {
   expect(session.send).toBeCalled()
 })
 
-test('respond with error when no webhook listeners configured', () => {
+test('should respond with error when no webhook listeners configured', () => {
   var error = jest.fn()
   var bot = new Bot()
 
@@ -73,7 +77,7 @@ test('should trigger move to next hears function if it does not match', () => {
   expect(handler).toBeCalled()
 })
 
-test('should trigger hears functions in order of declartion', () => {
+test('should trigger hears functions in order of declaration', () => {
   var handler = jest.fn()
   var handler2 = jest.fn()
   var bot = new Bot()
@@ -87,7 +91,7 @@ test('should trigger hears functions in order of declartion', () => {
   expect(handler2).not.toBeCalled()
 })
 
-test('should consume component', () => {
+test('should consume a component', () => {
   var component = jest.fn()
   var bot = new Bot()
   bot.use(component)
