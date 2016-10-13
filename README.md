@@ -2,7 +2,7 @@
 <img alt="Bottr" src="https://bottr-js.github.io/Bottr/Images/Logo.png" height="200" />
 </p>
 
-[![Travis](https://img.shields.io/travis/Bottr-js/Bottr.svg?maxAge=2592000)](https://travis-ci.org/Bottr-js/Bottr)
+[![Travis](https://img.shields.io/travis/Bottr-js/Bottr.svg?maxAge=2592000)](https://travis-ci.org/Bottr-js/Bottr) [![Coverage Status](https://coveralls.io/repos/github/Bottr-js/Bottr/badge.svg?branch=master)](https://coveralls.io/github/Bottr-js/Bottr?branch=master)
 
 - Webcasts
 - Design

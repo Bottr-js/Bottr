@@ -5,23 +5,23 @@ var Bot = require('../lib/bot')
 
 require('../lib/listen')
 
-test('listen configures server with bot', () => {
+test('should start listening to the server', () => {
 
   var bot = new Bot()
   var server = bot.listen()
 
   expect(server.use).toBeCalledWith(bot)
-});
+})
 
-test('listen defaults to port 3000', () => {
+test('should listen to the default port 3000', () => {
 
   var bot = new Bot()
   var server = bot.listen()
 
   expect(server.listen).toBeCalledWith(3000)
-});
+})
 
-test('listen uses port from environment', () => {
+test('should listen to the port from environment', () => {
 
   process.env.PORT = 2000
 
@@ -29,12 +29,12 @@ test('listen uses port from environment', () => {
   var server = bot.listen()
 
   expect(server.listen).toBeCalledWith('2000')
-});
+})
 
-test('listen uses port passed in as argument', () => {
+test('should listen to the port passed in as an argument', () => {
 
   var bot = new Bot()
   var server = bot.listen(1000)
 
   expect(server.listen).toBeCalledWith(1000)
-});
+})

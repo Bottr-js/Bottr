@@ -51,10 +51,10 @@ test('should create valid session when handling message', () => {
   var client = new WebsocketClient(socketClient)(bot)
 
   var session = client.createMessageHandler()({
-    user: "1"
+    user: '1'
   })
 
-  expect(session.user).toEqual("1")
+  expect(session.user).toEqual('1')
   expect(session.client).toBe(client)
 })
 

@@ -23,7 +23,7 @@ var post_req = {
     'user-agent': 'TwilioProxy'
   },
   body: {
-    From: "1",
+    From: '1',
     Body: 'text'
   }
 }
@@ -33,12 +33,12 @@ var get_req = {
     'user-agent': 'TwilioProxy'
   },
   query: {
-    From: "1",
+    From: '1',
     Body: 'text'
   }
 }
 
-test('should use enviromental variables for sid, token and phone number', () => {
+test('should use environmental variables for sid, token and phone number', () => {
 
   process.env.TWILIO_ACCOUNT_SID = 'sid'
   process.env.TWILIO_AUTH_TOKEN = 'token'
@@ -53,7 +53,7 @@ test('should use enviromental variables for sid, token and phone number', () => 
   process.env.TWILIO_ACCOUNT_SID = undefined
   process.env.TWILIO_AUTH_TOKEN = undefined
   process.env.TWILIO_PHONE_NUMBER = undefined
-});
+})
 
 test('should use configuration object for key, secrets and tokens', () => {
 
@@ -68,7 +68,7 @@ test('should use configuration object for key, secrets and tokens', () => {
   expect(client.config.account_sid).toEqual('sid')
   expect(client.config.auth_token).toEqual('token')
   expect(client.config.phone_number).toEqual('number')
-});
+})
 
 test('should listen for tweets mentioning the bot', () => {
 
@@ -82,7 +82,7 @@ test('should listen for tweets mentioning the bot', () => {
 
   expect(bot.on).toBeCalledWith('webhook', handler)
   TwilioClient.prototype.createWebhookHandler = originalImp
-});
+})
 
 test('should handle webhook with user agent TwilioProxy', () => {
 
@@ -92,9 +92,9 @@ test('should handle webhook with user agent TwilioProxy', () => {
   client.createWebhookHandler()(req, res, next)
 
   expect(next).not.toBeCalled()
-});
+})
 
-test('should trigger message_received event on bot for mesage via POST', () => {
+test('should trigger message_received event on bot for message via POST', () => {
 
   var next = jest.fn()
   var client = new TwilioClient()(bot)
@@ -104,9 +104,9 @@ test('should trigger message_received event on bot for mesage via POST', () => {
   expect(bot.trigger).toBeCalledWith('message_received', {
     text: 'text'
   }, session)
-});
+})
 
-test('should trigger message_received event on bot for mesage via GET', () => {
+test('should trigger message_received event on bot for message via GET', () => {
 
   var next = jest.fn()
   var client = new TwilioClient()(bot)
@@ -116,29 +116,29 @@ test('should trigger message_received event on bot for mesage via GET', () => {
   expect(bot.trigger).toBeCalledWith('message_received', {
     text: 'text'
   }, session)
-});
+})
 
-test('should create valid session for mesage via POST', () => {
+test('should create valid session for message via POST', () => {
 
   var next = jest.fn()
   var client = new TwilioClient()(bot)
 
   var session = client.createWebhookHandler()(post_req, res, next)
 
-  expect(session.user).toEqual("1")
+  expect(session.user).toEqual('1')
   expect(session.client).toBe(client)
-});
+})
 
-test('should create valid session for mesage via GET', () => {
+test('should create valid session for message via GET', () => {
 
   var next = jest.fn()
   var client = new TwilioClient()(bot)
 
   var session = client.createWebhookHandler()(get_req, res, next)
 
-  expect(session.user).toEqual("1")
+  expect(session.user).toEqual('1')
   expect(session.client).toBe(client)
-});
+})
 
 test('should respond with empty json object for message', () => {
 
@@ -147,7 +147,7 @@ test('should respond with empty json object for message', () => {
 
   client.createWebhookHandler()(req, res, next)
   expect(res.send).toBeCalledWith({})
-});
+})
 
 test('should send text when sending message', () => {
 
@@ -160,8 +160,8 @@ test('should send text when sending message', () => {
   }, 'text')
 
   expect(client.twilio.sendMessage).toBeCalledWith({
-      to: '1',
-      from: '1',
-      body: 'text'
+    to: '1',
+    from: '1',
+    body: 'text'
   })
-});
+})
