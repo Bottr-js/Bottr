@@ -8,12 +8,12 @@ var client = {
   startTyping: jest.fn()
 }
 
-test('creates internal queue', () => {
+test('should create internal queue', () => {
   var session = new Session()
   expect(session.queue).not.toBeNull()
 })
 
-test('sets internal queue concurrency to 1', () => {
+test('should set internal queue concurrency to 1', () => {
   var session = new Session()
   expect(session.queue.concurrency).toEqual(1)
 })

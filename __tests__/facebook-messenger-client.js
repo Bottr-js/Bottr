@@ -7,7 +7,7 @@ var FacebookMessengerClient = require('../lib/facebook-messenger-client')
 
 var bot = new Bot()
 
-test('should use enviromental variables for access and verify token', () => {
+test('should use environmental variables for access and verify token', () => {
 
   process.env.MESSENGER_ACCESS_TOKEN = 'access'
   process.env.MESSENGER_VERIFY_TOKEN = 'verify'

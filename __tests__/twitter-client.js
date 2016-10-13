@@ -5,7 +5,7 @@ var TwitterClient = require('../lib/twitter-client')
 
 var bot = new Bot()
 
-test('should default to consumer key from enviromental variable', () => {
+test('should default to consumer key from environmental variable', () => {
 
   var client = new TwitterClient()(bot)
   client.send(null, 'text')
@@ -13,7 +13,7 @@ test('should default to consumer key from enviromental variable', () => {
   expect(client.twit.post).toBeCalledWith('statuses/update', { status: 'text' })
 })
 
-test('should use enviromental variables for key, secrets and tokens', () => {
+test('should use environmental variables for key, secrets and tokens', () => {
 
   process.env.TWITTER_CONSUMER_KEY = 'key'
   process.env.TWITTER_CONSUMER_SECRET = 'secret'
@@ -107,7 +107,7 @@ test('should trigger received_message event on bot for message', () => {
   }, session)
 })
 
-test('posts status when sending message', () => {
+test('should post a status when sending message', () => {
 
   var client = new TwitterClient()(bot)
   client.send(null, 'text')
