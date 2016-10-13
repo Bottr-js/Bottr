@@ -8,8 +8,8 @@ test('should call handler', () => {
 
   event.next(jest.fn())
 
-  expect(handler).toBeCalled();
-});
+  expect(handler).toBeCalled()
+})
 
 test('should call next handler when previous handler doesnt handle event', () => {
   var handler = function(next) {
@@ -20,8 +20,8 @@ test('should call next handler when previous handler doesnt handle event', () =>
 
   event.next(jest.fn())
 
-  expect(handler2).toBeCalled();
-});
+  expect(handler2).toBeCalled()
+})
 
 test('should call unhandled callback if no handler handles event', () => {
   var callback = jest.fn()
@@ -29,5 +29,5 @@ test('should call unhandled callback if no handler handles event', () => {
 
   event.next(callback)
 
-  expect(callback).toBeCalled();
-});
+  expect(callback).toBeCalled()
+})

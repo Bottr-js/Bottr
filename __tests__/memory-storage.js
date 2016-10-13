@@ -6,9 +6,9 @@ var MemoryStorage = require('../lib/memory-storage')
 var bot = new Bot()
 
 var session = {
-  user: "1",
-  conversation: "1",
-  account: "1"
+  user: '1',
+  conversation: '1',
+  account: '1'
 }
 var next = jest.fn()
 
@@ -25,95 +25,95 @@ it('should allow message_received events to carry along event chain', () => {
 it('should fetch user context', () => {
 
   storage.memory = {
-      users: {
-        "1": {
-          "Hello": "World"
-        }
+    users: {
+      '1': {
+        Hello: 'World'
       }
+    }
   }
 
   var context =  session.getUserContext()
 
   expect(context).toEqual({
-    "Hello": "World"
+    Hello: 'World'
   })
 })
 
 it('should fetch conversation context', () => {
 
   storage.memory = {
-      conversations: {
-        "1": {
-          "Hello": "World"
-        }
+    conversations: {
+      '1': {
+        'Hello': 'World'
       }
+    }
   }
 
   var context =  session.getConversationContext()
 
   expect(context).toEqual({
-    "Hello": "World"
+    Hello: 'World'
   })
 })
 
 it('should fetch account context', () => {
 
   storage.memory = {
-      accounts: {
-        "1": {
-          "Hello": "World"
-        }
+    accounts: {
+      '1': {
+        Hello: 'World'
       }
+    }
   }
 
   var context = session.getAccountContext()
 
   expect(context).toEqual({
-    "Hello": "World"
+    Hello: 'World'
   })
 })
 
 it('should store user context', () => {
 
   storage.memory = {
-      users: {}
+    users: {}
   }
 
   session.updateUserContext({
-    "Hello": "World"
+    Hello: 'World'
   })
 
-  expect(storage.memory.users["1"]).toEqual({
-    "Hello": "World"
+  expect(storage.memory.users['1']).toEqual({
+    Hello: 'World'
   })
 })
 
 it('should store conversation context', () => {
 
   storage.memory = {
-      conversations: {}
+    conversations: {}
   }
 
   session.updateConversationContext({
-    "Hello": "World"
+    Hello: 'World'
   })
 
-  expect(storage.memory.conversations["1"]).toEqual({
-    "Hello": "World"
+  expect(storage.memory.conversations['1']).toEqual({
+    Hello: 'World'
   })
 })
 
 it('should store account context', () => {
 
   storage.memory = {
-      accounts: {}
+    accounts: {}
   }
 
   session.updateAccountContext({
-    "Hello": "World"
+    Hello: 'World'
   })
 
-  expect(storage.memory.accounts["1"]).toEqual({
-    "Hello": "World"
+  expect(storage.memory.accounts['1']).toEqual({
+    Hello: 'World'
   })
 })

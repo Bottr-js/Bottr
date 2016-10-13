@@ -1,3 +1,5 @@
+/* global spyOn */
+
 jest.unmock('../lib/facebook-messenger-client')
 
 var Bot = require('../lib/bot')
@@ -17,7 +19,7 @@ test('should use enviromental variables for access and verify token', () => {
 
   process.env.MESSENGER_ACCESS_TOKEN = undefined
   process.env.MESSENGER_VERIFY_TOKEN = undefined
-});
+})
 
 test('should use configuration object for access and verify token', () => {
 
@@ -28,11 +30,9 @@ test('should use configuration object for access and verify token', () => {
 
   expect(client.config.access_token).toEqual('access')
   expect(client.config.verify_token).toEqual('verify')
-});
+})
 
 test('should register for webhook event', () => {
-
-  var handler = jest.fn()
 
   var handler = jest.fn()
 
@@ -45,7 +45,7 @@ test('should register for webhook event', () => {
 
   expect(bot.on).toBeCalledWith('webhook', handler)
   FacebookMessengerClient.prototype.createWebhookHandler = originalImp
-});
+})
 
 test('should not handle webhook without x-hub-signature and facebook platform user agent', () => {
 
@@ -60,7 +60,7 @@ test('should not handle webhook without x-hub-signature and facebook platform us
   client.createWebhookHandler()(req, {}, next)
 
   expect(next).toBeCalled()
-});
+})
 
 test('should respond with challenge for successful subsription', () => {
 
@@ -87,7 +87,7 @@ test('should respond with challenge for successful subsription', () => {
   client.createWebhookHandler()(req, res, next)
 
   expect(res.send).toBeCalledWith('challenge')
-});
+})
 
 test('should respond with 403 for failed subscription', () => {
 
@@ -109,7 +109,7 @@ test('should respond with 403 for failed subscription', () => {
   client.createWebhookHandler()(req, res, next)
 
   expect(res.sendStatus).toBeCalledWith(403)
-});
+})
 
 test('should respond with success for message', () => {
 
@@ -125,7 +125,7 @@ test('should respond with success for message', () => {
         {
           messaging: [{
             sender: {
-              id: "1"
+              id: '1'
             },
             message: 'hey'
           }]
@@ -142,7 +142,7 @@ test('should respond with success for message', () => {
   client.createWebhookHandler()(req, res, next)
 
   expect(res.success).toBeCalled()
-});
+})
 
 test('should trigger received_message event on bot for message', (done) => {
 
@@ -158,7 +158,7 @@ test('should trigger received_message event on bot for message', (done) => {
         {
           messaging: [{
             sender: {
-              id: "1"
+              id: '1'
             },
             message: 'hey'
           }]
@@ -179,7 +179,7 @@ test('should trigger received_message event on bot for message', (done) => {
   })
 
   client.createWebhookHandler()(req, res, next)
-});
+})
 
 test('should create valid session for message', (done) => {
 
@@ -195,7 +195,7 @@ test('should create valid session for message', (done) => {
         {
           messaging: [{
             sender: {
-              id: "1"
+              id: '1'
             },
             message: 'hey'
           }]
@@ -211,13 +211,13 @@ test('should create valid session for message', (done) => {
   var client = new FacebookMessengerClient()(bot)
 
   bot.trigger = jest.fn(function(event, message, session) {
-    expect(session.user).toEqual("1")
+    expect(session.user).toEqual('1')
     expect(session.client).toBe(client)
     done()
   })
 
   client.createWebhookHandler()(req, res, next)
-});
+})
 
 test('should respond with 400 for non-page event', () => {
 
@@ -241,7 +241,7 @@ test('should respond with 400 for non-page event', () => {
   client.createWebhookHandler()(req, res, next)
 
   expect(res.sendStatus).toBeCalledWith(400)
-});
+})
 
 test('should respond with 400 for unknown event', () => {
 
@@ -271,7 +271,7 @@ test('should respond with 400 for unknown event', () => {
   client.createWebhookHandler()(req, res, next)
 
   expect(res.sendStatus).toBeCalledWith(400)
-});
+})
 
 test('should log error for unknown event', () => {
 
@@ -302,12 +302,12 @@ test('should log error for unknown event', () => {
   client.createWebhookHandler()(req, res, next)
 
   expect(spy).toBeCalled()
-});
+})
 
 test('creates valid request when sending message', () => {
 
   var session = {
-    user: "1"
+    user: '1'
   }
 
   var client = new FacebookMessengerClient()(bot)
@@ -320,15 +320,15 @@ test('creates valid request when sending message', () => {
       id: session.user
     },
     message: {
-      text: "text"
+      text: 'text'
     }
   })
-});
+})
 
 test('creates valid request when triggering typing indicator', () => {
 
   var session = {
-    user: "1"
+    user: '1'
   }
 
   var client = new FacebookMessengerClient()(bot)
@@ -338,8 +338,8 @@ test('creates valid request when triggering typing indicator', () => {
   expect(request.method).toEqual('POST')
   expect(request.json).toEqual({
     recipient: {
-      id: "1"
+      id: '1'
     },
-    sender_action: "typing_on"
+    sender_action: 'typing_on'
   })
-});
+})

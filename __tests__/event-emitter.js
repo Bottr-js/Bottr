@@ -1,3 +1,5 @@
+/* global spyOn */
+
 jest.unmock('../lib/event-emitter')
 
 var EventEmitter = require('../lib/event-emitter')
@@ -13,7 +15,7 @@ test('should register listener', () => {
       handler: handler
     }
   ])
-});
+})
 
 test('should register listener', () => {
   var emitter = new EventEmitter()
@@ -26,7 +28,7 @@ test('should register listener', () => {
       handler: handler
     }
   ])
-});
+})
 
 test('should register fallback', () => {
   var emitter = new EventEmitter()
@@ -34,7 +36,7 @@ test('should register fallback', () => {
 
   emitter.fallback('event', handler)
   expect(emitter.fallbacks['event']).toEqual(handler)
-});
+})
 
 test('should emit event with correct handlers', () => {
   var emitter = new EventEmitter()
@@ -46,7 +48,7 @@ test('should emit event with correct handlers', () => {
   var event = emitter.emit('event')
 
   expect(event.remainingListeners).toEqual([handler])
-});
+})
 
 test('should emit event with correct arguments', () => {
   var emitter = new EventEmitter()
@@ -58,7 +60,7 @@ test('should emit event with correct arguments', () => {
   expect(event.args).toEqual([
     1
   ])
-});
+})
 
 test('should use fallback for event with no handlers', () => {
   var emitter = new EventEmitter()
@@ -68,7 +70,7 @@ test('should use fallback for event with no handlers', () => {
   var event = emitter.emit('event')
 
   expect(handler).toBeCalled()
-});
+})
 
 test('should log error for event with no handlers or fallback', () => {
 
@@ -81,4 +83,4 @@ test('should log error for event with no handlers or fallback', () => {
   var event = emitter.emit('event')
 
   expect(spy).toBeCalled()
-});
+})

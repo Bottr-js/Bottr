@@ -11,6 +11,6 @@ test('should serve webclient', () => {
 
   serveWebclient(req, res)
 
-  var path = (__dirname + '/webclient.html').replace("__tests__", "lib")
+  var path = (__dirname + '/webclient.html').replace('__tests__', 'lib')
   expect(res.sendFile).toBeCalledWith(path)
-});
+})
