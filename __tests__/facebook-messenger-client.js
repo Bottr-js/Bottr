@@ -170,7 +170,7 @@ test('should trigger received_message event on bot for message', (done) => {
   }
 
   var res = {
-    success: jest.fn()
+    status: jest.fn()
   }
 
   var client = new FacebookMessengerClient()(bot)
@@ -207,7 +207,7 @@ test('should create valid session for message', (done) => {
   }
 
   var res = {
-    success: jest.fn()
+    status: jest.fn()
   }
 
   var client = new FacebookMessengerClient()(bot)
