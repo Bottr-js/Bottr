@@ -135,13 +135,15 @@ test('should respond with success for message', () => {
   }
 
   var res = {
-    success: jest.fn()
+    status: jest.fn(),
+    end: jest.fn()
   }
 
   var client = new FacebookMessengerClient()(bot)
   client.createWebhookHandler()(req, res, next)
 
-  expect(res.success).toBeCalled()
+  expect(res.status).toBeCalledWith(200)
+  expect(res.end).toBeCalled()
 })
 
 test('should trigger received_message event on bot for message', (done) => {
@@ -264,13 +266,15 @@ test('should respond with 400 for unknown event', () => {
   }
 
   var res = {
-    sendStatus: jest.fn()
+    status: jest.fn(),
+    end: jest.fn()
   }
 
   var client = new FacebookMessengerClient()(bot)
   client.createWebhookHandler()(req, res, next)
 
-  expect(res.sendStatus).toBeCalledWith(400)
+  expect(res.status).toBeCalledWith(400)
+  expect(res.end).toBeCalled()
 })
 
 test('should log error for unknown event', () => {
