@@ -207,7 +207,8 @@ test('should create valid session for message', (done) => {
   }
 
   var res = {
-    status: jest.fn()
+    status: jest.fn(),
+    end: jest.fn()
   }
 
   var client = new FacebookMessengerClient()(bot)
@@ -298,7 +299,8 @@ test('should log error for unknown event', () => {
   }
 
   var res = {
-    sendStatus: jest.fn()
+    status: jest.fn(),
+    end: jest.fn()
   }
 
   var spy = spyOn(console, 'error')
