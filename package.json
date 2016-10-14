@@ -4,8 +4,6 @@
   "description": "The world's simplest bot framework",
   "main": "index.js",
   "dependencies": {
-    "babel-eslint": "^7.0.0",
-    "babel-jest": "^16.0.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "eslint": "^3.7.1",
@@ -42,6 +40,8 @@
   },
   "homepage": "https://github.com/Bottr-js/Bottr#readme",
   "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "babel-jest": "^16.0.0",
     "jest": "14.1.0",
     "mock-fs": "^3.11.0",
     "nock": "^8.0.0"
