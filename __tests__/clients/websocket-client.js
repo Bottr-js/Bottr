@@ -1,4 +1,5 @@
 jest.unmock('../../lib/clients/websocket-client');
+jest.unmock('../../lib/clients/base-client');
 
 const Bot = require('../../lib/bot');
 const io = require('socket.io');

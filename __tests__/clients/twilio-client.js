@@ -1,4 +1,5 @@
 jest.unmock('../../lib/clients/twilio-client');
+jest.unmock('../../lib/clients/base-client');
 
 const Bot = require('../../lib/bot');
 const TwilioClient = require('../../lib/clients/twilio-client');
