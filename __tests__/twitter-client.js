@@ -5,7 +5,7 @@ var TwitterClient = require('../lib/twitter-client')
 
 var bot = new Bot()
 
-test('should default to consumer key from environmental variable', () => {
+it('should default to consumer key from environmental variable', () => {
 
   var client = new TwitterClient()(bot)
   client.send(null, 'text')
@@ -13,7 +13,7 @@ test('should default to consumer key from environmental variable', () => {
   expect(client.twit.post).toBeCalledWith('statuses/update', { status: 'text' })
 })
 
-test('should use environmental variables for key, secrets and tokens', () => {
+it('should use environmental variables for key, secrets and tokens', () => {
 
   process.env.TWITTER_CONSUMER_KEY = 'key'
   process.env.TWITTER_CONSUMER_SECRET = 'secret'
@@ -33,7 +33,7 @@ test('should use environmental variables for key, secrets and tokens', () => {
   process.env.TWITTER_ACCESS_TOKEN_SECRET = undefined
 })
 
-test('should use configuration object for key, secrets and tokens', () => {
+it('should use configuration object for key, secrets and tokens', () => {
 
   var config = {
     consumer_key: 'key',
@@ -50,7 +50,7 @@ test('should use configuration object for key, secrets and tokens', () => {
   expect(client.config.access_token_secret).toEqual('secret')
 })
 
-test('should listen for tweets mentioning the bot', () => {
+it('should listen for tweets mentioning the bot', () => {
 
   var client = new TwitterClient()(bot)
   client.send(null, 'text')
@@ -58,7 +58,7 @@ test('should listen for tweets mentioning the bot', () => {
   expect(client.twit.stream).toBeCalledWith('statuses/filter', { track: '@' + bot.name })
 })
 
-test('should handle for tweets mentioning the bot', () => {
+it('should handle for tweets mentioning the bot', () => {
 
   var handler = jest.fn()
 
@@ -74,7 +74,7 @@ test('should handle for tweets mentioning the bot', () => {
   TwitterClient.prototype.createTweetHandler = originalImp
 })
 
-test('should create valid session for message', () => {
+it('should create valid session for message', () => {
 
   var handler = jest.fn()
 
@@ -90,7 +90,7 @@ test('should create valid session for message', () => {
   expect(session.client).toBe(client)
 })
 
-test('should trigger received_message event on bot for message', () => {
+it('should trigger received_message event on bot for message', () => {
 
   var handler = jest.fn()
 
@@ -107,7 +107,7 @@ test('should trigger received_message event on bot for message', () => {
   }, session)
 })
 
-test('should post a status when sending message', () => {
+it('should post a status when sending message', () => {
 
   var client = new TwitterClient()(bot)
   client.send(null, 'text')

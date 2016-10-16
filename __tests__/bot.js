@@ -17,19 +17,19 @@ var session = {
   send: jest.fn()
 }
 
-test('should default to name "bot"', () => {
+it('should default to name "bot"', () => {
   var bot = new Bot()
 
   expect(bot.name).toEqual('bot')
 })
 
-test('should use passed in name', () => {
+it('should use passed in name', () => {
   var bot = new Bot('bender')
 
   expect(bot.name).toEqual('bender')
 })
 
-test('should start typing on message_received', () => {
+it('should start typing on message_received', () => {
   var bot = new Bot()
 
   bot.trigger('message_received', {}, session)
@@ -37,7 +37,7 @@ test('should start typing on message_received', () => {
   expect(session.startTyping).toBeCalled()
 })
 
-test('should respond with default response when message not handled', () => {
+it('should respond with default response when message not handled', () => {
   var bot = new Bot()
 
   bot.trigger('message_received', {}, session)
@@ -45,7 +45,7 @@ test('should respond with default response when message not handled', () => {
   expect(session.send).toBeCalled()
 })
 
-test('should respond with error when no webhook listeners configured', () => {
+it('should respond with error when no webhook listeners configured', () => {
   var error = jest.fn()
   var bot = new Bot()
 
@@ -56,7 +56,7 @@ test('should respond with error when no webhook listeners configured', () => {
   expect(error).toBeCalled()
 })
 
-test('should trigger hears function if it matches', () => {
+it('should trigger hears function if it matches', () => {
   var handler = jest.fn()
   var bot = new Bot()
 
@@ -66,7 +66,7 @@ test('should trigger hears function if it matches', () => {
   expect(handler).toBeCalled()
 })
 
-test('should trigger move to next hears function if it does not match', () => {
+it('should trigger move to next hears function if it does not match', () => {
   var handler = jest.fn()
   var bot = new Bot()
 
@@ -77,7 +77,7 @@ test('should trigger move to next hears function if it does not match', () => {
   expect(handler).toBeCalled()
 })
 
-test('should trigger hears functions in order of declaration', () => {
+it('should trigger hears functions in order of declaration', () => {
   var handler = jest.fn()
   var handler2 = jest.fn()
   var bot = new Bot()
@@ -91,14 +91,14 @@ test('should trigger hears functions in order of declaration', () => {
   expect(handler2).not.toBeCalled()
 })
 
-test('should consume a component', () => {
+it('should consume a component', () => {
   var component = jest.fn()
   var bot = new Bot()
   bot.use(component)
   expect(component).toBeCalledWith(bot)
 })
 
-test('should download attachment from URI', (done) => {
+it('should download attachment from URI', (done) => {
   var bot = new Bot()
 
   mock()
@@ -123,7 +123,7 @@ test('should download attachment from URI', (done) => {
   })
 })
 
-test('should download base64 encoded attachment', (done) => {
+it('should download base64 encoded attachment', (done) => {
   var bot = new Bot()
 
   mock()

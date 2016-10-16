@@ -4,7 +4,7 @@ jest.unmock('../lib/event-emitter')
 
 var EventEmitter = require('../lib/event-emitter')
 
-test('should register listener', () => {
+it('should register listener', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
 
@@ -17,7 +17,7 @@ test('should register listener', () => {
   ])
 })
 
-test('should register listener', () => {
+it('should register listener', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
 
@@ -30,7 +30,7 @@ test('should register listener', () => {
   ])
 })
 
-test('should register fallback', () => {
+it('should register fallback', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
 
@@ -38,7 +38,7 @@ test('should register fallback', () => {
   expect(emitter.fallbacks['event']).toEqual(handler)
 })
 
-test('should emit event with correct handlers', () => {
+it('should emit event with correct handlers', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
   var handler2 = jest.fn()
@@ -50,7 +50,7 @@ test('should emit event with correct handlers', () => {
   expect(event.remainingListeners).toEqual([handler])
 })
 
-test('should emit event with correct arguments', () => {
+it('should emit event with correct arguments', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
 
@@ -62,7 +62,7 @@ test('should emit event with correct arguments', () => {
   ])
 })
 
-test('should use fallback for event with no handlers', () => {
+it('should use fallback for event with no handlers', () => {
   var emitter = new EventEmitter()
   var handler = jest.fn()
 
@@ -72,7 +72,7 @@ test('should use fallback for event with no handlers', () => {
   expect(handler).toBeCalled()
 })
 
-test('should log error for event with no handlers or fallback', () => {
+it('should log error for event with no handlers or fallback', () => {
 
   jest.mock('console')
 
