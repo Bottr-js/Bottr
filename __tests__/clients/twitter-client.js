@@ -1,7 +1,7 @@
-jest.unmock('../lib/twitter-client')
+jest.unmock('../../lib/clients/twitter-client')
 
-var Bot = require('../lib/bot')
-var TwitterClient = require('../lib/twitter-client')
+var Bot = require('../../lib/bot')
+var TwitterClient = require('../../lib/clients/twitter-client')
 
 var bot = new Bot()
 

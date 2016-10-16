@@ -1,8 +1,8 @@
-jest.unmock('../lib/websocket-client')
+jest.unmock('../../lib/clients/websocket-client')
 
-var Bot = require('../lib/bot')
+var Bot = require('../../lib/bot')
 var io = require('socket.io')
-var WebsocketClient = require('../lib/websocket-client')
+var WebsocketClient = require('../../lib/clients/websocket-client')
 
 var bot = new Bot()
 var socketClient = io()

@@ -1,7 +1,7 @@
-jest.unmock('../lib/twilio-client')
+jest.unmock('../../lib/clients/twilio-client')
 
-var Bot = require('../lib/bot')
-var TwilioClient = require('../lib/twilio-client')
+var Bot = require('../../lib/bot')
+var TwilioClient = require('../../lib/clients/twilio-client')
 
 var bot = new Bot()
 
