@@ -170,7 +170,9 @@ it('should trigger received_message event on bot for message', (done) => {
   }
 
   var res = {
-    success: jest.fn()
+    end: jest.fn(),
+    status: jest.fn(),
+    success: jest.fn(),
   }
 
   var client = new FacebookMessengerClient()(bot)
@@ -207,6 +209,7 @@ it('should create valid session for message', (done) => {
   }
 
   var res = {
+    status: jest.fn(),
     success: jest.fn()
   }
 
@@ -298,7 +301,9 @@ it('should log error for unknown event', () => {
   }
 
   var res = {
-    sendStatus: jest.fn()
+    end: jest.fn(),
+    sendStatus: jest.fn(),
+    status: jest.fn(),
   }
 
   var spy = spyOn(console, 'error')
