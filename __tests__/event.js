@@ -2,7 +2,7 @@ jest.unmock('../lib/event')
 
 var Event = require('../lib/event')
 
-test('should call handler', () => {
+it('should call handler', () => {
   var handler = jest.fn()
   var event = new Event([handler], [])
 
@@ -11,7 +11,7 @@ test('should call handler', () => {
   expect(handler).toBeCalled()
 })
 
-test('should call next handler when previous handler doesn\'t handle event', () => {
+it('should call next handler when previous handler doesn\'t handle event', () => {
   var handler = function(next) {
     next()
   }
@@ -23,7 +23,7 @@ test('should call next handler when previous handler doesn\'t handle event', () 
   expect(handler2).toBeCalled()
 })
 
-test('should call unhandled callback if no handler handles event', () => {
+it('should call unhandled callback if no handler handles event', () => {
   var callback = jest.fn()
   var event = new Event([], [])
 

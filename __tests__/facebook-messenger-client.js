@@ -7,7 +7,7 @@ var FacebookMessengerClient = require('../lib/facebook-messenger-client')
 
 var bot = new Bot()
 
-test('should use environmental variables for access and verify token', () => {
+it('should use environmental variables for access and verify token', () => {
 
   process.env.MESSENGER_ACCESS_TOKEN = 'access'
   process.env.MESSENGER_VERIFY_TOKEN = 'verify'
@@ -21,7 +21,7 @@ test('should use environmental variables for access and verify token', () => {
   process.env.MESSENGER_VERIFY_TOKEN = undefined
 })
 
-test('should use configuration object for access and verify token', () => {
+it('should use configuration object for access and verify token', () => {
 
   var client = new FacebookMessengerClient({
     access_token: 'access',
@@ -32,7 +32,7 @@ test('should use configuration object for access and verify token', () => {
   expect(client.config.verify_token).toEqual('verify')
 })
 
-test('should register for webhook event', () => {
+it('should register for webhook event', () => {
 
   var handler = jest.fn()
 
@@ -47,7 +47,7 @@ test('should register for webhook event', () => {
   FacebookMessengerClient.prototype.createWebhookHandler = originalImp
 })
 
-test('should not handle webhook without x-hub-signature and facebook platform user agent', () => {
+it('should not handle webhook without x-hub-signature and facebook platform user agent', () => {
 
   var next = jest.fn()
   var req = {
@@ -62,7 +62,7 @@ test('should not handle webhook without x-hub-signature and facebook platform us
   expect(next).toBeCalled()
 })
 
-test('should respond with challenge for successful subsription', () => {
+it('should respond with challenge for successful subsription', () => {
 
   var next = jest.fn()
   var req = {
@@ -89,7 +89,7 @@ test('should respond with challenge for successful subsription', () => {
   expect(res.send).toBeCalledWith('challenge')
 })
 
-test('should respond with 403 for failed subscription', () => {
+it('should respond with 403 for failed subscription', () => {
 
   var next = jest.fn()
   var req = {
@@ -111,7 +111,7 @@ test('should respond with 403 for failed subscription', () => {
   expect(res.sendStatus).toBeCalledWith(403)
 })
 
-test('should respond with success for message', () => {
+it('should respond with success for message', () => {
 
   var next = jest.fn()
   var req = {
@@ -146,7 +146,7 @@ test('should respond with success for message', () => {
   expect(res.end).toBeCalled()
 })
 
-test('should trigger received_message event on bot for message', (done) => {
+it('should trigger received_message event on bot for message', (done) => {
 
   var next = jest.fn()
   var req = {
@@ -183,7 +183,7 @@ test('should trigger received_message event on bot for message', (done) => {
   client.createWebhookHandler()(req, res, next)
 })
 
-test('should create valid session for message', (done) => {
+it('should create valid session for message', (done) => {
 
   var next = jest.fn()
   var req = {
@@ -221,7 +221,7 @@ test('should create valid session for message', (done) => {
   client.createWebhookHandler()(req, res, next)
 })
 
-test('should respond with 400 for non-page event', () => {
+it('should respond with 400 for non-page event', () => {
 
   var next = jest.fn()
   var req = {
@@ -245,7 +245,7 @@ test('should respond with 400 for non-page event', () => {
   expect(res.sendStatus).toBeCalledWith(400)
 })
 
-test('should respond with 400 for unknown event', () => {
+it('should respond with 400 for unknown event', () => {
 
   var next = jest.fn()
   var req = {
@@ -277,7 +277,7 @@ test('should respond with 400 for unknown event', () => {
   expect(res.end).toBeCalled()
 })
 
-test('should log error for unknown event', () => {
+it('should log error for unknown event', () => {
 
   var next = jest.fn()
   var req = {
@@ -308,7 +308,7 @@ test('should log error for unknown event', () => {
   expect(spy).toBeCalled()
 })
 
-test('creates valid request when sending message', () => {
+it('creates valid request when sending message', () => {
 
   var session = {
     user: '1'
@@ -329,7 +329,7 @@ test('creates valid request when sending message', () => {
   })
 })
 
-test('creates valid request when triggering typing indicator', () => {
+it('creates valid request when triggering typing indicator', () => {
 
   var session = {
     user: '1'
@@ -348,13 +348,13 @@ test('creates valid request when triggering typing indicator', () => {
   })
 })
 
-test('creates valid request when grah_uri changes (infra.cat integration)', () => {
+it('creates valid request when grah_uri changes (infra.cat integration)', () => {
 
   var session = {
     user: '1'
   }
 
-  var newURI = 'https://meow.infra.cat';
+  var newURI = 'https://meow.infra.cat'
   var client = new FacebookMessengerClient({
     graph_uri: newURI,
   })(bot)

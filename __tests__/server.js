@@ -5,7 +5,7 @@ var Bot = require('../lib/bot')
 var Server = require('../lib/server')
 var WebsocketClient = require('../lib/websocket-client')
 
-test('should default to root namespace', () => {
+it('should default to root namespace', () => {
 
   var bot = new Bot()
   var server = new Server()
@@ -15,7 +15,7 @@ test('should default to root namespace', () => {
   expect(server.namespaces['/']).toBe(bot)
 })
 
-test('should store bot under namespace', () => {
+it('should store bot under namespace', () => {
 
   var bot = new Bot()
   var server = new Server()
@@ -25,7 +25,7 @@ test('should store bot under namespace', () => {
   expect(server.namespaces['/bot']).toBe(bot)
 })
 
-test('should listen uses port passed in as argument', () => {
+it('should listen uses port passed in as argument', () => {
 
   var server = new Server()
   var http = server.listen(3000)
@@ -33,7 +33,7 @@ test('should listen uses port passed in as argument', () => {
   expect(http.listen).toBeCalledWith(3000)
 })
 
-test('should use bot router for namespace', () => {
+it('should use bot router for namespace', () => {
 
   var server = new Server()
   var bot = new Bot()
@@ -44,7 +44,7 @@ test('should use bot router for namespace', () => {
   expect(http.app.use).toBeCalledWith('/', bot.router)
 })
 
-test('should inject websocket client into bot', () => {
+it('should inject websocket client into bot', () => {
 
   var server = new Server()
   var bot = new Bot()
