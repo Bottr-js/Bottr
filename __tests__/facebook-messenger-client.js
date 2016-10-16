@@ -354,13 +354,13 @@ test('creates valid request when grah_uri changes (infra.cat integration)', () =
     user: '1'
   }
 
-  var newURI = 'https://meow.infra.cat/v2.6/me/messages';
+  var newURI = 'https://meow.infra.cat';
   var client = new FacebookMessengerClient({
     graph_uri: newURI,
   })(bot)
   var request = client.startTyping(session)
 
-  expect(request.uri).toEqual(newURI)
+  expect(request.uri).toEqual(newURI+'/v2.6/me/messages')
   expect(request.method).toEqual('POST')
   expect(request.json).toEqual({
     recipient: {
