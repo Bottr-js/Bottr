@@ -347,3 +347,25 @@ test('creates valid request when triggering typing indicator', () => {
     sender_action: 'typing_on'
   })
 })
+
+test('creates valid request when grah_uri changes (infra.cat integration)', () => {
+
+  var session = {
+    user: '1'
+  }
+
+  var newURI = 'https://meow.infra.cat/v2.6/me/messages';
+  var client = new FacebookMessengerClient({
+    graph_uri: newURI,
+  })(bot)
+  var request = client.startTyping(session)
+
+  expect(request.uri).toEqual(newURI)
+  expect(request.method).toEqual('POST')
+  expect(request.json).toEqual({
+    recipient: {
+      id: '1'
+    },
+    sender_action: 'typing_on'
+  })
+})
