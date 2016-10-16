@@ -3,7 +3,7 @@ jest.mock('http')
 
 var Bot = require('../lib/bot')
 var Server = require('../lib/server')
-var WebsocketClient = require('../lib/websocket-client')
+var WebsocketClient = require('../lib/clients/websocket-client')
 
 it('should default to root namespace', () => {
 
