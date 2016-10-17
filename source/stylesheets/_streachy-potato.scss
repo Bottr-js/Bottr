@@ -9,7 +9,7 @@ $success-color: #27ae60;
 $warning-color: #f39c12;
 $danger-color: #e74c3c;
 
-$primary-width: 100%;
+$content-width: 85%;
 
 /*Global*/
 html, body {
@@ -89,16 +89,19 @@ h6 {
 }
 
 /* Grid */
-.container, .row {
+.container {
     display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
-.container {
-  flex-direction: column;
-  width: $primary-width;
-  max-width: $primary-width;
+.row {
+  display: flex;
+  flex-direction: row;
   margin: 0 auto;
+  width: $content-width;
+  max-width: $content-width;
+  overflow: hidden;
 }
 
 .input_text {
@@ -196,7 +199,7 @@ input[type="radio"] + label, input[type="checkbox"] + label  {
 /* Other */
 hr {
     position: relative;
-    width: $primary-width;
+    width: 100%;
     border: solid $border-color;
     border-width: 1px 0 0;
     clear: both;

@@ -16,43 +16,45 @@ title: Bottr
     </ul>
   </div>
   <div class="chat">
-    <div class="content">
-    <div class="message two-small">
-      <div class="text">The World's Simpilest Bot Framework</div>
-      <div class="button"><a href="https://bottr.co/docs/install">Get Started</a></div>
-      <div class="button"><a href="https://github.com/Bottr-js/Bottr">Contribute</a></div>
-    </div>
-    <div class="message two-small">
-      <div class="window">
-        <img src="images/Buttons.png" width="50px"/>
+    <div class="wrapper row">
+      <div class="content">
+        <div class="message two-small">
+          <div class="text">The World's Simpilest Bot Framework</div>
+          <div class="button"><a href="https://bottr.co/docs/install">Get Started</a></div>
+          <div class="button"><a href="https://github.com/Bottr-js/Bottr">Contribute</a></div>
+        </div>
+        <div class="message two-small">
+          <div class="window">
+            <img src="images/Buttons.png" width="50px"/>
+          </div>
+          <div class="code">
+            <pre>
+    import Bottr;
+
+    var Bot = new Bottr.Bot()
+
+    bot.on('message_received', (message, session) => {
+
+      session.send('The World's Simpilest Bot Framework', {
+        buttons: [
+          { title: 'Get Started', href: 'https://bottr.co/docs/install' },
+          { title: 'Contribute', href: 'https://github.com/Bottr-js/Bottr' }
+        ]
+      })
+
+      session.send({
+        url: 'images/code.png'
+      })
+    })
+
+    bot.listen()
+            </pre>
+          </div>
+        </div>
       </div>
-      <div class="code">
-        <pre>
-import Bottr;
-
-var Bot = new Bottr.Bot()
-
-bot.on('message_received', (message, session) => {
-
-  session.send('The World's Simpilest Bot Framework', {
-    buttons: [
-      { title: 'Get Started', href: 'https://bottr.co/docs/install' },
-      { title: 'Contribute', href: 'https://github.com/Bottr-js/Bottr' }
-    ]
-  })
-
-  session.send({
-    url: 'images/code.png'
-  })
-})
-
-bot.listen()
-        </pre>
-      </div>
-    </div>
     </div>
   </div>
-  <div class="grid">
+  <div class="grid row">
     <div>
       <h2>Simple</h2>
       <p>Create expresive interactive bots without dealing with the low level details.</p>
@@ -74,8 +76,8 @@ bot.listen()
     <a href="https://bottr.co/docs/install">Get Started</a>
     <a href="https://github.com/Bottr-js/Bottr">Contribute</a>
   </div>
-  <div class="footer row">
-    <div class="contents">
+  <div class="footer">
+    <div class="contents row">
       <ul>
         <li><a href="">Docs</a></li>
         <li><a href="">Screencasts</a></li>

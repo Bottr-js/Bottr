@@ -40,6 +40,7 @@ body {
 .chat {
   background: url(../images/background.jpg);
   background-size: cover;
+  padding: 20px 0;
 }
 
 .message {
@@ -83,7 +84,6 @@ body {
 .grid {
   padding: 10px 0;
   margin: 0 auto;
-  width: 85%;
 
   div {
     float: left;
@@ -92,21 +92,22 @@ body {
   }
 }
 
+.wrapper {
+  align-items: center;
+}
+
 .content {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 85%;
 }
 
 .cta {
   align-items: center;
   padding: 10px 0;
-  margin: 0 auto;
   justify-content: center;
   height: 200px;
-  width: 85%;
 
   a {
     margin: 0 25px;
@@ -121,8 +122,6 @@ body {
 
   .contents {
     padding: 10px 0;
-    margin: 0 auto;
-    width: 85%;
 
     li, a {
       color: #FFF;
