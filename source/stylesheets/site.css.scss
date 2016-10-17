@@ -40,9 +40,6 @@ body {
 .chat {
   background: url(../images/background.jpg);
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
 }
 
 .message {
@@ -93,6 +90,14 @@ body {
     margin: 0 1%;
     width: 47%;
   }
+}
+
+.content {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 85%;
 }
 
 .cta {
