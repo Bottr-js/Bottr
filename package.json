@@ -17,7 +17,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
   "devDependencies": {
     "babel-eslint": "^7.0.0",
     "babel-jest": "^16.0.0",
+    "coveralls": "^2.11.14",
     "jest": "14.1.0",
     "mock-fs": "^3.11.0",
     "nock": "^8.0.0"
