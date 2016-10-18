@@ -733,114 +733,114 @@ hr {
 .alpha-potato {
   list-style-type: lower-alpha; }
 
-/* line 9, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 9, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 body {
   border-top: 5px solid #50E3C2; }
 
-/* line 13, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 13, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .header {
   padding: 10px; }
 
-/* line 17, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 17, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .logo {
   align-items: center;
   display: flex;
   flex-grow: 1;
   justify-content: center; }
-  /* line 23, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 23, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .logo h1 {
     align-self: center; }
 
-/* line 28, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 28, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .menu {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   flex-grow: 5; }
-  /* line 34, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 34, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .menu li {
     flex-grow: 2;
     list-style: none; }
 
-/* line 40, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 40, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .chat {
-  background: url(//github.com/Bottr-js/Bottr/images/background-1b5b50bd.jpg);
+  background: url(//bottr.co/images/background-1b5b50bd.jpg);
   background-size: cover;
   padding: 20px 0; }
 
-/* line 46, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 46, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .message {
   align-self: flex-start;
   background: #50E3C2;
   border-radius: 10px;
   padding: 10px;
   margin: 5px 10px; }
-  /* line 53, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 53, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .message .text {
     color: #FFF; }
-  /* line 57, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 57, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .message .button {
     border: none;
     margin: 5px 0 0 0; }
-    /* line 61, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+    /* line 61, //bottr.co/stylesheets/site-d3d9b816.css.scss */
     .message .button a {
       text-decoration: none; }
 
-/* line 67, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 67, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .window {
   background: grey;
   border-radius: 10px 10px 0 0;
   padding: 5px 10px; }
 
-/* line 73, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 73, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .code {
   background-color: white;
   border-radius: 0 0 10px 10px;
   margin: 0; }
-  /* line 78, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 78, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .code pre {
     padding: 10px;
     margin: 0; }
 
-/* line 84, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 84, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .grid {
   padding: 10px 0;
   margin: 0 auto; }
-  /* line 88, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 88, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .grid div {
     float: left;
     margin: 0 1%;
     width: 47%; }
 
-/* line 95, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 95, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .wrapper {
   align-items: center; }
 
-/* line 99, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 99, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .content {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
   margin: 0 auto; }
 
-/* line 106, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 106, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .cta {
   align-items: center;
   padding: 10px 0;
   justify-content: center;
   height: 200px; }
-  /* line 112, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 112, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .cta a {
     margin: 0 25px; }
 
-/* line 117, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+/* line 117, //bottr.co/stylesheets/site-d3d9b816.css.scss */
 .footer {
   background: #333;
   padding: 20px 0; }
-  /* line 123, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+  /* line 123, //bottr.co/stylesheets/site-d3d9b816.css.scss */
   .footer .contents {
     padding: 10px 0; }
-    /* line 126, //github.com/Bottr-js/Bottr/stylesheets/site-b5f2ba49.css.scss */
+    /* line 126, //bottr.co/stylesheets/site-d3d9b816.css.scss */
     .footer .contents li, .footer .contents a {
       color: #FFF;
       list-style: none;
