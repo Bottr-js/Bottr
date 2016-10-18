@@ -45,5 +45,5 @@ configure :build do
   # Append a hash to asset urls (make sure to use the url helpers)
   activate :asset_hash
 
-  activate :asset_host, :host => '//github.com/Bottr-js/Bottr'
+  activate :asset_host, :host => '//bottr.co/'
 end
