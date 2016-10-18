@@ -17,7 +17,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
     "eslint": "^3.8.1",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-import": "^2.0.1",
+    "coveralls": "^2.11.14",
     "jest": "14.1.0",
     "mock-fs": "^3.11.0",
     "nock": "^8.0.0"
