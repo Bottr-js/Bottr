@@ -4,25 +4,37 @@
 
 // Make Flex Potato
 
+// Settings
 $primary-color: #50E3C2;
+$light-gray: #f5f5f5;
 
+@mixin media($minmax, $size) {
+  @media only screen and (#{$minmax}-width: $size) {
+    @content;
+  }
+}
+
+// Elements
 body {
   border-top: 5px solid $primary-color;
 }
 
-.header {
+header, .header {
   padding: 10px;
 }
 
+h1 {
+  font-size: 2.75em;
+  text-align: center;
+  width: 100%;
+}
+
+// Components
 .logo {
   align-items: center;
   display: flex;
   flex-grow: 1;
   justify-content: center;
-
-  h1 {
-    align-self: center;
-  }
 }
 
 .menu {
@@ -33,7 +45,17 @@ body {
 
   li {
     flex-grow: 2;
+    font-size: 1.25em;
     list-style: none;
+    a {
+      color: $primary-color;
+      font-weight: bold;
+      padding: .5em 1.25em;
+      text-decoration: none;
+      &:active, &:focus {
+        background-color: $light-gray;
+      }
+    }
   }
 }
 
@@ -43,25 +65,34 @@ body {
   padding: 20px 0;
 }
 
+.intro {
+  margin: 1em auto;
+  .button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: 0s background-color, 0s color;
+    &:hover {
+      background-color: transparent;
+      border-color: $primary-color;
+      color: $primary-color;
+      transition: 0s background-color, 0s color;
+    }
+    &:first-child {
+      margin-right: .5em;
+    }
+    &:last-child {
+      margin-left: .5em;
+    }
+  }
+}
+
 .message {
   align-self: flex-start;
   background: $primary-color;
   border-radius: 10px;
   padding: 10px;
-  margin: 5px 10px;
-
-  .text {
-    color: #FFF;
-  }
-
-  .button {
-    border: none;
-    margin: 5px 0 0 0;
-
-    a {
-      text-decoration: none;
-    }
-  }
+  margin: 1em auto;//10px;
 }
 
 .window {
@@ -81,17 +112,6 @@ body {
   }
 }
 
-.grid {
-  padding: 10px 0;
-  margin: 0 auto;
-
-  div {
-    float: left;
-    margin: 0 1%;
-    width: 47%;
-  }
-}
-
 .wrapper {
   align-items: center;
 }
@@ -103,30 +123,121 @@ body {
   margin: 0 auto;
 }
 
-.cta {
+.cta, .cta.row {
   align-items: center;
+  background-color: $primary-color;
   padding: 10px 0;
   justify-content: center;
-  height: 200px;
-
-  a {
-    margin: 0 25px;
+  padding: 2.5em 0;
+  text-align: center;
+  width: 100%;
+  max-width: none;
+  p {
+    margin-top: .25em;
+  }
+  a.button {
+    &:first-child {
+      margin-right: .5em;
+    }
+    &:last-child {
+      margin-left: .5em;
+    }
   }
 }
 
-.footer {
-
+footer, .footer {
   background: #333;
-
-  padding: 20px 0;
-
-  .contents {
-    padding: 10px 0;
-
-    li, a {
-      color: #FFF;
+  padding: 10px 0;
+    a { 
+      color: #fff;
+    }
+    li {
       list-style: none;
       text-decoration: none;
     }
+}
+
+// Utility classes
+.button {
+  margin: 0;//5px 0 0 0;
+  transition: 0s background-color, 0s color;
+  user-select: none;
+  &.btn-main {
+    background-color: $primary-color;
+    color: #fff;
+    border: 2px solid $primary-color;
+    &:hover {
+      background-color: darken($primary-color,10%);
+      border-color: darken($primary-color,10%);
+      color: #fff;
+      transition: 0s background-color, 0s color;
+    }
+    &.reverse {
+      background-color: #fff;
+      color: $primary-color;
+      border: 1px solid #fff;
+      &:hover {
+        background-color: $light-gray;
+        border-color: $light-gray;
+      }
+      &+ .button {
+        background-color: transparent;
+        color: #fff;
+        border-color: #fff;
+        &:hover {
+          color: $light-gray;
+          border-color: currentColor;
+        }
+      }
+    }
   }
+  a {
+    text-decoration: none;
+  }
+}
+
+.grid {
+  display: block !important; 
+  padding: 10px 0;
+  margin: 0 auto;
+  max-width: 1000px;
+  @include media(min,900px) {
+    display: inherit;
+  }
+  .grid-item {
+    margin: 0 auto;//1.5em;
+    width: calc(100% - 3em);
+    max-width: 340px;
+    @include media(min,640px) {
+      float: left;
+      margin: 0 1.5em;
+      width: calc(50% - 3em);      
+    }
+    @include media(min,920px) {
+      width: calc(25% - 3em);
+    }
+    .grid-item-title {
+      padding-top: 1em;
+      text-align: center;
+    }
+    p {
+      font-size: 1.125em;
+      margin-top: .5em;
+      text-align: center;
+    }
+  }
+}
+
+.row {
+  padding: 1em 0;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-subdue {
+  color: #aaa !important;
+}
+.text-white {
+  color: #FFF !important;
 }
