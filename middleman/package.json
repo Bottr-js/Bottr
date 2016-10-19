@@ -1,0 +1,5 @@
+{
+	"scripts": {
+		"publish": "cp -r middleman/build/{*,index.html} ./"
+	}	
+}
