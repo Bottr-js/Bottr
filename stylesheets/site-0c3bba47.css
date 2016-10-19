@@ -733,115 +733,284 @@ hr {
 .alpha-potato {
   list-style-type: lower-alpha; }
 
-/* line 9, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 19, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 body {
   border-top: 5px solid #50E3C2; }
 
-/* line 13, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-.header {
+/* line 23, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+header, .header {
   padding: 10px; }
+  /* line 25, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  header nav, .header nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 5; }
 
-/* line 17, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 32, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+h1 {
+  font-size: 2.75em;
+  text-align: center;
+  width: 100%; }
+
+/* line 39, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .logo {
   align-items: center;
   display: flex;
   flex-grow: 1;
   justify-content: center; }
-  /* line 23, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-  .logo h1 {
-    align-self: center; }
 
-/* line 28, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 46, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .menu {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 5; }
-  /* line 34, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+  align-items: center; }
+  @media only screen and (min-width: 550px) {
+    /* line 46, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .menu {
+      display: flex; } }
+  /* line 54, //bottr.co/stylesheets/site-0c3bba47.css.scss */
   .menu li {
     flex-grow: 2;
-    list-style: none; }
+    font-size: 1.25em;
+    list-style: none;
+    margin: .5em auto; }
+    /* line 59, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .menu li:first-child {
+      margin-top: 0; }
+    /* line 62, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .menu li:last-child {
+      margin-bottom: 0; }
+    /* line 65, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .menu li a {
+      color: #50E3C2;
+      font-weight: bold;
+      padding: .33em .75em;
+      text-decoration: none; }
+      /* line 70, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      .menu li a:active, .menu li a:focus {
+        background-color: #f5f5f5;
+        border-radius: 4px; }
+    @media only screen and (min-width: 550px) {
+      /* line 54, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      .menu li {
+        margin: 0 auto; }
+        /* line 77, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+        .menu li a {
+          padding: .5em 1.25em; } }
 
-/* line 40, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 84, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+ul.menu {
+  padding-left: 0; }
+
+/* line 88, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .chat {
   background: url(//bottr.co/images/background-1b5b50bd.jpg);
   background-size: cover;
   padding: 20px 0; }
 
-/* line 46, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 94, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.intro {
+  margin: 1em auto; }
+  /* line 96, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  .intro .button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: 0s background-color, 0s color; }
+    /* line 101, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .intro .button:hover {
+      background-color: transparent;
+      border-color: #50E3C2;
+      color: #50E3C2;
+      transition: 0s background-color, 0s color; }
+    /* line 107, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .intro .button:first-child {
+      margin-right: .5em; }
+    /* line 110, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .intro .button:last-child {
+      margin-left: .5em; }
+  @media only screen and (max-width: 400px) {
+    /* line 94, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .intro {
+      width: 100%; }
+      /* line 116, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      .intro .button {
+        display: block;
+        width: calc(100% - 44px); }
+        /* line 119, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+        .intro .button:first-child {
+          margin-right: 0;
+          margin-bottom: 1em; }
+        /* line 123, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+        .intro .button:last-child {
+          margin-left: 0; } }
+
+/* line 130, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .message {
   align-self: flex-start;
   background: #50E3C2;
   border-radius: 10px;
   padding: 10px;
-  margin: 5px 10px; }
-  /* line 53, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-  .message .text {
-    color: #FFF; }
-  /* line 57, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-  .message .button {
-    border: none;
-    margin: 5px 0 0 0; }
-    /* line 61, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-    .message .button a {
-      text-decoration: none; }
+  margin: 1em auto;
+  width: calc(100% - 20px); }
 
-/* line 67, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 139, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .window {
   background: grey;
   border-radius: 10px 10px 0 0;
   padding: 5px 10px; }
 
-/* line 73, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 145, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .code {
   background-color: white;
   border-radius: 0 0 10px 10px;
+  font-size: 2.5vw;
   margin: 0; }
-  /* line 78, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+  @media only screen and (min-width: 600px) {
+    /* line 145, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .code {
+      font-size: 1em; } }
+  /* line 153, //bottr.co/stylesheets/site-0c3bba47.css.scss */
   .code pre {
     padding: 10px;
-    margin: 0; }
+    margin: 0;
+    white-space: pre-wrap; }
 
-/* line 84, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-.grid {
-  padding: 10px 0;
-  margin: 0 auto; }
-  /* line 88, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-  .grid div {
-    float: left;
-    margin: 0 1%;
-    width: 47%; }
-
-/* line 95, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 160, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .wrapper {
   align-items: center; }
 
-/* line 99, //bottr.co/stylesheets/site-d3d9b816.css.scss */
+/* line 164, //bottr.co/stylesheets/site-0c3bba47.css.scss */
 .content {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  margin: 0 auto; }
+  margin: 0 auto;
+  max-width: 100%; }
 
-/* line 106, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-.cta {
+/* line 172, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.cta, .cta.row {
   align-items: center;
+  background-color: #50E3C2;
   padding: 10px 0;
   justify-content: center;
-  height: 200px; }
-  /* line 112, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-  .cta a {
-    margin: 0 25px; }
+  padding: 2.5em 0;
+  text-align: center;
+  width: 100%;
+  max-width: none; }
+  /* line 181, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  .cta p, .cta.row p {
+    margin-top: .25em; }
+  /* line 185, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  .cta a.button:first-child, .cta.row a.button:first-child {
+    margin-right: .5em; }
+  /* line 188, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  .cta a.button:last-child, .cta.row a.button:last-child {
+    margin-left: .5em; }
 
-/* line 117, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-.footer {
+/* line 194, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+footer, .footer {
   background: #333;
-  padding: 20px 0; }
-  /* line 123, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-  .footer .contents {
-    padding: 10px 0; }
-    /* line 126, //bottr.co/stylesheets/site-d3d9b816.css.scss */
-    .footer .contents li, .footer .contents a {
-      color: #FFF;
+  padding: 10px 0; }
+  /* line 197, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  footer .menu, .footer .menu {
+    margin: auto; }
+    /* line 199, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    footer .menu a, .footer .menu a {
+      color: #fff; }
+      /* line 201, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      footer .menu a:active, footer .menu a:focus, .footer .menu a:active, .footer .menu a:focus {
+        background-color: #666; }
+    /* line 205, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    footer .menu li, .footer .menu li {
       list-style: none;
       text-decoration: none; }
+
+/* line 213, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.button {
+  font-weight: bold;
+  letter-spacing: .05em;
+  margin: 0;
+  transition: 0s background-color, 0s color;
+  user-select: none; }
+  /* line 220, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  .button.btn-main {
+    background-color: #50E3C2;
+    color: #fff;
+    border: 2px solid #50E3C2; }
+    /* line 224, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .button.btn-main:hover {
+      background-color: #24dcb3;
+      border-color: #24dcb3;
+      color: #fff;
+      transition: 0s background-color, 0s color; }
+    /* line 230, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .button.btn-main.reverse {
+      background-color: #fff;
+      color: #50E3C2;
+      border: 1px solid #fff; }
+      /* line 234, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      .button.btn-main.reverse:hover {
+        background-color: #f5f5f5;
+        border-color: #f5f5f5; }
+      /* line 238, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      .button.btn-main.reverse + .button {
+        background-color: transparent;
+        color: #fff;
+        border-color: #fff; }
+        /* line 242, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+        .button.btn-main.reverse + .button:hover {
+          color: #f5f5f5;
+          border-color: currentColor; }
+  /* line 249, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  .button a {
+    text-decoration: none; }
+
+/* line 254, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.grid {
+  display: block !important;
+  padding: 10px 0;
+  margin: 0 auto;
+  max-width: 1000px; }
+  @media only screen and (min-width: 900px) {
+    /* line 254, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .grid {
+      display: inherit; } }
+  /* line 262, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+  .grid .grid-item {
+    margin: 0 auto;
+    width: calc(100% - 3em);
+    max-width: 340px; }
+    @media only screen and (min-width: 640px) {
+      /* line 262, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      .grid .grid-item {
+        float: left;
+        margin: 0 1.5em;
+        width: calc(50% - 3em); } }
+    @media only screen and (min-width: 920px) {
+      /* line 262, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+      .grid .grid-item {
+        width: calc(25% - 3em); } }
+    /* line 274, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .grid .grid-item .grid-item-title {
+      padding-top: 1em;
+      text-align: center; }
+    /* line 278, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+    .grid .grid-item p {
+      font-size: 1.125em;
+      margin-top: .5em;
+      text-align: center; }
+
+/* line 286, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.row {
+  padding: 1em 0; }
+
+/* line 290, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.text-center {
+  text-align: center; }
+
+/* line 293, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.text-subdue {
+  color: #aaa !important; }
+
+/* line 296, //bottr.co/stylesheets/site-0c3bba47.css.scss */
+.text-white {
+  color: #FFF !important; }

@@ -10,33 +10,35 @@
 
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
-    <link href="//bottr.co/stylesheets/site-d3d9b816.css" rel="stylesheet" />
+    <link href="//bottr.co/stylesheets/site-0c3bba47.css" rel="stylesheet" />
     <script src="//bottr.co/javascripts/all-4abf6d7e.js"></script>
   </head>
 
   <body class="index">
     <div class="container">
-  <div class="header row">
+  <header class="row">
     <div class="logo">
       <img src="//bottr.co/images/logo-d65664e2.png" alt="Bottr" width="75px">
     </div>
-    <ul class="menu">
-      <li><a href="https://github.com/Bottr-js/Bottr/wiki">Docs</a></li>
-      <li><a href="https://github.com/Bottr-js/Bottr">Github</a></li>
-      <li><a href="https://bottr.co/examples">Examples</a></li>
-      <!-- <li><a href="">Screencasts</a></li>
-      <li><a href="">News</a></li>
-      <li><a href="">Ecosystem</a></li>
-      <li><a href="">Slack</a></li> -->
-    </ul>
-  </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="https://github.com/Bottr-js/Bottr/wiki">Docs</a></li>
+        <li><a href="https://bottr.co/examples">Examples</a></li>
+        <li><a class="text-subdue" href="https://github.com/Bottr-js/Bottr">Github</a></li>
+        <!-- <li><a href="">Screencasts</a></li>
+        <li><a href="">News</a></li>
+        <li><a href="">Ecosystem</a></li>
+        <li><a href="">Slack</a></li> -->
+      </ul>
+    </nav>
+  </header>
   <div class="chat">
     <div class="wrapper row">
       <div class="content">
-        <div class="message two-small">
-          <div class="text">The World's Simplest Bot Framework</div>
-          <div class="button"><a href="https://bottr.co/docs/install">Get Started</a></div>
-          <div class="button"><a href="https://github.com/Bottr-js/Bottr">Contribute</a></div>
+        <h1 class="text-white">The World's Simpilest Bot Framework</h1>
+        <div class="intro">
+          <a class="button btn-main" href="https://bottr.co/docs/install">Get Started</a>
+          <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
         </div>
         <div class="message two-small">
           <div class="window">
@@ -44,25 +46,25 @@
           </div>
           <div class="code">
             <pre>
-    import Bottr;
+import Bottr;
 
-    var Bot = new Bottr.Bot()
+var Bot = new Bottr.Bot()
 
-    bot.on('message_received', (message, session) => {
+bot.on('message_received', (message, session) => {
 
-      session.send('The World's Simplest Bot Framework', {
-        buttons: [
-          { title: 'Get Started', href: 'https://bottr.co/docs/install' },
-          { title: 'Contribute', href: 'https://github.com/Bottr-js/Bottr' }
-        ]
-      })
+  session.send('The World's Simpilest Bot Framework', {
+    buttons: [
+      { title: 'Get Started', href: 'https://bottr.co/docs/install' },
+      { title: 'Contribute', href: 'https://github.com/Bottr-js/Bottr' }
+    ]
+  })
 
-      session.send({
-        url: 'images/code.png'
-      })
-    })
+  session.send({
+    url: 'images/code.png'
+  })
+})
 
-    bot.listen()
+bot.listen()
             </pre>
           </div>
         </div>
@@ -70,41 +72,45 @@
     </div>
   </div>
   <div class="grid row">
-    <div>
-      <h2>Simple</h2>
-      <p>Create expresive interactive bots without dealing with the low level details.</p>
+    <div class="grid-item">
+      <h2 class="grid-item-title">Simple</h2>
+      <p>Create expresive interactive bots without dealing with the low level&nbsp;details.</p>
     </div>
-    <div>
-      <h2>Event Based</h2>
+    <div class="grid-item">
+      <h2 class="grid-item-title">Event Based</h2>
       <p>Our event based system allows to easily chain and combine actions together.</p>
     </div>
-    <div>
-      <h2>Flexible</h2>
-      <p>Use Components from the Ecosystem to add additional capabilities to your bot.</p>
+    <div class="grid-item">
+      <h2 class="grid-item-title">Flexible</h2>
+      <p>Use Components from the Ecosystem to add additional capabilities to your&nbsp;bot.</p>
     </div>
-    <div>
-      <h2>Familiar</h2>
-      <p>Built ontop of proven technolgies Node.js, Javascript and Express.js</p>
+    <div class="grid-item">
+      <h2 class="grid-item-title">Familiar</h2>
+      <p>Built ontop of proven technolgies Node.js, Javascript and&nbsp;Express.js</p>
     </div>
   </div>
-  <div class="cta row">
-    <a href="https://bottr.co/docs/install">Get Started</a>
-    <a href="https://github.com/Bottr-js/Bottr">Contribute</a>
+  <div class="cta">
+    <h2>What are you waiting for?</h2>
+    <p>Get started or start contributing today!</p>
+    <!-- <div class="row"> -->
+      <a class="button btn-main reverse" href="https://bottr.co/docs/install">Get Started</a>
+      <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
+    <!-- </div> -->
   </div>
-  <div class="footer">
-    <div class="contents row">
-      <ul>
+  <footer>
+    <nav class="row">
+      <ul class="menu">
         <li><a href="https://github.com/Bottr-js/Bottr/wiki">Docs</a></li>
-        <li><a href="https://github.com/Bottr-js/Bottr">Github</a></li>
         <li><a href="https://bottr.co/examples">Examples</a></li>
+        <li><a class="text-subdue" href="https://github.com/Bottr-js/Bottr">Github</a></li>
         <!-- <li><a href="">Screencasts</a></li>
         <li><a href="">News</a></li>
         <li><a href="">Ecosystem</a></li>
         <li><a href="">Slack</a></li> -->
-        <li>Copyright James Campbell 2016</li>
       </ul>
-    </div>
-  </div>
+    </nav>
+    <p class="text-center text-subdue">&copy;2016 James Campbell</p>
+  </footer>
 </div>
 
   </body>

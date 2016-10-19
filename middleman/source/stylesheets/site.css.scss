@@ -6,6 +6,7 @@
 
 // Settings
 $primary-color: #50E3C2;
+$dark-gray: #666;
 $light-gray: #f5f5f5;
 
 @mixin media($minmax, $size) {
@@ -21,6 +22,11 @@ body {
 
 header, .header {
   padding: 10px;
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 5;
+  }
 }
 
 h1 {
@@ -39,24 +45,44 @@ h1 {
 
 .menu {
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 5;
+  @include media(min, 550px) {
+    display: flex;
+  }
+  // flex-wrap: wrap;
+  // flex-grow: 5;
 
   li {
     flex-grow: 2;
     font-size: 1.25em;
     list-style: none;
+    margin: .5em auto;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
     a {
       color: $primary-color;
       font-weight: bold;
-      padding: .5em 1.25em;
+      padding: .33em .75em;
       text-decoration: none;
       &:active, &:focus {
         background-color: $light-gray;
+        border-radius: 4px;
+      }
+    }
+    @include media(min, 550px) {
+      margin: 0 auto;
+      a {
+        padding: .5em 1.25em;
       }
     }
   }
+}
+
+ul.menu {
+  padding-left: 0;
 }
 
 .chat {
@@ -85,6 +111,20 @@ h1 {
       margin-left: .5em;
     }
   }
+  @include media(max,400px) {
+    width: 100%;
+    .button {
+      display: block;
+      width: calc(100% - 44px);
+      &:first-child {
+        margin-right: 0;
+        margin-bottom: 1em;
+      }
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
 }
 
 .message {
@@ -93,6 +133,7 @@ h1 {
   border-radius: 10px;
   padding: 10px;
   margin: 1em auto;//10px;
+  width: calc(100% - 20px);
 }
 
 .window {
@@ -104,11 +145,15 @@ h1 {
 .code {
   background-color: white;
   border-radius: 0 0 10px 10px;
+  font-size: 2.5vw;
   margin: 0;
-
+  @include media(min,600px) {
+    font-size: 1em;
+  }
   pre {
     padding: 10px;
     margin: 0;
+    white-space: pre-wrap;
   }
 }
 
@@ -121,6 +166,7 @@ h1 {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .cta, .cta.row {
@@ -148,20 +194,29 @@ h1 {
 footer, .footer {
   background: #333;
   padding: 10px 0;
-    a { 
-      color: #fff;
-    }
-    li {
-      list-style: none;
-      text-decoration: none;
+    .menu {
+      margin: auto;
+      a { 
+        color: #fff;
+        &:active, &:focus {
+          background-color: $dark-gray;
+        }
+      }
+      li {
+        list-style: none;
+        text-decoration: none;
+      }
     }
 }
 
 // Utility classes
 .button {
+  font-weight: bold;
+  letter-spacing: .05em;
   margin: 0;//5px 0 0 0;
   transition: 0s background-color, 0s color;
   user-select: none;
+
   &.btn-main {
     background-color: $primary-color;
     color: #fff;
