@@ -1,100 +1,58 @@
 ---
 title: Bottr
 ---
-<div class="container">
-  <header class="row">
-    <div class="logo">
-      <img src="images/logo.png" alt="Bottr" width="75px">
+<div class="chat">
+<div class="wrapper row">
+  <div class="content">
+    <h1 class="text-white">The World's Simplest Bot Framework</h1>
+    <div class="intro">
+      <a class="button btn-main" href="https://bottr.co/docs/install">Get Started</a>
+      <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
     </div>
-    <nav>
-      <ul class="menu">
-        <li><a href="https://github.com/Bottr-js/Bottr/wiki">Docs</a></li>
-        <li><a href="https://bottr.co/examples">Examples</a></li>
-        <li><a class="text-subdue" href="https://github.com/Bottr-js/Bottr">Github</a></li>
-        <!-- <li><a href="">Screencasts</a></li>
-        <li><a href="">News</a></li>
-        <li><a href="">Ecosystem</a></li>
-        <li><a href="">Slack</a></li> -->
-      </ul>
-    </nav>
-  </header>
-  <div class="chat">
-    <div class="wrapper row">
-      <div class="content">
-        <h1 class="text-white">The World's Simplest Bot Framework</h1>
-        <div class="intro">
-          <a class="button btn-main" href="https://bottr.co/docs/install">Get Started</a>
-          <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
-        </div>
-        <div class="message two-small">
-          <div class="window">
-            <img src="images/Buttons.png" width="50px"/>
-          </div>
-          <div class="code">
-            <pre>
+    <div class="message two-small">
+      <div class="window">
+        <img src="images/Buttons.png" width="50px"/>
+      </div>
+      <div class="code">
+        <pre>
 import Bottr;
 
 var Bot = new Bottr.Bot()
 
 bot.on('message_received', (message, session) => {
-
-  session.send('The World's Simplest Bot Framework', {
-    buttons: [
-      { title: 'Get Started', href: 'https://bottr.co/docs/install' },
-      { title: 'Contribute', href: 'https://github.com/Bottr-js/Bottr' }
-    ]
-  })
-
-  session.send({
-    url: 'images/code.png'
-  })
+session.send('Hello World!')
 })
 
 bot.listen()
-            </pre>
-          </div>
-        </div>
+        </pre>
       </div>
     </div>
   </div>
-  <div class="grid row">
-    <div class="grid-item">
-      <h2 class="grid-item-title">Simple</h2>
-      <p>Create expresive interactive bots without dealing with the low level&nbsp;details.</p>
-    </div>
-    <div class="grid-item">
-      <h2 class="grid-item-title">Event Based</h2>
-      <p>Our event based system allows to easily chain and combine actions together.</p>
-    </div>
-    <div class="grid-item">
-      <h2 class="grid-item-title">Flexible</h2>
-      <p>Use Components from the Ecosystem to add additional capabilities to your&nbsp;bot.</p>
-    </div>
-    <div class="grid-item">
-      <h2 class="grid-item-title">Familiar</h2>
-      <p>Built ontop of proven technolgies Node.js, Javascript and&nbsp;Express.js</p>
-    </div>
-  </div>
-  <div class="cta">
-    <h2>What are you waiting for?</h2>
-    <p>Get started or start contributing today!</p>
-    <!-- <div class="row"> -->
-      <a class="button btn-main reverse" href="https://bottr.co/docs/install">Get Started</a>
-      <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
-    <!-- </div> -->
-  </div>
-  <footer>
-    <nav class="row">
-      <ul class="menu">
-        <li><a href="https://github.com/Bottr-js/Bottr/wiki">Docs</a></li>
-        <li><a href="https://bottr.co/examples">Examples</a></li>
-        <li><a class="text-subdue" href="https://github.com/Bottr-js/Bottr">Github</a></li>
-        <!-- <li><a href="">Screencasts</a></li>
-        <li><a href="">News</a></li>
-        <li><a href="">Ecosystem</a></li>
-        <li><a href="">Slack</a></li> -->
-      </ul>
-    </nav>
-    <p class="text-center text-subdue">&copy;2016 James Campbell</p>
-  </footer>
+</div>
+</div>
+<div class="grid row">
+<div class="grid-item">
+  <h2 class="grid-item-title">Simple</h2>
+  <p>Create expresive interactive bots without dealing with the low level&nbsp;details.</p>
+</div>
+<div class="grid-item">
+  <h2 class="grid-item-title">Event Based</h2>
+  <p>Our event based system allows to easily chain and combine actions together.</p>
+</div>
+<div class="grid-item">
+  <h2 class="grid-item-title">Flexible</h2>
+  <p>Use Components from the Ecosystem to add additional capabilities to your&nbsp;bot.</p>
+</div>
+<div class="grid-item">
+  <h2 class="grid-item-title">Familiar</h2>
+  <p>Built ontop of proven technolgies Node.js, Javascript and&nbsp;Express.js</p>
+</div>
+</div>
+<div class="cta">
+<h2>What are you waiting for?</h2>
+<p>Get started or start contributing today!</p>
+<!-- <div class="row"> -->
+  <a class="button btn-main reverse" href="https://bottr.co/docs">Get Started</a>
+  <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
+<!-- </div> -->
 </div>
