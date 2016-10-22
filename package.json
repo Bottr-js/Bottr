@@ -52,14 +52,6 @@
     "mock-fs": "^3.11.0",
     "nock": "^8.0.0"
   },
-  "eslintConfig": {
-    "extends": "airbnb-base",
-    "parser": "babel-eslint",
-    "env": {
-      "node": true,
-      "jest": false
-    }
-  },
   "jest": {
     "unmockedModulePathPatterns": [
       "/node_modules/request"
