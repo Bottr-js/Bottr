@@ -6,7 +6,6 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
-    "eslint": "^3.7.1",
     "express": "^4.14.0",
     "node-uuid": "^1.4.7",
     "queue": "^4.0.0",
