@@ -13,7 +13,6 @@ Currently our code in our `index.js` looks something like this:
 ```javascript
 const Bottr = require('bottr')
 const BottrApp = require('bottr-app')
-
 const bot = new Bottr.Bot()
 bot.use(new BottrApp())
 bot.listen()
@@ -38,11 +37,9 @@ If you followed this guide correctly your `index.js` should now look like this:
 ```javascript
 const Bottr = require('bottr');
 const bot = new Bottr.Bot();
-
 bot.on('message_received', function(message, session) {
   session.send('Hello World')
 })
-
 bot.listen();
 ```
 
