@@ -150,10 +150,12 @@ ul.menu {
   @include media(min,600px) {
     font-size: 1em;
   }
+
   pre {
     padding: 10px;
     margin: 0;
     white-space: pre-wrap;
+    width: inherit;
   }
 }
 

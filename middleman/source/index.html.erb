@@ -14,7 +14,7 @@ title: Bottr
         <img src="images/Buttons.png" width="50px"/>
       </div>
       <div class="code">
-        <pre>
+<% code("javascript") do %>
 import Bottr;
 
 let Bot = new Bottr.Bot()
@@ -24,7 +24,7 @@ bot.on('message_received', (message, session) => {
 })
 
 bot.listen()
-        </pre>
+<% end %>
       </div>
     </div>
   </div>
