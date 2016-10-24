@@ -3,15 +3,3 @@ Getting Started:
     Creating Your First Bot: /docs/creating-your-first-bot.html
     Deploying Your Bot: /docs/deploying-your-first-bot.html
     Adding Functionality: /docs/adding-functionality.html
-Core Concepts:
-    Event Chain: /docs/event-chain.html
-    Push Events: /docs/push-events.html
-    Localization: /docs/localization.html
-    Topics: /docs/topics.html
-    Components: /docs/components.html
-Clients:
-    Facebook: /docs/facebook-client.html
-    Web Socket: /docs/web-socket-client.html
-    Twitter: /docs/twitter-client.html
-    Twillio: /docs/twillio-client.html
-    Custom: /docs/custom-client.html
