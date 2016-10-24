@@ -124,4 +124,4 @@ To test it out simply go back to your Facebook Page, Click the configure a butto
 
 This should open a new chat with our Bot (The status of the page should be Online), if we send a message the Bot will send us the same message back to us.
 
-Next: [Adding Functionality](Adding-Functionality)
+Next: [Adding Functionality](adding-functionality.html)

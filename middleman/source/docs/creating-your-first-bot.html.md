@@ -47,4 +47,4 @@ bot.listen();
 
 If you now run `bottr start`, open `localhost:3000` in your browser and send the bot a message it should reply with "Hello World".
 
-Next: [Deploying Your Bot](Deploying-Your-Bot)
+Next: [Deploying Your Bot](deploying-your-first-bot.html)
