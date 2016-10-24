@@ -1,145 +1,127 @@
-jest.unmock('request')
-jest.unmock('fs')
-jest.unmock('mock-fs')
-jest.unmock('nock')
-jest.unmock('../lib/bot')
-jest.unmock('../lib/event-emitter')
-jest.unmock('../lib/event')
-jest.unmock('../lib/topic')
+/* eslint-disable global-require */
 
-var mock = require('mock-fs')
-var nock = require('nock')
-var Bot = require('../lib/bot')
+jest.unmock('request');
+jest.unmock('fs');
+jest.unmock('mock-fs');
+jest.unmock('nock');
+jest.unmock('../lib/bot');
+jest.unmock('../lib/event-emitter');
+jest.unmock('../lib/event');
+jest.unmock('../lib/topic');
 
-var session = {
-  getUserContext: jest.fn(() => new Object({})),
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+const mock = require('mock-fs');
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+const nock = require('nock');
+const Bot = require('../lib/bot');
+
+const session = {
+  getUserContext: jest.fn(() => ({})),
   startTyping: jest.fn(),
-  send: jest.fn()
-}
+  send: jest.fn(),
+};
 
 it('should default to name "bot"', () => {
-  var bot = new Bot()
-
-  expect(bot.name).toEqual('bot')
-})
+  const bot = new Bot();
+  expect(bot.name).toEqual('bot');
+});
 
 it('should use passed in name', () => {
-  var bot = new Bot('bender')
-
-  expect(bot.name).toEqual('bender')
-})
+  const bot = new Bot('bender');
+  expect(bot.name).toEqual('bender');
+});
 
 it('should start typing on message_received', () => {
-  var bot = new Bot()
-
-  bot.trigger('message_received', {}, session)
-
-  expect(session.startTyping).toBeCalled()
-})
+  const bot = new Bot();
+  bot.trigger('message_received', {}, session);
+  expect(session.startTyping).toBeCalled();
+});
 
 it('should respond with default response when message not handled', () => {
-  var bot = new Bot()
-
-  bot.trigger('message_received', {}, session)
-
-  expect(session.send).toBeCalled()
-})
+  const bot = new Bot();
+  bot.trigger('message_received', {}, session);
+  expect(session.send).toBeCalled();
+});
 
 it('should respond with error when no webhook listeners configured', () => {
-  var error = jest.fn()
-  var bot = new Bot()
-
+  const error = jest.fn();
+  const bot = new Bot();
   bot.trigger('webhook', {}, {
-    error: error
-  })
-
-  expect(error).toBeCalled()
-})
+    error,
+  });
+  expect(error).toBeCalled();
+});
 
 it('should trigger hears function if it matches', () => {
-  var handler = jest.fn()
-  var bot = new Bot()
-
-  bot.hears(function() { return true }, handler)
-  bot.trigger('message_received', {}, session)
-
-  expect(handler).toBeCalled()
-})
+  const handler = jest.fn();
+  const bot = new Bot();
+  bot.hears(() => true, handler);
+  bot.trigger('message_received', {}, session);
+  expect(handler).toBeCalled();
+});
 
 it('should trigger move to next hears function if it does not match', () => {
-  var handler = jest.fn()
-  var bot = new Bot()
-
-  bot.hears(function() { return false }, null)
-  bot.hears(function() { return true }, handler)
-  bot.trigger('message_received', {}, session)
-
-  expect(handler).toBeCalled()
-})
+  const handler = jest.fn();
+  const bot = new Bot();
+  bot.hears(() => false, null);
+  bot.hears(() => true, handler);
+  bot.trigger('message_received', {}, session);
+  expect(handler).toBeCalled();
+});
 
 it('should trigger hears functions in order of declaration', () => {
-  var handler = jest.fn()
-  var handler2 = jest.fn()
-  var bot = new Bot()
+  const handler = jest.fn();
+  const handler2 = jest.fn();
+  const bot = new Bot();
 
-  bot.hears(function() { return true }, handler)
-  bot.hears(function() { return false }, handler2)
+  bot.hears(() => true, handler);
+  bot.hears(() => false, handler2);
 
-  bot.trigger('message_received', {}, session)
+  bot.trigger('message_received', {}, session);
 
-  expect(handler).toBeCalled()
-  expect(handler2).not.toBeCalled()
-})
+  expect(handler).toBeCalled();
+  expect(handler2).not.toBeCalled();
+});
 
 it('should consume a component', () => {
-  var component = jest.fn()
-  var bot = new Bot()
-  bot.use(component)
-  expect(component).toBeCalledWith(bot)
-})
+  const component = jest.fn();
+  const bot = new Bot();
+  bot.use(component);
+  expect(component).toBeCalledWith(bot);
+});
 
 it('should download attachment from URI', (done) => {
-  var bot = new Bot()
+  const bot = new Bot();
 
-  mock()
+  mock();
 
   nock('http://www.google.co.uk')
   .get('/')
-  .reply(200, 'Hello World')
+  .reply(200, 'Hello World');
 
   bot.download({
-    url: 'http://www.google.co.uk'
-  }, function(url) {
-
-    var fs = require('fs')
-
-    fs.readFile(url, 'utf8', function (err, data) {
-
-      expect(data).toEqual('Hello World')
-
-      mock.restore()
-      done()
-    })
-  })
-})
+    url: 'http://www.google.co.uk',
+  }, (url) => {
+    const fs = require('fs');
+    fs.readFile(url, 'utf8', (err, data) => {
+      expect(data).toEqual('Hello World');
+      mock.restore();
+      done();
+    });
+  });
+});
 
 it('should download base64 encoded attachment', (done) => {
-  var bot = new Bot()
-
-  mock()
-
+  const bot = new Bot();
+  mock();
   bot.download({
-    data: 'data:application/text;base64,SGVsbG8gV29ybGQ='
-  }, function(url) {
-
-    var fs = require('fs')
-
-    fs.readFile(url, 'utf8', function (err, data) {
-
-      expect(data).toEqual('Hello World')
-
-      mock.restore()
-      done()
-    })
-  })
-})
+    data: 'data:application/text;base64,SGVsbG8gV29ybGQ=',
+  }, (url) => {
+    const fs = require('fs');
+    fs.readFile(url, 'utf8', (err, data) => {
+      expect(data).toEqual('Hello World');
+      mock.restore();
+      done();
+    });
+  });
+});

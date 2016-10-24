@@ -1,10 +1,6 @@
-var mock = {
-  of: jest.fn(function() {
-    return this
-  }),
-  on: jest.fn()
-}
+const mock = {
+  of: jest.fn(() => this),
+  on: jest.fn(),
+};
 
-module.exports = function() {
-  return mock
-}
+module.exports = () => mock;

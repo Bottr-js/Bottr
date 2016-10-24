@@ -1,36 +1,36 @@
-jest.unmock('../lib/response-middleware')
+jest.unmock('../lib/response-middleware');
 
-var ResponseMiddleware = require('../lib/response-middleware')
+const ResponseMiddleware = require('../lib/response-middleware');
 
-var res = {
+const res = {
   sendStatus: jest.fn(),
   status: jest.fn(),
-  json: jest.fn()
-}
+  json: jest.fn(),
+};
 
-var req = {}
-var next = jest.fn()
+const req = {};
+const next = jest.fn();
 
-var middleware = new ResponseMiddleware()
-middleware(req, res, next)
+const middleware = new ResponseMiddleware();
+middleware(req, res, next);
 
 it('should send status code 200 on success', () => {
-  res.success()
-  expect(res.sendStatus).toBeCalledWith(200)
-})
+  res.success();
+  expect(res.sendStatus).toBeCalledWith(200);
+});
 
 it('should send status code 400 on error', () => {
-  res.error()
-  expect(res.status).toBeCalledWith(400)
-})
+  res.error();
+  expect(res.status).toBeCalledWith(400);
+});
 
 it('should send message on error', () => {
-  res.error('Error')
+  res.error('Error');
   expect(res.json).toBeCalledWith({
-    error: 'Error'
-  })
-})
+    error: 'Error',
+  });
+});
 
 it('should call next', () => {
-  expect(next).toBeCalled()
-})
+  expect(next).toBeCalled();
+});
