@@ -3,7 +3,7 @@ title: "Bottr: Creating Your First Bot"
 ---
 # Creating Your First Bot
 
-For this guide we will be building a simple bot that repeats what the user sends to it. Before we begin you will need to use the ["Creating A New Project" Guide](Creating-a-new-project), to create a new `EchoBot` project.
+For this guide we will be building a simple bot that repeats what the user sends to it. Before we begin you will need to use the ["Installation" Guide](installation.html), to create a new `EchoBot` project.
 
 ## Hello World
 
