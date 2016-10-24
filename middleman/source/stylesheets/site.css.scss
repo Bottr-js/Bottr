@@ -169,6 +169,16 @@ ul.menu {
   max-width: 100%;
 }
 
+.docs {
+    .navigation {
+        flex: 3;
+    }
+
+    .content {
+        flex: 9;
+    }
+}
+
 .cta, .cta.row {
   align-items: center;
   background-color: $primary-color;
@@ -196,7 +206,7 @@ footer, .footer {
   padding: 10px 0;
     .menu {
       margin: auto;
-      a { 
+      a {
         color: #fff;
         &:active, &:focus {
           background-color: $dark-gray;
@@ -252,7 +262,7 @@ footer, .footer {
 }
 
 .grid {
-  display: block !important; 
+  display: block !important;
   padding: 10px 0;
   margin: 0 auto;
   max-width: 1000px;
@@ -266,7 +276,7 @@ footer, .footer {
     @include media(min,640px) {
       float: left;
       margin: 0 1.5em;
-      width: calc(50% - 3em);      
+      width: calc(50% - 3em);
     }
     @include media(min,920px) {
       width: calc(25% - 3em);
