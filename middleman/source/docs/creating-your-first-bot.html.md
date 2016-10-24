@@ -9,7 +9,8 @@ For this guide we will be building a simple bot that repeats what the user sends
 
 Currently our code in our `index.js` looks something like this:
 
-```
+
+```javascript
 const Bottr = require('bottr')
 const BottrApp = require('bottr-app')
 
@@ -24,7 +25,7 @@ On the first line we listen out for a `message_received` event triggered when we
 
 This code should go before the call to `listen`
 
-```
+```javascript
 bot.on('message_received', function(message, session) {
   session.send('Hello World')
 })
@@ -34,7 +35,7 @@ bot.on('message_received', function(message, session) {
 
 If you followed this guide correctly your `index.js` should now look like this:
 
-```
+```javascript
 const Bottr = require('bottr');
 const bot = new Bottr.Bot();
 

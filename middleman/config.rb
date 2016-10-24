@@ -47,4 +47,6 @@ configure :build do
   activate :asset_hash
 
   activate :asset_host, :host => '//bottr.co/'
+
+  activate :syntax
 end

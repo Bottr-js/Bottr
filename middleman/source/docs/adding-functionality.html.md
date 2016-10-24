@@ -15,7 +15,7 @@ The `hears` method allows us to specify patterns and events for the bot to liste
 
 We will define two listeners one that will listen out for when the user sends the phrase '/stats' and another which will listen out to any message the user sends.
 
-```
+```javascript
 
 bot.hears(/\/stats/, function(message, session) {
 
@@ -52,7 +52,7 @@ We are going to configure out Bot to use the Memory Storage component, this allo
 
 This code goes next to our code for the Facebook Messenger client:
 
-```
+```javascript
 bot.use(new Bottr.MemoryStorage())
 ```
 
@@ -62,7 +62,7 @@ Now if we run our bot, we no longer have an error but it now sends us "undefined
 
 Because this needs to happen before our bot handles the message we will put it before both of our `hears` declarations.
 
-```
+```javascript
 bot.on('message_received', function(message, session, next) {
 
  // Get existing context or use defaults if values don't exist
@@ -87,13 +87,13 @@ bot.on('message_received', function(message, session, next) {
 
 The snippet above is pretty long so lets start breaking it down:
 
-```
+```javascript
 bot.on('message_received', function(message, session, next) {
 ```
 
 Like in our first version of the bot we listen to any message we receive from the user.
 
-```
+```javascript
 var context = session.getUserContext({
    messageCount: 0,
    wordCount: 0,
@@ -102,7 +102,7 @@ var context = session.getUserContext({
 
 On the first line of our handler we ask the session for the context for the current user and we provide some default values to use if they don't exist
 
-```
+```javascript
  // Calculate new statistics
  context.messageCount ++
 
@@ -112,14 +112,14 @@ On the first line of our handler we ask the session for the context for the curr
 
 We calculate the new total number of messages and words the user sent.
 
-```
+```javascript
  //Store new values into context
  session.updateUserContext(context)
 ```
 
 We store the new statistics into the context so they can be accessed when the bot sends them to the user.
 
-```
+```javascript
 next()
 ```
 

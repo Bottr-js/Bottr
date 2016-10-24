@@ -80,7 +80,7 @@ Once this is done you can then click the skip button at the top of the page whic
 
 To implement Facebook for our bot we need to tell our bot to start using the Messenger client like so:
 
-```
+```javascript
 bot.use(new Bottr.FacebookMessengerClient())
 ```
 
