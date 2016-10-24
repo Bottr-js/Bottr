@@ -9,6 +9,9 @@ For this guide we will be building a simple bot that repeats what the user sends
 
 Currently our code in our `index.js` looks something like this:
 
+```ruby
+puts "Hi"
+```
 
 ```javascript
 const Bottr = require('bottr')

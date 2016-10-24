@@ -22,6 +22,8 @@ page "/docs/*", :layout => "documentation"
 
 # General configuration
 
+activate :syntax
+
 # Reload the browser automatically whenever files change
 configure :development do
   activate :livereload
@@ -50,6 +52,4 @@ configure :build do
   activate :asset_hash
 
   activate :asset_host, :host => '//bottr.co/'
-
-  activate :syntax
 end
