@@ -1,7 +1,7 @@
 ---
 title: "Bottr: Installation"
 ---
-## Installation
+# Installation
 
 It should only take three simple steps to get up and running with Bottr.
 
