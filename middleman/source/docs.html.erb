@@ -2,17 +2,7 @@
 title: Bottr: Docs
 ---
 <div class="row">
-    <div>
-        <h1>Docs</h1>
-        <% data.docs.each do |key, value| %>
-        <h2><%= key %></h2>
-        <ul>
-            <% value.each do |key, value| %>
-            <li><%= link_to key, value %></li>
-            <% end %>
-        </ul>
-        <% end %>
-    </div>
+    <%= partial "docs_menu" %>
     <div class="content">
 
     </div>
