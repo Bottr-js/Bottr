@@ -1,14 +1,10 @@
-jest.unmock('../../lib/matchers/array-matcher')
+jest.unmock('../../lib/matchers/array-matcher');
 
-var ArrayMatcher = require('../../lib/matchers/array-matcher')
+const ArrayMatcher = require('../../lib/matchers/array-matcher');
 
 it('should match message if one matcher in the array matches', () => {
-
-  var matcher = function() {
-    return true
-  }
-
+  const matcher = () => true;
   expect(new ArrayMatcher([matcher])({
-    text: 'match'
-  })).toBe(true)
-})
+    text: 'match',
+  })).toBe(true);
+});

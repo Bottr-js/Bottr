@@ -1,18 +1,14 @@
-var express = function() {
-  return {
-    get: jest.fn(),
-    use: jest.fn()
-  }
-}
+const express = () => ({
+  get: jest.fn(),
+  use: jest.fn(),
+});
 
-express.Router = jest.fn(function() {
-  return {
-    use: jest.fn(),
-    get: jest.fn(),
-    post: jest.fn()
-  }
-})
+express.Router = jest.fn(() => ({
+  use: jest.fn(),
+  get: jest.fn(),
+  post: jest.fn(),
+}));
 
-express.static = jest.fn()
+express.static = jest.fn();
 
-module.exports = express
+module.exports = express;

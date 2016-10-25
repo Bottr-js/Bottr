@@ -1,8 +1,6 @@
-module.exports = function() {
-  return {
-    push: jest.fn(function(callback) {
-      callback()
-    }),
-    start: jest.fn()
-  }
-}
+module.exports = () => ({
+  push: jest.fn((callback) => {
+    callback();
+  }),
+  start: jest.fn(),
+});
