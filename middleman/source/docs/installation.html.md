@@ -14,7 +14,7 @@ $ brew install node
 Install the Bottr command line tool
 
 ```
-$ npm install -g bottr
+$ npm install -g bottr-cli
 ```
 
 Create a new project folder and initialise a new project
