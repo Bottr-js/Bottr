@@ -16,6 +16,11 @@ $light-gray: #f5f5f5;
 }
 
 // Elements
+
+img {
+    max-width: 100%;
+}
+
 body {
   border-top: 5px solid $primary-color;
 }

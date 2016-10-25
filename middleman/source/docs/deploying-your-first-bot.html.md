@@ -15,7 +15,7 @@ Before we can start connecting our Bot to Facebook we need to make sure it is av
 
 Visit https://www.heroku.com/, create an account and then create a new app. Once you have given your app a name you should be presented with a screen with instructions on how to upload your Bot.
 
-![](https://github.com/Bottr-js/Bottr/blob/master/assets/heroku.png)
+![](/images/heroku.png)
 
 ### Install the Heroku Toolbelt
 
@@ -68,7 +68,7 @@ The next step is to setup a Facebook Messenger Application which will connect th
 
 First create a new Web application [here](https://developers.facebook.com/quickstarts/?platform=web)
 
-![](https://raw.githubusercontent.com/jcampbell05/BotKit.js/master/assets/new-facebook-app.png)
+![](/images/new-facebook-app.png)
 
 You should then be taken to a "Quick Start for Website" page, at the bottom they will ask you for the URL for your Bot. Enter the one given to you from Heroku when you deployed your Bot.
 
