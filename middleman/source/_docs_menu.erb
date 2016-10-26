@@ -1,0 +1,10 @@
+<div class="navigation">
+    <% data.docs.each do |key, value| %>
+    <h2><%= key %></h2>
+    <ul>
+        <% value.each do |key, value| %>
+        <li><%= link_to key, value %></li>
+        <% end %>
+    </ul>
+    <% end %>
+</div>

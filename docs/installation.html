@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Bottr: Installation</title>
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+    <link href="//bottr.co/stylesheets/code-e488ee61.css" rel="stylesheet" />
+    <link href="//bottr.co/stylesheets/site-68d29a3b.css" rel="stylesheet" />
+    <script src="//bottr.co/javascripts/all-4abf6d7e.js"></script>
+  </head>
+
+  <body class="docs docs_installation">
+      <div class="container">
+        <header class="row">
+          <div class="logo">
+            <a href="/"><img src="//bottr.co/images/logo-d65664e2.png" alt="Bottr" width="75px"></a>
+          </div>
+          <nav>
+            <ul class="menu">
+              <li><a href="/docs.html">Docs</a></li>
+              <li><a href="/examples.html">Examples</a></li>
+              <li><a class="text-subdue" href="https://github.com/Bottr-js/Bottr">Github</a></li>
+              <!-- <li><a href="">Screencasts</a></li>
+              <li><a href="">News</a></li>
+              <li><a href="">Ecosystem</a></li>
+              <li><a href="">Slack</a></li> -->
+            </ul>
+          </nav>
+        </header>
+
+<div class="row docs">
+    <div class="navigation">
+    <h2>Getting Started</h2>
+    <ul>
+        <li><a href="/docs/installation.html">Installation</a></li>
+        <li><a href="/docs/creating-your-first-bot.html">Creating Your First Bot</a></li>
+        <li><a href="/docs/deploying-your-first-bot.html">Deploying Your Bot</a></li>
+        <li><a href="/docs/adding-functionality.html">Adding Functionality</a></li>
+    </ul>
+</div>
+
+    <div class="content">
+        <h1>Installation</h1>
+
+<p>It should only take three simple steps to get up and running with Bottr.</p>
+
+<p>Install Node &amp; NPM using Homebrew</p>
+<pre class="highlight plaintext"><code>$ brew install node
+</code></pre>
+<p>Install the Bottr command line tool</p>
+<pre class="highlight plaintext"><code>$ npm install -g bottr-cli
+</code></pre>
+<p>Create a new project folder and initialise a new project</p>
+<pre class="highlight plaintext"><code>$ mkdir &lt;YourBotName&gt; &amp;&amp; cd &lt;YourBotName&gt; &amp;&amp; bottr init
+</code></pre>
+<p>Your project should have a <code>index.js</code> which declares a basic bot.</p>
+
+<p>If you run <code>bottr start</code>, open <code>localhost:3000</code> in your browser and send it something the bot should reply with a response that indicates we haven&rsquo;t taught it to do anything yet.</p>
+
+<p>Next: <a href="/docs/creating-your-first-bot.html">Creating Your First Bot</a>.</p>
+
+    </div>
+</div>
+<footer>
+    <nav class="row">
+      <ul class="menu">
+        <li><a href="/docs.html">Docs</a></li>
+        <li ><a href="/examples.html">Examples</a></li>
+        <li><a class="text-subdue" href="https://github.com/Bottr-js/Bottr">Github</a></li>
+        <!-- <li><a href="">Screencasts</a></li>
+        <li><a href="">News</a></li>
+        <li><a href="">Ecosystem</a></li>
+        <li><a href="">Slack</a></li> -->
+      </ul>
+    </nav>
+    <p class="text-center text-subdue">&copy;2016 James Campbell</p>
+</footer>
+</div>
+</body>
+</html>
+

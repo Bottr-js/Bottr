@@ -6,7 +6,7 @@ title: Bottr
   <div class="content">
     <h1 class="text-white">The World's Simplest Bot Framework</h1>
     <div class="intro">
-      <a class="button btn-main" href="https://bottr.co/docs/install">Get Started</a>
+      <a class="button btn-main" href="https://bottr.co/docs.html">Get Started</a>
       <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
     </div>
     <div class="message two-small">
@@ -14,17 +14,17 @@ title: Bottr
         <img src="images/Buttons.png" width="50px"/>
       </div>
       <div class="code">
-        <pre>
+<% code("javascript") do %>
 import Bottr;
 
-var Bot = new Bottr.Bot()
+let Bot = new Bottr.Bot()
 
 bot.on('message_received', (message, session) => {
-session.send('Hello World!')
+    session.send('Hello World!')
 })
 
 bot.listen()
-        </pre>
+<% end %>
       </div>
     </div>
   </div>
@@ -51,8 +51,6 @@ bot.listen()
 <div class="cta">
 <h2>What are you waiting for?</h2>
 <p>Get started or start contributing today!</p>
-<!-- <div class="row"> -->
-  <a class="button btn-main reverse" href="https://bottr.co/docs">Get Started</a>
+  <a class="button btn-main reverse" href="https://bottr.co/docs.html">Get Started</a>
   <a class="button" href="https://github.com/Bottr-js/Bottr">Contribute</a>
-<!-- </div> -->
 </div>

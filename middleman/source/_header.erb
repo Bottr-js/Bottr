@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title || "Middleman" %></title>
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+    <%= stylesheet_link_tag :code %>
+    <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :all %>
+  </head>
+
+  <body class="<%= page_classes %>">
+      <div class="container">
+        <header class="row">
+          <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Bottr" width="75px"></a>
+          </div>
+          <nav>
+            <ul class="menu">
+              <li><%= link_to 'Docs', '/docs.html' %></li>
+              <li><%= link_to 'Examples', '/examples.html' %></li>
+              <li><a class="text-subdue" href="https://github.com/Bottr-js/Bottr">Github</a></li>
+              <!-- <li><a href="">Screencasts</a></li>
+              <li><a href="">News</a></li>
+              <li><a href="">Ecosystem</a></li>
+              <li><a href="">Slack</a></li> -->
+            </ul>
+          </nav>
+        </header>

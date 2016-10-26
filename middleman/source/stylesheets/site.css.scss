@@ -16,6 +16,11 @@ $light-gray: #f5f5f5;
 }
 
 // Elements
+
+img {
+    max-width: 100%;
+}
+
 body {
   border-top: 5px solid $primary-color;
 }
@@ -150,10 +155,12 @@ ul.menu {
   @include media(min,600px) {
     font-size: 1em;
   }
+
   pre {
     padding: 10px;
     margin: 0;
     white-space: pre-wrap;
+    width: inherit;
   }
 }
 
@@ -167,6 +174,16 @@ ul.menu {
   flex-direction: column;
   margin: 0 auto;
   max-width: 100%;
+}
+
+.docs {
+    .navigation {
+        flex: 3;
+    }
+
+    .content {
+        flex: 9;
+    }
 }
 
 .cta, .cta.row {
@@ -196,7 +213,7 @@ footer, .footer {
   padding: 10px 0;
     .menu {
       margin: auto;
-      a { 
+      a {
         color: #fff;
         &:active, &:focus {
           background-color: $dark-gray;
@@ -252,7 +269,7 @@ footer, .footer {
 }
 
 .grid {
-  display: block !important; 
+  display: block !important;
   padding: 10px 0;
   margin: 0 auto;
   max-width: 1000px;
@@ -266,7 +283,7 @@ footer, .footer {
     @include media(min,640px) {
       float: left;
       margin: 0 1.5em;
-      width: calc(50% - 3em);      
+      width: calc(50% - 3em);
     }
     @include media(min,920px) {
       width: calc(25% - 3em);
