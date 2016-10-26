@@ -1,7 +1,7 @@
 ---
 title: "Bottr: Adding Functionality"
 ---
-# Adding Your First Bot
+# Adding Functionality
 
 This guide assumes you have read the ["Deploying Your Bot" Guide](https://github.com/jcampbell05/BotKit.js/wiki/Deploying-Your-Bot).
 
@@ -64,7 +64,7 @@ Because this needs to happen before our bot handles the message we will put it b
 
 ```javascript
 bot.on('message_received', function(message, session, next) {
-    
+
  // Get existing context or use defaults if values don't exist
  var context = session.getUserContext({
    messageCount: 0,
