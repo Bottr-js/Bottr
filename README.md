@@ -4,14 +4,9 @@
 
 [![Travis](https://img.shields.io/travis/Bottr-js/Bottr.svg?maxAge=2592000)](https://travis-ci.org/Bottr-js/Bottr) [![Coverage Status](https://coveralls.io/repos/github/Bottr-js/Bottr/badge.svg?branch=master)](https://coveralls.io/github/Bottr-js/Bottr?branch=master)
 
-- Webcasts
-- Design
-- Website
-- Specification for communication
-
 A framework for creating Bots.
 
-Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more about how to install and start using Bottr.
+Head to our [Documentation](https://bottr.co/docs.html) to read more about how to install and start using Bottr.
 
 | Botkit        |
 | ------------- |
@@ -21,7 +16,7 @@ Head to our [Documentation](https://github.com/Bottr-js/Bottr/wiki) to read more
 
 ## Creating A New Project
 
-Follow the instructions [here](https://github.com/Bottr-js/Bottr/wiki/Creating-a-new-project)
+Follow the instructions [here](https://bottr.co/docs.html)
 
 ## Need Help?
 
