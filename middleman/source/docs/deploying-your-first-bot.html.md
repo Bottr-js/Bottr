@@ -3,7 +3,7 @@ title: "Bottr: Deploying Your First Bot"
 ---
 # Deploying Your First Bot
 
-This guide assumes you have read the ["Creating Your First Bot" Guide](Creating-Your-First-Bot).
+This guide assumes you have read the ["Creating Your First Bot" Guide](/docs/creating-your-first-bot.html).
 
 So we have a Bot that we can talk to and it can respond to us via the command line but this isn't really helpful for the real-world. Right now the user can only use this if this was installed on their local machine.
 
@@ -124,4 +124,4 @@ To test it out simply go back to your Facebook Page, Click the configure a butto
 
 This should open a new chat with our Bot (The status of the page should be Online), if we send a message the Bot will send us the same message back to us.
 
-Next: [Adding Functionality](adding-functionality.html)
+Next: [Adding Functionality](/docs/adding-functionality.html)

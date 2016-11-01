@@ -3,7 +3,7 @@ title: "Bottr: Creating Your First Bot"
 ---
 # Creating Your First Bot
 
-For this guide we will be building a simple bot that repeats what the user sends to it. Before we begin you will need to use the ["Installation" Guide](installation.html), to create a new `EchoBot` project.
+For this guide we will be building a simple bot that repeats what the user sends to it. Before we begin you will need to use the ["Installation" Guide](/docs/installation.html), to create a new `EchoBot` project.
 
 ## Hello World
 
@@ -47,4 +47,4 @@ bot.listen();
 
 If you now run `bottr start`, open `localhost:3000` in your browser and send the bot a message it should reply with "Hello World".
 
-Next: [Deploying Your Bot](deploying-your-first-bot.html)
+Next: [Deploying Your Bot](/docs/deploying-your-first-bot.html)

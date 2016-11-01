@@ -3,7 +3,7 @@ title: "Bottr: Adding Functionality"
 ---
 # Adding Functionality
 
-This guide assumes you have read the ["Deploying Your Bot" Guide](https://github.com/jcampbell05/BotKit.js/wiki/Deploying-Your-Bot).
+This guide assumes you have read the ["Deploying Your Bot" Guide](/docs/Deploying-Your-Bot).
 
 We are going to be adding our first piece of real functionality to our bot. We will tweak the bot to repeat what the user sends to it and then we will allow the user to ask the bot to send it statics about the number of words and messages the user sent.
 
