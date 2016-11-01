@@ -5,9 +5,9 @@ Getting Started:
     Adding Functionality: /docs/adding-functionality.html
 Clients:
     Facebook Messenger: /docs/facebook-messenger-client.md
-    Facebook Messenger: /docs/facebook-messenger-client.md
-    Facebook Messenger: /docs/facebook-messenger-client.md
-    Facebook Messenger: /docs/facebook-messenger-client.md
-    # Custom Client
-# Services
-    # Bottr App
+    Twillio: /docs/facebook-messenger-client.md
+    Twitter: /docs/facebook-messenger-client.md
+    Websocket: /docs/facebook-messenger-client.md
+Official Packages:
+    Bottr App:
+    Witai:
