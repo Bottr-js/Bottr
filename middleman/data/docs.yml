@@ -5,9 +5,9 @@ Getting Started:
     Adding Functionality: /docs/adding-functionality.html
 Clients:
     Facebook Messenger: /docs/facebook-messenger-client.md
-    Twillio: /docs/facebook-messenger-client.md
-    Twitter: /docs/facebook-messenger-client.md
-    Websocket: /docs/facebook-messenger-client.md
+    Twillio: /docs/twillio.md
+    Twitter: /docs/twitter.md
+    Websocket: /docs/websocket.md
 Official Packages:
-    Bottr App:
-    Witai:
+    Bottr App: /docs/bottr-app.md
+    Witai: /docs/witai.md
