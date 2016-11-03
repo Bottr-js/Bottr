@@ -3,7 +3,7 @@ title: "Bottr: Twitter Client"
 ---
 # Twitter Client
 
-The Twitter Client to allow your bot to communicate via Tweets on Twitter. The client will respond to tweets which mention the bot's name (i.e `@bottymcbotface`).
+The Twitter Client allows your bot to communicate via Tweets on Twitter. The client will respond to tweets which mention the bot's name (i.e `@bottymcbotface`).
 
 ## Basic Usage
 

@@ -7,7 +7,7 @@ Clients:
     Facebook Messenger: /docs/facebook-messenger-client.html
     Twillio: /docs/twillio-client.html
     Twitter: /docs/twitter-client.html
-    Websocket: /docs/websocket-client.html
-Official Packages:
-    Bottr App: /docs/bottr-app.html
-    Witai: /docs/witai.html
+    WebSocket: /docs/websocket-client.html
+# Official Packages:
+#     Bottr App: /docs/bottr-app.html
+#     Witai: /docs/witai.html

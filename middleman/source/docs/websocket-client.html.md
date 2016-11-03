@@ -1,23 +1,24 @@
 ---
-title: "Bottr: Facebook Client"
+title: "Bottr: WebSocket Client"
 ---
-# Facebook Messenger Client
+# WebSocket Client
 
-This component allows your bot to use the Facebook Messenger Client to allow your bot to
-communicate with Facebook Messenger.
+The WebSocket Client allows your bot to be communicate over WebSockets, this is
+useful for those wanting to build their own frontends.
+
+Bottr-App uses this client in order to communicate with your Bot.
 
 ## Basic Usage
+
+This client is automatically used by default when using the  `listen` method for your bot.
 
 ```javascript
 import Bottr from 'bottr'
 
 var bot = new Bottr.Bot()
-
-bot.use(new Bottr.FacebookMessengerClient())
-
 bot.listen()
 ```
 
 ## Configuration
 
-Table of configuration options here and blurb on webhook URL
+There aren't any configuration options for this client, it just works out of the box!

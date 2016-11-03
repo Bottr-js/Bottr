@@ -3,7 +3,7 @@ title: "Bottr: Twillio Client"
 ---
 # Twillio Client
 
-The Twillio Client to allow your bot to communicate via SMS with Twillio.
+The Twillio Client allows your bot to communicate via SMS with Twillio.
 
 ## Basic Usage
 
@@ -28,6 +28,6 @@ an object passed in though the constructor.
 
 | Configuration Name | Environmental Variable | Description                                                                     | Default |
 |--------------------|------------------------|---------------------------------------------------------------------------------|---------|
-| account_sid        | TWILIO_ACCOUNT_SID     | The Account SID for the Twilio Account your bot should use                      |         |
-| auth_token         | TWILIO_AUTH_TOKEN      | The authentication token used to authenticate your bot with your Twilio Account |         |
-| phone_number       | TWILIO_PHONE_NUMBER    | The Twilio Phone Number your bot will use                                       |         |
+| account_sid        | `TWILIO_ACCOUNT_SID`     | The Account SID for the Twilio Account your bot should use                      |         |
+| auth_token         | `TWILIO_AUTH_TOKEN`      | The authentication token used to authenticate your bot with your Twilio Account |         |
+| phone_number       | `TWILIO_PHONE_NUMBER`    | The Twilio Phone Number your bot will use                                       |         |
