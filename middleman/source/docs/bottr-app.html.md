@@ -3,21 +3,26 @@ title: "Bottr: Bottr App"
 ---
 # Bottr App
 
-This component allows your bot to use the Facebook Messenger Client to allow your bot to
-communicate with Facebook Messenger.
+This component serves a web chat interface which can be used to talk to your bot over the WebScoket Client.
+When using `bottr init` we setup a bot which uses this by default.
+
+To use this interface just visit the URL for your Bot and you should see it.
+
+## Installation
+
+Install the `Bottr-App`  NPM package:
+
+`$ npm install --save bottr-app`
 
 ## Basic Usage
 
 ```javascript
 import Bottr from 'bottr'
+import BottrApp from 'bottr-app'
 
 var bot = new Bottr.Bot()
 
-bot.use(new Bottr.FacebookMessengerClient())
+bot.use(new Bottr.BottrApp())
 
 bot.listen()
 ```
-
-## Configuration
-
-Table of configuration options here and blurb on webhook URL

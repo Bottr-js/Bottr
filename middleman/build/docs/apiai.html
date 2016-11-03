@@ -6,20 +6,20 @@
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Bottr: Facebook Client</title>
+    <title>Bottr: Api.ai</title>
 
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
-    <link href="/stylesheets/code-e488ee61.css" rel="stylesheet" />
-    <link href="/stylesheets/site-ecd996ff.css" rel="stylesheet" />
-    <script src="/javascripts/all-4abf6d7e.js"></script>
+    <link href="//bottr.co/stylesheets/code-e488ee61.css" rel="stylesheet" />
+    <link href="//bottr.co/stylesheets/site-ecd996ff.css" rel="stylesheet" />
+    <script src="//bottr.co/javascripts/all-4abf6d7e.js"></script>
   </head>
 
-  <body class="docs docs_bottr-app">
+  <body class="docs docs_apiai">
       <div class="container">
         <header class="row">
           <div class="logo">
-            <a href="/"><img src="/images/logo.png" alt="Bottr" width="75px"></a>
+            <a href="/"><img src="//bottr.co/images/logo-d65664e2.png" alt="Bottr" width="75px"></a>
           </div>
           <nav>
             <ul class="menu">
@@ -50,27 +50,34 @@
         <li><a href="/docs/twitter-client.html">Twitter</a></li>
         <li><a href="/docs/websocket-client.html">WebSocket</a></li>
     </ul>
+    <h2>Official Packages</h2>
+    <ul>
+        <li><a href="/docs/bottr-app.html">Bottr App</a></li>
+        <li><a href="/docs/apiai.html">Api.ai</a></li>
+    </ul>
 </div>
 
     <div class="content">
-        <h1>Facebook Messenger Client</h1>
+        <h1>Api.ai</h1>
 
-<p>This component allows your bot to use the Facebook Messenger Client to allow your bot to
-communicate with Facebook Messenger.</p>
+<p>This component allows your bot to forward it&rsquo;s messages to the Api.ai service for processing. IT will automatically send any messages as well as trigger events you specify in your intents from the service.</p>
+
+<h2>Installation</h2>
+
+<p>Install the <code>Bottr-Apiai</code>  NPM package:</p>
+
+<p><code>$ npm install --save bottr-apiai</code></p>
 
 <h2>Basic Usage</h2>
 <pre class="highlight javascript"><code><span class="kr">import</span> <span class="nx">Bottr</span> <span class="nx">from</span> <span class="s1">'bottr'</span>
+<span class="kr">import</span> <span class="nx">Apiai</span> <span class="nx">from</span> <span class="s1">'bottr-apiai'</span>
 
 <span class="kd">var</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bottr</span><span class="p">.</span><span class="nx">Bot</span><span class="p">()</span>
 
-<span class="nx">bot</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">Bottr</span><span class="p">.</span><span class="nx">FacebookMessengerClient</span><span class="p">())</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">Apiai</span><span class="p">(</span><span class="s1">'your_apiai_token'</span><span class="p">))</span>
 
 <span class="nx">bot</span><span class="p">.</span><span class="nx">listen</span><span class="p">()</span>
 </code></pre>
-<h2>Configuration</h2>
-
-<p>Table of configuration options here and blurb on webhook URL</p>
-
     </div>
 </div>
 <footer>
