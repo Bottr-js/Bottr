@@ -3,15 +3,6 @@ Getting Started:
     Creating Your First Bot: /docs/creating-your-first-bot.html
     Deploying Your Bot: /docs/deploying-your-first-bot.html
     Adding Functionality: /docs/adding-functionality.html
-    # Directory Structure (Update Bottr-CLI first)
-Core Concepts:
-    # Event Chain
-    # Components
-    # Clients
-    # Session
-    # Message
-    # Hears
-    # etc
 Clients:
     Facebook Messenger: /docs/facebook-messenger-client.html
     Twillio: /docs/twillio-client.html
