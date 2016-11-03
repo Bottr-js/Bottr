@@ -1,7 +1,7 @@
 ---
-title: "Bottr: Facebook Client"
+title: "Bottr: Bottr App"
 ---
-# Facebook Messenger Client
+# Bottr App
 
 This component allows your bot to use the Facebook Messenger Client to allow your bot to
 communicate with Facebook Messenger.

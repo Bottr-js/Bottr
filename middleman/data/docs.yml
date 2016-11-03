@@ -8,6 +8,6 @@ Clients:
     Twillio: /docs/twillio-client.html
     Twitter: /docs/twitter-client.html
     WebSocket: /docs/websocket-client.html
-# Official Packages:
-#     Bottr App: /docs/bottr-app.html
-#     Witai: /docs/witai.html
+Official Packages:
+    Bottr App: /docs/bottr-app.html
+    Api.ai: /docs/apiai.html

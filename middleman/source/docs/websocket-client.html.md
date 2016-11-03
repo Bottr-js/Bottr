@@ -6,7 +6,7 @@ title: "Bottr: WebSocket Client"
 The WebSocket Client allows your bot to be communicate over WebSockets, this is
 useful for those wanting to build their own frontends.
 
-Bottr-App uses this client in order to communicate with your Bot.
+Bottr App uses this client in order to communicate with your Bot.
 
 ## Basic Usage
 
