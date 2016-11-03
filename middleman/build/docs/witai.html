@@ -6,7 +6,7 @@
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Bottr: Installation</title>
+    <title>Bottr: Facebook Client</title>
 
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
@@ -15,7 +15,7 @@
     <script src="//bottr.co/javascripts/all-4abf6d7e.js"></script>
   </head>
 
-  <body class="docs docs_installation">
+  <body class="docs docs_witai">
       <div class="container">
         <header class="row">
           <div class="logo">
@@ -53,24 +53,23 @@
 </div>
 
     <div class="content">
-        <h1>Installation</h1>
+        <h1>Facebook Messenger Client</h1>
 
-<p>It should only take three simple steps to get up and running with Bottr.</p>
+<p>This component allows your bot to use the Facebook Messenger Client to allow your bot to
+communicate with Facebook Messenger.</p>
 
-<p>Install Node &amp; NPM using Homebrew</p>
-<pre class="highlight plaintext"><code>$ brew install node
+<h2>Basic Usage</h2>
+<pre class="highlight javascript"><code><span class="kr">import</span> <span class="nx">Bottr</span> <span class="nx">from</span> <span class="s1">'bottr'</span>
+
+<span class="kd">var</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bottr</span><span class="p">.</span><span class="nx">Bot</span><span class="p">()</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">Bottr</span><span class="p">.</span><span class="nx">FacebookMessengerClient</span><span class="p">())</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">listen</span><span class="p">()</span>
 </code></pre>
-<p>Install the Bottr command line tool</p>
-<pre class="highlight plaintext"><code>$ npm install -g bottr-cli
-</code></pre>
-<p>Create a new project folder and initialise a new project</p>
-<pre class="highlight plaintext"><code>$ mkdir &lt;YourBotName&gt; &amp;&amp; cd &lt;YourBotName&gt; &amp;&amp; bottr init
-</code></pre>
-<p>Your project should have a <code>index.js</code> which declares a basic bot.</p>
+<h2>Configuration</h2>
 
-<p>If you run <code>bottr start</code>, open <code>localhost:3000</code> in your browser and send it something the bot should reply with a response that indicates we haven&rsquo;t taught it to do anything yet.</p>
-
-<p>Next: <a href="/docs/creating-your-first-bot.html">Creating Your First Bot</a>.</p>
+<p>Table of configuration options here and blurb on webhook URL</p>
 
     </div>
 </div>

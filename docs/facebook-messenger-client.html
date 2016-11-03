@@ -6,7 +6,7 @@
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Bottr: Installation</title>
+    <title>Bottr: Facebook Client</title>
 
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
@@ -15,7 +15,7 @@
     <script src="//bottr.co/javascripts/all-4abf6d7e.js"></script>
   </head>
 
-  <body class="docs docs_installation">
+  <body class="docs docs_facebook-messenger-client">
       <div class="container">
         <header class="row">
           <div class="logo">
@@ -53,24 +53,54 @@
 </div>
 
     <div class="content">
-        <h1>Installation</h1>
+        <h1>Facebook Messenger Client</h1>
 
-<p>It should only take three simple steps to get up and running with Bottr.</p>
+<p>The Facebook Messenger Client allows your bot to communicate via Facebook Messenger.</p>
 
-<p>Install Node &amp; NPM using Homebrew</p>
-<pre class="highlight plaintext"><code>$ brew install node
+<h2>Basic Usage</h2>
+<pre class="highlight javascript"><code><span class="kr">import</span> <span class="nx">Bottr</span> <span class="nx">from</span> <span class="s1">'bottr'</span>
+
+<span class="kd">var</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bottr</span><span class="p">.</span><span class="nx">Bot</span><span class="p">()</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">Bottr</span><span class="p">.</span><span class="nx">TwitterClient</span><span class="p">({</span>
+    <span class="na">verify_token</span><span class="p">:</span> <span class="s1">'verify_me'</span><span class="p">,</span>
+    <span class="na">access_token</span><span class="p">:</span> <span class="s1">'your_facebook_messenger_application_access_token'</span>
+<span class="p">}))</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">listen</span><span class="p">()</span>
 </code></pre>
-<p>Install the Bottr command line tool</p>
-<pre class="highlight plaintext"><code>$ npm install -g bottr-cli
-</code></pre>
-<p>Create a new project folder and initialise a new project</p>
-<pre class="highlight plaintext"><code>$ mkdir &lt;YourBotName&gt; &amp;&amp; cd &lt;YourBotName&gt; &amp;&amp; bottr init
-</code></pre>
-<p>Your project should have a <code>index.js</code> which declares a basic bot.</p>
+<h2>Configuration</h2>
 
-<p>If you run <code>bottr start</code>, open <code>localhost:3000</code> in your browser and send it something the bot should reply with a response that indicates we haven&rsquo;t taught it to do anything yet.</p>
+<p>You can pass these options to the client either by environmental variables or by
+an object passed in though the constructor.</p>
 
-<p>Next: <a href="/docs/creating-your-first-bot.html">Creating Your First Bot</a>.</p>
+<table><thead>
+<tr>
+<th>Configuration Name</th>
+<th>Environmental Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>verify_token</td>
+<td><code>MESSENGER_VERIFY_TOKEN</code></td>
+<td>The verification token used by Facebook Messenger to verify your server and webhook</td>
+<td></td>
+</tr>
+<tr>
+<td>access_token</td>
+<td><code>MESSENGER_ACCESS_TOKEN</code>`</td>
+<td>The access token used to authenticate your Bot with your Facebook Messenger application</td>
+<td></td>
+</tr>
+<tr>
+<td>graph_uri</td>
+<td></td>
+<td>The default URI for the graph API</td>
+<td><code>https://graph.facebook.com</code></td>
+</tr>
+</tbody></table>
 
     </div>
 </div>
