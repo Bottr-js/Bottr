@@ -1,6 +1,6 @@
 /* global spyOn */
-
 jest.unmock('../../lib/clients/facebook-messenger-client');
+jest.unmock('../../lib/clients/base-client');
 
 const Bot = require('../../lib/bot');
 const FacebookMessengerClient = require('../../lib/clients/facebook-messenger-client');

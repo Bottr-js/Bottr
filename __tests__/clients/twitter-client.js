@@ -1,4 +1,5 @@
 jest.unmock('../../lib/clients/twitter-client');
+jest.unmock('../../lib/clients/base-client');
 
 const Bot = require('../../lib/bot');
 const TwitterClient = require('../../lib/clients/twitter-client');
